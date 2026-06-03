@@ -19,7 +19,7 @@ html{scroll-behavior:smooth;}
 body{background:var(--black);color:var(--off-white);font-family:var(--font-body);font-size:16px;line-height:1.7;overflow-x:hidden;}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0.85rem 2.5rem;background:rgba(10,10,10,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(245,200,0,0.18);}
 .nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none;}
-.nav-logo-img{width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(245,200,0,0.5);object-fit:cover;transform:scale(1.6);}
+.nav-logo-img{width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(245,200,0,0.5);object-fit:cover;transform:scale(1.7);clip-path:circle(50%);}
 .nav-logo-text{font-family:var(--font-display);font-size:1.4rem;letter-spacing:0.06em;color:var(--white);line-height:1;}
 .nav-logo-text span{color:var(--gold);}
 .nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
@@ -37,7 +37,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-rays{position:relative;margin-bottom:2rem;width:160px;height:160px;display:flex;align-items:center;justify-content:center;}
 .hero-rays svg.rays-bg{position:absolute;inset:0;width:100%;height:100%;animation:rays-spin 30s linear infinite;opacity:0.5;}
 @keyframes rays-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-.hero-logo-circle{width:130px;height:130px;border-radius:50%;border:2.5px solid rgba(245,200,0,0.7);object-fit:cover;object-position:center;transform:scale(1.6);position:relative;z-index:2;}
+.hero-logo-circle{width:130px;height:130px;border-radius:50%;border:2.5px solid rgba(245,200,0,0.7);object-fit:cover;object-position:center;transform:scale(1.7);clip-path:circle(50%);position:relative;z-index:2;}
 .hero-tag{font-family:var(--font-condensed);font-size:0.72rem;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
 .hero h1{font-family:var(--font-display);font-size:clamp(4.5rem,12vw,9rem);line-height:0.9;color:var(--white);letter-spacing:0.04em;margin-bottom:0.2rem;}
 .hero h1 .gold{color:var(--gold);}
@@ -65,7 +65,7 @@ section{padding:5rem 2rem;}
 .livestream-meta .section-body{margin-bottom:1.75rem;}
 .channel-card{background:var(--black-card);border:1px solid rgba(245,200,0,0.18);border-radius:4px;padding:1.1rem 1.25rem;margin-bottom:1.5rem;}
 .channel-card-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.85rem;padding-bottom:0.85rem;border-bottom:1px solid rgba(255,255,255,0.06);}
-.channel-logo-sm{width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:center;transform:scale(1.6);border:1px solid rgba(245,200,0,0.4);flex-shrink:0;}
+.channel-logo-sm{width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:center;transform:scale(1.7);clip-path:circle(50%);border:1px solid rgba(245,200,0,0.4);flex-shrink:0;}
 .channel-name{font-family:var(--font-condensed);font-size:0.9rem;font-weight:700;color:var(--white);}
 .channel-handle{font-size:0.76rem;color:var(--muted);margin-top:1px;}
 .channel-card p{font-size:0.83rem;color:var(--muted-light);line-height:1.65;margin-bottom:0.9rem;}
@@ -215,7 +215,7 @@ section{padding:5rem 2rem;}
 .connect-form button:hover{background:var(--gold-light);}
 footer{background:#050505;border-top:1px solid rgba(245,200,0,0.12);padding:3rem 2rem;text-align:center;}
 .footer-logo-wrap{display:flex;align-items:center;justify-content:center;gap:0.85rem;margin-bottom:1rem;}
-.footer-logo-img{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:center;transform:scale(1.6);border:1px solid rgba(245,200,0,0.35);}
+.footer-logo-img{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:center;transform:scale(1.7);clip-path:circle(50%);border:1px solid rgba(245,200,0,0.35);}
 .footer-wordmark{font-family:var(--font-display);font-size:1.5rem;color:var(--white);letter-spacing:0.06em;}
 .footer-wordmark span{color:var(--gold);}
 footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
