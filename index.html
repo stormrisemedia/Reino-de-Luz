@@ -19,7 +19,7 @@ html{scroll-behavior:smooth;}
 body{background:var(--black);color:var(--off-white);font-family:var(--font-body);font-size:16px;line-height:1.7;overflow-x:hidden;}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0.85rem 2.5rem;background:rgba(10,10,10,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(245,200,0,0.18);}
 .nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none;}
-.nav-logo-img{width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(245,200,0,0.5);object-fit:cover;}
+.nav-logo-img{width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(245,200,0,0.5);object-fit:cover;transform:scale(1.6);}
 .nav-logo-text{font-family:var(--font-display);font-size:1.4rem;letter-spacing:0.06em;color:var(--white);line-height:1;}
 .nav-logo-text span{color:var(--gold);}
 .nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
@@ -37,7 +37,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-rays{position:relative;margin-bottom:2rem;width:160px;height:160px;display:flex;align-items:center;justify-content:center;}
 .hero-rays svg.rays-bg{position:absolute;inset:0;width:100%;height:100%;animation:rays-spin 30s linear infinite;opacity:0.5;}
 @keyframes rays-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-.hero-logo-circle{width:130px;height:130px;border-radius:50%;border:2.5px solid rgba(245,200,0,0.7);object-fit:cover;position:relative;z-index:2;}
+.hero-logo-circle{width:130px;height:130px;border-radius:50%;border:2.5px solid rgba(245,200,0,0.7);object-fit:cover;object-position:center;transform:scale(1.6);position:relative;z-index:2;}
 .hero-tag{font-family:var(--font-condensed);font-size:0.72rem;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
 .hero h1{font-family:var(--font-display);font-size:clamp(4.5rem,12vw,9rem);line-height:0.9;color:var(--white);letter-spacing:0.04em;margin-bottom:0.2rem;}
 .hero h1 .gold{color:var(--gold);}
@@ -65,7 +65,7 @@ section{padding:5rem 2rem;}
 .livestream-meta .section-body{margin-bottom:1.75rem;}
 .channel-card{background:var(--black-card);border:1px solid rgba(245,200,0,0.18);border-radius:4px;padding:1.1rem 1.25rem;margin-bottom:1.5rem;}
 .channel-card-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.85rem;padding-bottom:0.85rem;border-bottom:1px solid rgba(255,255,255,0.06);}
-.channel-logo-sm{width:38px;height:38px;border-radius:50%;object-fit:cover;border:1px solid rgba(245,200,0,0.4);flex-shrink:0;}
+.channel-logo-sm{width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:center;transform:scale(1.6);border:1px solid rgba(245,200,0,0.4);flex-shrink:0;}
 .channel-name{font-family:var(--font-condensed);font-size:0.9rem;font-weight:700;color:var(--white);}
 .channel-handle{font-size:0.76rem;color:var(--muted);margin-top:1px;}
 .channel-card p{font-size:0.83rem;color:var(--muted-light);line-height:1.65;margin-bottom:0.9rem;}
@@ -215,7 +215,7 @@ section{padding:5rem 2rem;}
 .connect-form button:hover{background:var(--gold-light);}
 footer{background:#050505;border-top:1px solid rgba(245,200,0,0.12);padding:3rem 2rem;text-align:center;}
 .footer-logo-wrap{display:flex;align-items:center;justify-content:center;gap:0.85rem;margin-bottom:1rem;}
-.footer-logo-img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:1px solid rgba(245,200,0,0.35);}
+.footer-logo-img{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:center;transform:scale(1.6);border:1px solid rgba(245,200,0,0.35);}
 .footer-wordmark{font-family:var(--font-display);font-size:1.5rem;color:var(--white);letter-spacing:0.06em;}
 .footer-wordmark span{color:var(--gold);}
 footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
@@ -239,7 +239,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
 
 <nav>
   <a href="#" class="nav-logo">
-    <img src="reinodeluzlogo.png" alt="Logo" class="nav-logo-img"/>
+    <img src="WhatsApp_Image_2026-05-28_at_3_06_38_PM.jpeg" alt="Logo" class="nav-logo-img"/>
     <span class="nav-logo-text">REINO <span>DE LUZ</span></span>
   </a>
   <ul class="nav-links">
@@ -266,7 +266,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
 <section class="hero">
   <div class="hero-rays">
     <svg class="rays-bg" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg"><g transform="translate(80,80)"><line x1="0" y1="-75" x2="0" y2="-55" stroke="#F5C800" stroke-width="2" stroke-linecap="round"/><line x1="0" y1="-75" x2="0" y2="-55" stroke="#F5C800" stroke-width="2" stroke-linecap="round" transform="rotate(30)"/><line x1="0" y1="-75" x2="0" y2="-55" stroke="#F5C800" stroke-width="2" stroke-linecap="round" transform="rotate(60)"/><line x1="0" y1="-75" x2="0" y2="-55" stroke="#F5C800" stroke-width="2" stroke-linecap="round" transform="rotate(90)"/><line x1="0" y1="-75" x2="0" y2="-55" stroke="#F5C800" stroke-width="2" stroke-linecap="round" transform="rotate(120)"/><line x1="0" y1="-75" x2="0" y2="-55" stroke="#F5C800" stroke-width="2" stroke-linecap="round" transform="rotate(150)"/><line x1="0" y1="-75" x2="0" y2="-55" stroke="#F5C800" stroke-width="2" stroke-linecap="round" transform="rotate(180)"/><line x1="0" y1="-75" x2="0" y2="-55" stroke="#F5C800" stroke-width="2" stroke-linecap="round" transform="rotate(210)"/><line x1="0" y1="-75" x2="0" y2="-55" stroke="#F5C800" stroke-width="2" stroke-linecap="round" transform="rotate(240)"/><line x1="0" y1="-75" x2="0" y2="-55" stroke="#F5C800" stroke-width="2" stroke-linecap="round" transform="rotate(270)"/><line x1="0" y1="-75" x2="0" y2="-55" stroke="#F5C800" stroke-width="2" stroke-linecap="round" transform="rotate(300)"/><line x1="0" y1="-75" x2="0" y2="-55" stroke="#F5C800" stroke-width="2" stroke-linecap="round" transform="rotate(330)"/></g></svg>
-    <img src="reinodeluzlogo.png" alt="Asociación Reino de Luz" class="hero-logo-circle"/>
+    <img src="WhatsApp_Image_2026-05-28_at_3_06_38_PM.jpeg" alt="Asociación Reino de Luz" class="hero-logo-circle"/>
   </div>
   <p class="hero-tag" data-es="Asociación · Iquitos, Perú" data-en="Association · Iquitos, Peru">Asociación · Iquitos, Perú</p>
   <h1>REINO<br/><span class="gold">DE LUZ</span></h1>
@@ -296,7 +296,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
         <p class="section-body" data-es="Únete a nuestra comunidad en vivo cada semana para adoración, predicación y oración." data-en="Join our community live every week for worship, preaching, and prayer.">Únete a nuestra comunidad en vivo cada semana para adoración, predicación y oración.</p>
         <div class="channel-card">
           <div class="channel-card-header">
-            <img src="reinodeluzlogo.png" alt="Canal" class="channel-logo-sm"/>
+            <img src="WhatsApp_Image_2026-05-28_at_3_06_38_PM.jpeg" alt="Canal" class="channel-logo-sm"/>
             <div><div class="channel-name">Asociación Reino de Luz</div><div class="channel-handle">@AsociaciónReinodeLuz</div></div>
           </div>
           <p data-es="Suscríbete para recibir notificaciones cuando estemos en vivo." data-en="Subscribe to get notified when we go live.">Suscríbete para recibir notificaciones cuando estemos en vivo.</p>
@@ -530,7 +530,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
 
 <footer>
   <div class="footer-logo-wrap">
-    <img src="reinodeluzlogo.png" alt="Logo" class="footer-logo-img"/>
+    <img src="WhatsApp_Image_2026-05-28_at_3_06_38_PM.jpeg" alt="Logo" class="footer-logo-img"/>
     <div class="footer-wordmark">REINO <span>DE LUZ</span></div>
   </div>
   <p data-es="Llevando la Luz de Cristo al Mundo" data-en="Carrying the Light of Christ to the World">Llevando la Luz de Cristo al Mundo</p>
