@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" translate="no">
 <head>
+<meta name="google" content="notranslate" />
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Contacto · Asociación Reino de Luz</title>
@@ -28,7 +29,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .lang-toggle{display:flex;align-items:center;background:var(--black-surface);border:1px solid rgba(245,200,0,0.3);border-radius:3px;overflow:hidden;cursor:pointer;flex-shrink:0;}
 .lang-btn{font-family:var(--font-condensed);font-size:0.72rem;font-weight:700;letter-spacing:0.1em;padding:0.35rem 0.75rem;color:var(--muted);transition:background 0.2s,color 0.2s;user-select:none;}
 .lang-btn.active{background:var(--gold);color:var(--black);}
-.nav-live{display:flex;align-items:center;gap:0.5rem;font-family:var(--font-condensed);font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0.5rem 1.1rem;border-radius:3px;text-decoration:none;transition:background 0.2s;}
+.nav-live{display:none;align-items:center;gap:0.5rem;font-family:var(--font-condensed);font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0.5rem 1.1rem;border-radius:3px;text-decoration:none;transition:background 0.2s;}
+.nav-live.is-live{display:flex;}
 .nav-live:hover{background:var(--gold-light);}
 .live-dot{width:7px;height:7px;background:var(--black);border-radius:50%;animation:pulse 1.5s infinite;}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.7)}}
@@ -261,6 +263,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
       </div>
     </li>
   </ul>
+  <!-- Hidden by default. Add the "is-live" class (class="nav-live is-live") to show this button while streaming. -->
   <a href="en-vivo.html" class="nav-live" data-es="En Vivo" data-en="Live Now">
     <span class="live-dot"></span>En Vivo
   </a>
@@ -330,6 +333,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
 let lang = 'es';
 function setLang(l) {
   lang = l;
+  try { localStorage.setItem('rdl-lang', l); } catch (e) {}
   document.documentElement.lang = l;
   document.querySelectorAll('[data-es][data-en]').forEach(el => {
     el.innerHTML = el.getAttribute('data-' + l);
@@ -345,6 +349,36 @@ document.getElementById('langToggle').addEventListener('click', e => {
   const btn = e.target.closest('.lang-btn');
   if (btn) setLang(btn.getAttribute('data-lang'));
 });
+var savedLang = 'es';
+try { savedLang = localStorage.getItem('rdl-lang') || 'es'; } catch (e) {}
+setLang(savedLang);
+
+/* --- Auto-detect YouTube live via Cloudflare Worker: show the nav "En Vivo" button only while streaming --- */
+(function () {
+  var LIVE_STATUS_URL = 'https://reino-de-luz-live.startekno.workers.dev';
+  var CACHE_KEY = 'rdl-live-status';
+  var CACHE_MS = 2 * 60 * 1000; // re-check at most every 2 minutes per visitor
+
+  var liveBtn = document.querySelector('.nav-live');
+  if (!liveBtn) return;
+  function showLive(isLive) { liveBtn.classList.toggle('is-live', !!isLive); }
+
+  try {
+    var cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
+    if (cached && (Date.now() - cached.t) < CACHE_MS) { showLive(cached.live); return; }
+  } catch (e) {}
+
+  if (!LIVE_STATUS_URL) return; // no Worker URL set -> button stays hidden
+
+  fetch(LIVE_STATUS_URL)
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      var live = !!(data && data.live);
+      showLive(live);
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ t: Date.now(), live: live })); } catch (e) {}
+    })
+    .catch(function () {});
+})();
 </script>
 </body>
 </html>
