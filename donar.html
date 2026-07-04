@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Donar · Asociación Reino de Luz</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;700&family=Barlow:wght@400;500&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="effects.css"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -44,10 +45,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 section{padding:5rem 2rem;}
 .section-inner{max-width:1100px;margin:0 auto;}
 .section-label{font-family:var(--font-condensed);font-size:0.7rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
-.give-section .section-label{font-family:var(--font-display);font-size:clamp(1.6rem,3.5vw,2.4rem);letter-spacing:0.08em;line-height:1;margin-bottom:0.35rem;}
 .section-title{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,3.8rem);color:var(--white);line-height:0.95;letter-spacing:0.03em;margin-bottom:1rem;}
 .section-title .gold{color:var(--gold);}
 .section-body{font-size:0.95rem;color:var(--muted-light);max-width:560px;line-height:1.8;}
+.give-lead{font-size:1.05rem;color:var(--off-white);max-width:580px;margin-bottom:0;}
 .page-hero{padding:8rem 2rem 3rem;text-align:center;border-bottom:1px solid rgba(245,200,0,0.12);position:relative;}
 .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 100%,rgba(245,200,0,0.06) 0%,transparent 70%);pointer-events:none;}
 .page-hero-label{font-family:var(--font-condensed);font-size:0.72rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
@@ -127,7 +128,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
 </nav>
 
 <div class="page-hero">
-  <p class="page-hero-label">Tu generosidad transforma vidas · Your generosity transforms lives</p>
+  <p class="page-hero-label" data-es="Tu generosidad transforma vidas" data-en="Your generosity transforms lives">Tu generosidad transforma vidas</p>
   <h1 data-es="DONAR" data-en="DONATE">DONAR</h1>
 </div>
 
@@ -135,9 +136,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   <div class="section-inner">
     <div class="give-grid">
       <div>
-        <p class="section-label" data-es="Ofrenda" data-en="Give">Ofrenda</p>
-        <h2 class="section-title" data-es="SIEMBRA UNA<br/><span class='gold'>SEMILLA</span>" data-en="PLANT A<br/><span class='gold'>SEED</span>">SIEMBRA UNA<br/><span class="gold">SEMILLA</span></h2>
-        <p class="section-body" data-es="Cada aporte nos permite llevar la luz de Cristo a más personas: alimentar a los niños, sostener nuestros talleres y seguir sirviendo a la comunidad. Gracias por ser parte de esta misión." data-en="Every gift helps us carry the light of Christ to more people: feeding children, sustaining our workshops, and continuing to serve the community. Thank you for being part of this mission.">Cada aporte nos permite llevar la luz de Cristo a más personas: alimentar a los niños, sostener nuestros talleres y seguir sirviendo a la comunidad. Gracias por ser parte de esta misión.</p>
+        <p class="section-body give-lead" data-es="Cada aporte nos permite llevar la luz de Cristo a más personas: alimentar a los niños, sostener nuestros talleres y seguir sirviendo a la comunidad. Gracias por ser parte de esta misión." data-en="Every gift helps us carry the light of Christ to more people: feeding children, sustaining our workshops, and continuing to serve the community. Thank you for being part of this mission.">Cada aporte nos permite llevar la luz de Cristo a más personas: alimentar a los niños, sostener nuestros talleres y seguir sirviendo a la comunidad. Gracias por ser parte de esta misión.</p>
 
         <div class="give-scripture">
           <p data-es="&quot;Cada uno dé como propuso en su corazón: no con tristeza, ni por necesidad, porque Dios ama al dador alegre.&quot;" data-en="&quot;Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.&quot;">"Cada uno dé como propuso en su corazón: no con tristeza, ni por necesidad, porque Dios ama al dador alegre."</p>
@@ -193,6 +192,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   </ul>
 </footer>
 
+<script src="effects.js"></script>
 <script>
 /* ============================================================
    PAYPAL DONATION LINK

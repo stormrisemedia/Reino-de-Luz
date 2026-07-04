@@ -1,0 +1,378 @@
+/* Reino de Luz — motion & atmosphere */
+
+/* ── Ambient background ── */
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ambient-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 20%, rgba(245, 200, 0, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(245, 200, 0, 0.03) 0%, transparent 50%);
+  animation: ambient-drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes ambient-drift {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-2%, 2%) scale(1.05); }
+}
+
+.ambient-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 217, 61, 0.9) 0%, rgba(245, 200, 0, 0) 70%);
+  opacity: 0;
+  animation: particle-float linear infinite;
+}
+
+@keyframes particle-float {
+  0% {
+    opacity: 0;
+    transform: translateY(100vh) scale(0);
+  }
+  10% { opacity: var(--p-opacity, 0.5); }
+  90% { opacity: var(--p-opacity, 0.5); }
+  100% {
+    opacity: 0;
+    transform: translateY(-10vh) scale(1);
+  }
+}
+
+/* Keep content above ambient layer */
+body > *:not(.ambient-bg) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Nav scroll state ── */
+nav.nav-scrolled {
+  background: rgba(10, 10, 10, 0.97);
+  border-bottom-color: rgba(245, 200, 0, 0.35);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(245, 200, 0, 0.08);
+}
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.reveal-left {
+  transform: translateX(-28px);
+}
+
+.reveal.reveal-right {
+  transform: translateX(28px);
+}
+
+.reveal.reveal-scale {
+  transform: scale(0.96);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-stagger > .reveal:nth-child(1) { transition-delay: 0s; }
+.reveal-stagger > .reveal:nth-child(2) { transition-delay: 0.08s; }
+.reveal-stagger > .reveal:nth-child(3) { transition-delay: 0.16s; }
+.reveal-stagger > .reveal:nth-child(4) { transition-delay: 0.24s; }
+.reveal-stagger > .reveal:nth-child(5) { transition-delay: 0.32s; }
+.reveal-stagger > .reveal:nth-child(6) { transition-delay: 0.4s; }
+.reveal-stagger > .reveal:nth-child(7) { transition-delay: 0.48s; }
+.reveal-stagger > .reveal:nth-child(8) { transition-delay: 0.56s; }
+
+/* ── Hero entrance (home) ── */
+.hero .hero-rays,
+.hero .hero-tag,
+.hero h1,
+.hero .hero-subtitle,
+.hero .hero-rule,
+.hero .hero-verse,
+.hero .hero-verse-ref,
+.hero .hero-cta {
+  opacity: 0;
+  animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero .hero-rays { animation-delay: 0.1s; }
+.hero .hero-tag { animation-delay: 0.25s; }
+.hero h1 { animation-delay: 0.4s; }
+.hero .hero-subtitle { animation-delay: 0.55s; }
+.hero .hero-rule { animation-delay: 0.65s; transform-origin: center; animation-name: hero-rule-grow; }
+.hero .hero-verse { animation-delay: 0.75s; }
+.hero .hero-verse-ref { animation-delay: 0.85s; }
+.hero .hero-cta { animation-delay: 0.95s; }
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-rule-grow {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  width: min(480px, 80vw);
+  height: min(480px, 80vw);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 200, 0, 0.09) 0%, transparent 68%);
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: hero-orb 9s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes hero-orb {
+  from { transform: translate(-50%, -50%) scale(1); opacity: 0.55; }
+  to { transform: translate(-46%, -54%) scale(1.12); opacity: 1; }
+}
+
+.hero-logo-circle {
+  animation: logo-glow 4s ease-in-out infinite;
+  box-shadow: 0 0 40px rgba(245, 200, 0, 0.15);
+}
+
+@keyframes logo-glow {
+  0%, 100% { box-shadow: 0 0 30px rgba(245, 200, 0, 0.12), 0 0 60px rgba(245, 200, 0, 0.06); }
+  50% { box-shadow: 0 0 50px rgba(245, 200, 0, 0.28), 0 0 90px rgba(245, 200, 0, 0.12); }
+}
+
+/* ── Page hero (inner pages) ── */
+.page-hero h1,
+.page-hero .page-hero-label {
+  opacity: 0;
+  animation: hero-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.page-hero .page-hero-label { animation-delay: 0.15s; }
+.page-hero h1 { animation-delay: 0.3s; }
+
+.page-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  animation: page-hero-line 1s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+}
+
+@keyframes page-hero-line {
+  to { width: min(200px, 40vw); }
+}
+
+/* ── Enhanced cards & buttons ── */
+.mission-card,
+.prog-card,
+.vm-card,
+.stat-card,
+.channel-card,
+.founder-card,
+.miracle-item,
+.impact-stat,
+.schedule-list li,
+.gallery-item,
+.explore-card {
+  transition:
+    background 0.25s,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    border-color 0.25s;
+}
+
+.mission-card:hover,
+.prog-card:hover,
+.vm-card:hover,
+.stat-card:hover,
+.channel-card:hover,
+.founder-card:hover,
+.impact-stat:hover,
+.explore-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(245, 200, 0, 0.12);
+}
+
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 24px rgba(245, 200, 0, 0.35);
+}
+
+.btn-primary:hover::after {
+  left: 140%;
+}
+
+.btn-secondary {
+  transition: border-color 0.25s, color 0.25s, transform 0.2s, box-shadow 0.25s;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(245, 200, 0, 0.12);
+}
+
+/* ── Verse banner shimmer ── */
+.verse-banner {
+  position: relative;
+  overflow: hidden;
+}
+
+.verse-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  animation: banner-shimmer 6s ease-in-out infinite;
+}
+
+@keyframes banner-shimmer {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+/* ── Animated stat numbers ── */
+.stat-num,
+.impact-big,
+.impact-stat-num,
+.origin-years-num {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.stat-num.is-counted,
+.impact-big.is-counted,
+.impact-stat-num.is-counted,
+.origin-years-num.is-counted {
+  animation: num-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes num-pop {
+  0% { transform: scale(0.85); opacity: 0.5; }
+  60% { transform: scale(1.06); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ── Timeline markers pulse when visible ── */
+.tl-marker.tl-gold.is-visible {
+  animation: tl-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes tl-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(245, 200, 0, 0.4); }
+  50% { box-shadow: 0 0 18px rgba(245, 200, 0, 0.7); }
+}
+
+/* ── Embed wrapper glow on hover ── */
+.embed-wrapper {
+  transition: box-shadow 0.4s ease, border-color 0.3s ease;
+}
+
+.embed-wrapper:hover {
+  border-color: rgba(245, 200, 0, 0.45);
+  box-shadow: 0 0 40px rgba(245, 200, 0, 0.08);
+}
+
+/* ── Impact tags float in ── */
+.impact-tags span {
+  transition: border-color 0.25s, color 0.25s, transform 0.25s;
+}
+
+.impact-tags span:hover {
+  transform: translateY(-2px);
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .ambient-bg,
+  .ambient-bg::before,
+  .ambient-particle,
+  .hero *,
+  .page-hero *,
+  .verse-banner::before {
+    animation: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero .hero-rays,
+  .hero .hero-tag,
+  .hero h1,
+  .hero .hero-subtitle,
+  .hero .hero-rule,
+  .hero .hero-verse,
+  .hero .hero-verse-ref,
+  .hero .hero-cta,
+  .page-hero h1,
+  .page-hero .page-hero-label {
+    opacity: 1;
+  }
+
+  .mission-card:hover,
+  .prog-card:hover,
+  .vm-card:hover,
+  .stat-card:hover,
+  .channel-card:hover,
+  .founder-card:hover,
+  .impact-stat:hover,
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    transform: none;
+  }
+}

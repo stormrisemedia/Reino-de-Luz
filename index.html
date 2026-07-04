@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Asociación Reino de Luz | Kingdom of Light</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;700&family=Barlow:wght@400;500&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="effects.css"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -33,6 +34,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-toggle{display:none;background:transparent;border:1px solid rgba(245,200,0,0.35);color:var(--gold);font-size:1.2rem;line-height:1;padding:0.4rem 0.65rem;border-radius:3px;cursor:pointer;}
 .connect-cta{text-align:center;}
 .connect-cta .section-body{margin:0 auto 2rem;}
+.intro-section{background:var(--black-mid);border-top:1px solid rgba(245,200,0,0.12);border-bottom:1px solid rgba(245,200,0,0.12);text-align:center;}
+.intro-section .section-body{margin:0 auto;max-width:640px;}
+.explore-section{background:var(--black);}
+.explore-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;background:rgba(245,200,0,0.1);border:1px solid rgba(245,200,0,0.1);border-radius:4px;overflow:hidden;margin-top:2.5rem;}
+.explore-card{background:var(--black-surface);padding:1.75rem 1.5rem;text-decoration:none;display:flex;flex-direction:column;gap:0.65rem;position:relative;transition:background 0.25s,transform 0.35s cubic-bezier(0.22,1,0.36,1),box-shadow 0.35s ease;}
+.explore-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
+.explore-card:hover{background:var(--black-card);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.35);}
+.explore-card:hover::before{transform:scaleX(1);}
+.explore-icon{font-size:1.75rem;line-height:1;}
+.explore-title{font-family:var(--font-display);font-size:1.35rem;color:var(--white);letter-spacing:0.04em;line-height:1;}
+.explore-desc{font-size:0.85rem;color:var(--muted-light);line-height:1.55;flex:1;}
+.explore-link{font-family:var(--font-condensed);font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);}
+.impact-strip{background:var(--black-surface);border-top:1px solid rgba(245,200,0,0.1);border-bottom:1px solid rgba(245,200,0,0.1);text-align:center;}
+.impact-strip-inner{display:flex;flex-direction:column;align-items:center;gap:2rem;}
+.impact-strip .impact-stats-row{max-width:720px;width:100%;border-radius:4px;border-top:1px solid rgba(245,200,0,0.1);}
+.impact-strip-note{font-size:0.9rem;color:var(--muted-light);max-width:480px;line-height:1.7;}
 .lang-toggle{display:flex;align-items:center;background:var(--black-surface);border:1px solid rgba(245,200,0,0.3);border-radius:3px;overflow:hidden;cursor:pointer;flex-shrink:0;}
 .lang-btn{font-family:var(--font-condensed);font-size:0.72rem;font-weight:700;letter-spacing:0.1em;padding:0.35rem 0.75rem;color:var(--muted);transition:background 0.2s,color 0.2s;user-select:none;}
 .lang-btn.active{background:var(--gold);color:var(--black);}
@@ -308,189 +325,87 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   <p class="hero-verse-ref" data-es="Juan 8:12" data-en="John 8:12">Juan 8:12</p>
   <div class="hero-cta">
     <a href="en-vivo.html" class="btn-primary" data-es="Ver En Vivo" data-en="Watch Live">Ver En Vivo</a>
-    <a href="mision.html" class="btn-secondary" data-es="Nuestra Misión" data-en="Our Mission">Nuestra Misión</a>
+    <a href="donar.html" class="btn-secondary" data-es="Donar" data-en="Donate">Donar</a>
   </div>
 </section>
 
-<section class="livestream-section" id="livestream">
+<section class="intro-section">
   <div class="section-inner">
-    <div class="livestream-grid">
-      <div>
-        <div class="live-badge"><span class="live-dot"></span><span data-es="Transmisión en Vivo" data-en="Live Stream">Transmisión en Vivo</span></div>
-        <div class="embed-wrapper">
-          <iframe src="https://www.youtube.com/embed/live_stream?channel=UC3kfwg4h0cpsGh_7Rsgk9LQ&autoplay=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Asociación Reino de Luz — Live"></iframe>
-        </div>
-        <p class="embed-caption" data-es="Si no hay transmisión activa, aparecerá el video más reciente." data-en="If no live stream is active, the latest video will appear here.">Si no hay transmisión activa, aparecerá el video más reciente.</p>
-      </div>
-      <div class="livestream-meta">
-        <p class="section-label" data-es="Canal Oficial" data-en="Official Channel">Canal Oficial</p>
-        <h2 class="section-title" data-es="ÚNETE A LA<br/><span class='gold'>TRANSMISIÓN</span>" data-en="JOIN THE<br/><span class='gold'>LIVESTREAM</span>">ÚNETE A LA<br/><span class="gold">TRANSMISIÓN</span></h2>
-        <p class="section-body" data-es="Únete a nuestra comunidad en vivo cada semana para adoración, predicación y oración." data-en="Join our community live every week for worship, preaching, and prayer.">Únete a nuestra comunidad en vivo cada semana para adoración, predicación y oración.</p>
-        <div class="channel-card">
-          <div class="channel-card-header">
-            <img src="reinodeluzlogo.png" alt="Canal" class="channel-logo-sm"/>
-            <div><div class="channel-name">Asociación Reino de Luz</div><div class="channel-handle">@AsociaciónReinodeLuz</div></div>
-          </div>
-          <p data-es="Suscríbete para recibir notificaciones cuando estemos en vivo." data-en="Subscribe to get notified when we go live.">Suscríbete para recibir notificaciones cuando estemos en vivo.</p>
-          <a href="https://www.youtube.com/@asociacionreinodeluz" target="_blank" rel="noopener" data-es="Visitar Canal →" data-en="Visit Channel →">Visitar Canal →</a>
-        </div>
-        <a href="https://www.youtube.com/@asociacionreinodeluz?sub_confirmation=1" target="_blank" rel="noopener" class="btn-primary" data-es="Suscribirse" data-en="Subscribe">Suscribirse</a>
-      </div>
-    </div>
+    <p class="section-label" data-es="Asociación Cristiana" data-en="Christian Association">Asociación Cristiana</p>
+    <h2 class="section-title" data-es="LUZ EN EL<br/><span class='gold'>DISTRITO DE BELÉN</span>" data-en="LIGHT IN<br/><span class='gold'>BELÉN DISTRICT</span>">LUZ EN EL<br/><span class="gold">DISTRITO DE BELÉN</span></h2>
+    <p class="section-body" data-es="Desde 2020, servimos a niños y familias en uno de los distritos más vulnerables de Iquitos — formando vidas con el evangelio, talentos y esperanza." data-en="Since 2020, we serve children and families in one of Iquitos' most vulnerable districts — shaping lives through the gospel, talents, and hope.">Desde 2020, servimos a niños y familias en uno de los distritos más vulnerables de Iquitos — formando vidas con el evangelio, talentos y esperanza.</p>
   </div>
 </section>
 
-<section class="mission-section" id="mision">
+<section class="explore-section">
   <div class="section-inner">
-    <div class="vision-mission-grid">
-      <div class="vm-card vision-card">
-        <div class="vm-icon">✨</div>
-        <p class="section-label" data-es="Visión" data-en="Vision">Visión</p>
-        <h3 class="vm-title" data-es="UNA GENERACIÓN<br/><span class='gold'>TRANSFORMADA</span>" data-en="A TRANSFORMED<br/><span class='gold'>GENERATION</span>">UNA GENERACIÓN<br/><span class="gold">TRANSFORMADA</span></h3>
-        <p class="vm-body" data-es="Ser una generación transformada que impacte cada área de la sociedad, reflejando el amor y el servicio de Dios." data-en="To be a transformed generation that impacts every area of society, reflecting the love and service of God.">Ser una generación transformada que impacte cada área de la sociedad, reflejando el amor y el servicio de Dios.</p>
-      </div>
-      <div class="vm-card mision-card">
-        <div class="vm-icon">🔥</div>
-        <p class="section-label" data-es="Misión" data-en="Mission">Misión</p>
-        <h3 class="vm-title" data-es="CAPACITAR,<br/><span class='gold'>FORMAR Y DISCIPULAR</span>" data-en="EQUIP,<br/><span class='gold'>TRAIN AND DISCIPLE</span>">CAPACITAR,<br/><span class="gold">FORMAR Y DISCIPULAR</span></h3>
-        <p class="vm-body" data-es="Capacitar, formar y discipular a niños y adolescentes en los planes de Dios, desarrollando sus dones y talentos para que vivan con propósito y cumplan la Gran Comisión." data-en="To equip, train and disciple children and adolescents in God's plans, developing their gifts and talents so they live with purpose and fulfill the Great Commission.">Capacitar, formar y discipular a niños y adolescentes en los planes de Dios, desarrollando sus dones y talentos para que vivan con propósito y cumplan la Gran Comisión.</p>
-      </div>
-    </div>
-    <div class="mission-grid" style="margin-top:1px;">
-      <div class="mission-card"><span class="mission-num">01</span><h3 data-es="ESPIRITUAL" data-en="SPIRITUAL">ESPIRITUAL</h3><p data-es="Enseñanza bíblica semanal y discipulado profundo para que cada niño conozca el amor de Dios." data-en="Weekly Bible teaching and deep discipleship so every child can know the love of God.">Enseñanza bíblica semanal y discipulado profundo para que cada niño conozca el amor de Dios.</p></div>
-      <div class="mission-card"><span class="mission-num">02</span><h3 data-es="TALENTOS" data-en="TALENTS">TALENTOS</h3><p data-es="Talleres de música, canto y artes para que cada joven descubra los dones que Dios le dio." data-en="Music, singing, and arts workshops so every young person can discover the gifts God gave them.">Talleres de música, canto y artes para que cada joven descubra los dones que Dios le dio.</p></div>
-      <div class="mission-card"><span class="mission-num">03</span><h3 data-es="FORMACIÓN" data-en="FORMATION">FORMACIÓN</h3><p data-es="Inglés, computación y habilidades prácticas para prepararlos con herramientas reales para el futuro." data-en="English, computing, and practical skills to equip them with real tools for the future.">Inglés, computación y habilidades prácticas para prepararlos con herramientas reales para el futuro.</p></div>
-      <div class="mission-card"><span class="mission-num">04</span><h3 data-es="FAMILIA" data-en="FAMILY">FAMILIA</h3><p data-es="Programa para mamás que fortalece identidad, finanzas y crianza — transformando hogares enteros." data-en="A program for mothers that strengthens identity, finances, and parenting — transforming entire households.">Programa para mamás que fortalece identidad, finanzas y crianza — transformando hogares enteros.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="origin-section" id="historia">
-  <div class="section-inner">
-    <div class="origin-grid">
-      <div class="origin-text">
-        <p class="section-label" data-es="Nuestra Historia" data-en="Our Story">Nuestra Historia</p>
-        <h2 class="section-title" data-es="NACIDOS EN<br/><span class='gold'>PANDEMIA</span>" data-en="BORN IN A<br/><span class='gold'>PANDEMIC</span>">NACIDOS EN<br/><span class="gold">PANDEMIA</span></h2>
-        <p class="origin-year">2020 · Belén, Iquitos</p>
-        <p class="origin-body" data-es="Reino de Luz nació en 2020, en medio de la pandemia del COVID. Con algunos miedos e inseguridades, decidimos como familia irnos a Belén para entregar nuestra vida a servir, amar y discipular a niños y adolescentes en situación de vulnerabilidad. Durante ese tiempo repartíamos comida y entregábamos paquetes de víveres." data-en="Reino de Luz was born in 2020, in the midst of the COVID pandemic. With some fears and insecurities, we decided as a family to go to Belén to give our lives to serve, love, and disciple children and adolescents in vulnerable situations. During that time we distributed food and delivered care packages.">Reino de Luz nació en 2020, en medio de la pandemia del COVID. Con algunos miedos e inseguridades, decidimos como familia irnos a Belén para entregar nuestra vida a servir, amar y discipular a niños y adolescentes en situación de vulnerabilidad. Durante ese tiempo repartíamos comida y entregábamos paquetes de víveres.</p>
-        <div class="origin-years">
-          <span class="origin-years-num">6</span>
-          <span class="origin-years-label" data-es="años" data-en="years">años</span>
-        </div>
-        <p class="origin-body" data-es="No ha sido un camino fácil. Hemos reído, hemos llorado, hemos dudado, hemos sufrido — y muchas veces nos hemos cansado. Pero también hemos visto muchos milagros." data-en="It has not been an easy road. We have laughed, cried, doubted, and suffered — and many times we have grown weary. But we have also witnessed many miracles.">No ha sido un camino fácil. Hemos reído, hemos llorado, hemos dudado, hemos sufrido — y muchas veces nos hemos cansado. Pero también hemos visto muchos milagros.</p>
-      </div>
-      <div class="origin-right">
-        <div class="miracles-list">
-          <div class="miracle-item"><span class="miracle-icon">✨</span><span data-es="Niños restaurados" data-en="Restored children">Niños restaurados</span></div>
-          <div class="miracle-item"><span class="miracle-icon">😊</span><span data-es="Sonrisas donde antes había dolor" data-en="Smiles where there was once pain">Sonrisas donde antes había dolor</span></div>
-          <div class="miracle-item"><span class="miracle-icon">☀️</span><span data-es="Esperanza donde antes solo había oscuridad" data-en="Hope where there was once only darkness">Esperanza donde antes solo había oscuridad</span></div>
-        </div>
-        <div class="origin-declaration">
-          <p data-es="&quot;Dios ha sido bueno. Cada paso valió la pena. Cada semilla sembrada dio fruto. Y cada batalla nos enseñó a depender más de Él.&quot;" data-en="&quot;God has been good. Every step was worth it. Every seed sown bore fruit. And every battle taught us to depend on Him more.&quot;">"Dios ha sido bueno. Cada paso valió la pena. Cada semilla sembrada dio fruto. Y cada batalla nos enseñó a depender más de Él."</p>
-        </div>
-        <div class="origin-closing">
-          <p data-es="Seguimos creyendo que <strong>una vida transformada puede cambiar muchas más.</strong>" data-en="We keep believing that <strong>one transformed life can change many more.</strong>">Seguimos creyendo que <strong>una vida transformada puede cambiar muchas más.</strong></p>
-        </div>
-      </div>
+    <p class="section-label" data-es="Explora" data-en="Explore">Explora</p>
+    <h2 class="section-title" data-es="CONOCE<br/><span class='gold'>NUESTRO TRABAJO</span>" data-en="DISCOVER<br/><span class='gold'>OUR WORK</span>">CONOCE<br/><span class="gold">NUESTRO TRABAJO</span></h2>
+    <div class="explore-grid">
+      <a href="en-vivo.html" class="explore-card">
+        <span class="explore-icon">📺</span>
+        <span class="explore-title" data-es="En Vivo" data-en="Live">En Vivo</span>
+        <span class="explore-desc" data-es="Únete a nuestra transmisión semanal de adoración y predicación." data-en="Join our weekly worship and preaching livestream.">Únete a nuestra transmisión semanal de adoración y predicación.</span>
+        <span class="explore-link" data-es="Ver transmisión →" data-en="Watch stream →">Ver transmisión →</span>
+      </a>
+      <a href="mision.html" class="explore-card">
+        <span class="explore-icon">✨</span>
+        <span class="explore-title" data-es="Misión" data-en="Mission">Misión</span>
+        <span class="explore-desc" data-es="Visión, misión y los cuatro pilares de nuestro ministerio." data-en="Vision, mission, and the four pillars of our ministry.">Visión, misión y los cuatro pilares de nuestro ministerio.</span>
+        <span class="explore-link" data-es="Leer más →" data-en="Read more →">Leer más →</span>
+      </a>
+      <a href="historia.html" class="explore-card">
+        <span class="explore-icon">📖</span>
+        <span class="explore-title" data-es="Historia" data-en="History">Historia</span>
+        <span class="explore-desc" data-es="Nacidos en pandemia y la historia de redención de nuestro fundador." data-en="Born in a pandemic and our founder's story of redemption.">Nacidos en pandemia y la historia de redención de nuestro fundador.</span>
+        <span class="explore-link" data-es="Conocer historia →" data-en="Our story →">Conocer historia →</span>
+      </a>
+      <a href="programas.html" class="explore-card">
+        <span class="explore-icon">🎯</span>
+        <span class="explore-title" data-es="Programas" data-en="Programs">Programas</span>
+        <span class="explore-desc" data-es="Talleres, formación, programa de mamás, salud y más." data-en="Workshops, training, mothers' program, health, and more.">Talleres, formación, programa de mamás, salud y más.</span>
+        <span class="explore-link" data-es="Ver programas →" data-en="View programs →">Ver programas →</span>
+      </a>
+      <a href="impacto.html" class="explore-card">
+        <span class="explore-icon">💛</span>
+        <span class="explore-title" data-es="Impacto" data-en="Impact">Impacto</span>
+        <span class="explore-desc" data-es="Vidas transformadas y el alcance de nuestro ministerio en Belén." data-en="Transformed lives and the reach of our ministry in Belén.">Vidas transformadas y el alcance de nuestro ministerio en Belén.</span>
+        <span class="explore-link" data-es="Ver impacto →" data-en="See impact →">Ver impacto →</span>
+      </a>
+      <a href="galeria.html" class="explore-card">
+        <span class="explore-icon">📷</span>
+        <span class="explore-title" data-es="Momentos" data-en="Moments">Momentos</span>
+        <span class="explore-desc" data-es="Fotos de adoración, talleres y la vida de nuestra comunidad." data-en="Photos of worship, workshops, and community life.">Fotos de adoración, talleres y la vida de nuestra comunidad.</span>
+        <span class="explore-link" data-es="Ver galería →" data-en="View gallery →">Ver galería →</span>
+      </a>
+      <a href="contacto.html" class="explore-card">
+        <span class="explore-icon">✉️</span>
+        <span class="explore-title" data-es="Contacto" data-en="Contact">Contacto</span>
+        <span class="explore-desc" data-es="Escríbenos, conoce nuestros horarios y cómo conectarte." data-en="Write to us, see our schedule, and how to connect.">Escríbenos, conoce nuestros horarios y cómo conectarte.</span>
+        <span class="explore-link" data-es="Contactar →" data-en="Get in touch →">Contactar →</span>
+      </a>
+      <a href="donar.html" class="explore-card">
+        <span class="explore-icon">🤝</span>
+        <span class="explore-title" data-es="Donar" data-en="Donate">Donar</span>
+        <span class="explore-desc" data-es="Tu generosidad sostiene programas que cambian vidas cada semana." data-en="Your generosity sustains programs that change lives every week.">Tu generosidad sostiene programas que cambian vidas cada semana.</span>
+        <span class="explore-link" data-es="Apoyar ahora →" data-en="Give now →">Apoyar ahora →</span>
+      </a>
     </div>
   </div>
 </section>
 
-<section class="testimony-section" id="testimonio">
-  <div class="section-inner">
-    <div class="belen-sub">
-      <div class="belen-grid">
-        <div class="belen-text">
-          <p class="section-label" data-es="Dónde Servimos" data-en="Where We Serve">Dónde Servimos</p>
-          <h2 class="section-title" data-es="DISTRITO DE<br/><span class='gold'>BELÉN</span>" data-en="DISTRICT OF<br/><span class='gold'>BELÉN</span>">DISTRITO DE<br/><span class="gold">BELÉN</span></h2>
-          <h3 class="belen-location">Iquitos, Loreto · Perú</h3>
-          <p class="belen-tagline" data-es="&quot;Un lugar donde&lt;br/&gt;&lt;span&gt;Jesús transforma vidas&quot;" data-en="&quot;A place where&lt;br/&gt;&lt;span&gt;Jesus transforms lives&quot;">"Un lugar donde<br/><span>Jesús transforma vidas"</span></p>
-          <p class="belen-body" data-es="El distrito de Belén es uno de los cuatro distritos urbanos de Iquitos, considerado el &lt;strong&gt;distrito más pobre de la ciudad&lt;/strong&gt;. Con más de 60,804 habitantes en condiciones de alta densidad poblacional, muchas familias viven en pobreza extrema, sin acceso adecuado a electricidad ni agua potable." data-en="The Belén district is one of four urban districts of Iquitos, considered the &lt;strong&gt;poorest district in the city&lt;/strong&gt;. With over 60,804 inhabitants in extremely dense conditions, many families live in extreme poverty, lacking adequate access to electricity or clean water.">El distrito de Belén es uno de los cuatro distritos urbanos de Iquitos, considerado el <strong>distrito más pobre de la ciudad</strong>. Con más de 60,804 habitantes en condiciones de alta densidad poblacional, muchas familias viven en pobreza extrema, sin acceso adecuado a electricidad ni agua potable.</p>
-          <div class="belen-callout">
-            <p data-es="Es en este contexto donde Reino de Luz trabaja — llevando luz, esperanza y propósito a los que más lo necesitan." data-en="This is the context in which Reino de Luz works — bringing light, hope, and purpose to those who need it most.">Es en este contexto donde Reino de Luz trabaja — llevando luz, esperanza y propósito a los que más lo necesitan.</p>
-          </div>
-        </div>
-        <div class="belen-stats">
-          <div class="stat-card"><span class="stat-num">60,804</span><span class="stat-label" data-es="Habitantes" data-en="Inhabitants">Habitantes</span></div>
-          <div class="stat-card stat-card-accent"><span class="stat-num">#1</span><span class="stat-label" data-es="Distrito más pobre de Iquitos" data-en="Poorest district in Iquitos">Distrito más pobre de Iquitos</span></div>
-          <div class="stat-card"><span class="stat-num">4°</span><span class="stat-label" data-es="Distrito urbano de Iquitos" data-en="Urban district of Iquitos">Distrito urbano de Iquitos</span></div>
-          <div class="stat-card"><span class="stat-num">∞</span><span class="stat-label" data-es="Razones para servir" data-en="Reasons to serve">Razones para servir</span></div>
-        </div>
-      </div>
+<section class="impact-strip">
+  <div class="section-inner impact-strip-inner">
+    <div>
+      <p class="section-label" data-es="En números" data-en="By the numbers">En números</p>
+      <p class="impact-strip-note" data-es="Cada semana acompañamos a decenas de niños y familias en Belén." data-en="Every week we walk alongside dozens of children and families in Belén.">Cada semana acompañamos a decenas de niños y familias en Belén.</p>
     </div>
-
-    <div class="history-divider">
-      <span data-es="Historia del Fundador" data-en="Founder's Story">Historia del Fundador</span>
+    <div class="impact-stats-row">
+      <div class="impact-stat"><span class="impact-stat-num">60</span><span class="impact-stat-label" data-es="Niños y adolescentes" data-en="Children &amp; teens">Niños y adolescentes</span></div>
+      <div class="impact-stat"><span class="impact-stat-num">6</span><span class="impact-stat-label" data-es="Años de ministerio" data-en="Years of ministry">Años de ministerio</span></div>
+      <div class="impact-stat"><span class="impact-stat-num">8</span><span class="impact-stat-label" data-es="Programas activos" data-en="Active programs">Programas activos</span></div>
     </div>
-
-    <div class="testimony-header">
-      <p class="section-label" data-es="Fundador" data-en="Founder">Fundador</p>
-      <h2 class="section-title" data-es="UNA HISTORIA DE<br/><span class='gold'>REDENCIÓN</span>" data-en="A STORY OF<br/><span class='gold'>REDEMPTION</span>">UNA HISTORIA DE<br/><span class="gold">REDENCIÓN</span></h2>
-    </div>
-
-    <div class="testimony-grid">
-      <div class="testimony-identity">
-        <div class="founder-card">
-          <div class="founder-initials">BA</div>
-          <div>
-            <div class="founder-name">Bryan Acipali Vela</div>
-            <div class="founder-detail" data-es="Iquitos, Perú · 29 años" data-en="Iquitos, Peru · Age 29">Iquitos, Perú · 29 años</div>
-            <div class="founder-detail" data-es="Esposo de Yuri · Padre de Lucian Josiah &amp; Fe Gracia" data-en="Husband of Yuri · Father of Lucian Josiah &amp; Fe Gracia">Esposo de Yuri · Padre de Lucian Josiah &amp; Fe Gracia</div>
-          </div>
-        </div>
-        <div class="scripture-pull">
-          <p class="scripture-text" data-es="&quot;El Espíritu del Señor está sobre mí, por cuanto me ha ungido para anunciar buenas nuevas a los pobres... para proclamar libertad a los cautivos...&quot;" data-en="&quot;The Spirit of the Lord is on me, because he has anointed me to proclaim good news to the poor... to proclaim freedom for the captives...&quot;">"El Espíritu del Señor está sobre mí, por cuanto me ha ungido para anunciar buenas nuevas a los pobres..."</p>
-          <cite data-es="Isaías 61:1–4" data-en="Isaiah 61:1–4">Isaías 61:1–4</cite>
-        </div>
-        <div class="calling-box">
-          <p class="calling-label" data-es="El Llamado" data-en="The Calling">El Llamado</p>
-          <p class="calling-quote" data-es="&quot;Bryan, quiero que lleves Mi amor a los niños de Belén que viven lo mismo que tú viviste.&quot;" data-en="&quot;Bryan, I want you to bring My love to the children of Belén who are living what you once lived.&quot;">"Bryan, quiero que lleves Mi amor a los niños de Belén que viven lo mismo que tú viviste."</p>
-          <p class="calling-source" data-es="— Dios, en oración" data-en="— God, in prayer">— Dios, en oración</p>
-        </div>
-      </div>
-      <div class="testimony-story">
-        <div class="tl-item"><div class="tl-marker tl-dark"></div><div class="tl-content"><span class="tl-year" data-es="Infancia" data-en="Childhood">Infancia</span><p data-es="Creció en Belén — uno de los distritos más golpeados por la extrema pobreza, la prostitución y la venta de droga. Nunca conoció a su papá. Su madre lo abandonó a los 6 años." data-en="He grew up in Belén — one of the districts hardest hit by extreme poverty, prostitution, and drug trafficking. He never knew his father. His mother abandoned him at age 6.">Creció en Belén — uno de los distritos más golpeados por la extrema pobreza, la prostitución y la venta de droga. Nunca conoció a su papá. Su madre lo abandonó a los 6 años.</p></div></div>
-        <div class="tl-item"><div class="tl-marker tl-dark"></div><div class="tl-content"><span class="tl-year" data-es="8 años" data-en="Age 8">8 años</span><p data-es="Cayó en las drogas, el alcohol y la delincuencia. Por 9 años vivió en las calles, sin rumbo y sin dirección." data-en="He fell into drugs, alcohol, and crime. For 9 years he lived on the streets, without direction or purpose.">Cayó en las drogas, el alcohol y la delincuencia. Por 9 años vivió en las calles, sin rumbo y sin dirección.</p></div></div>
-        <div class="tl-item"><div class="tl-marker tl-turn"></div><div class="tl-content"><span class="tl-year tl-year-gold" data-es="El Encuentro" data-en="The Encounter">El Encuentro</span><p data-es="Cuando ya no esperaba nada de la vida, Dios lo encontró. &lt;em&gt;No lo encontró fuerte, ni limpio, ni con respuestas. Lo encontró borracho, drogado, sucio, roto, quebrado y perdido… y aun así, decidió amarlo.&lt;/em&gt;" data-en="When he no longer expected anything from life, God found him. &lt;em&gt;Not strong, not clean, not with answers. He found him drunk, drugged, dirty, broken, shattered and lost… and yet, He chose to love him.&lt;/em&gt;">Cuando ya no esperaba nada de la vida, Dios lo encontró. <em>No lo encontró fuerte, ni limpio, ni con respuestas. Lo encontró borracho, drogado, sucio, roto, quebrado y perdido… y aun así, decidió amarlo.</em></p></div></div>
-        <div class="tl-item"><div class="tl-marker tl-light"></div><div class="tl-content"><span class="tl-year" data-es="2012 · 17 años" data-en="2012 · Age 17">2012 · 17 años</span><p data-es="Ingresó a un centro de rehabilitación donde experimentó, por primera vez, el amor verdadero de Jesús — un amor que no lo juzgó, que lo amó por encima de sus errores. Después de dos años, salió con una nueva perspectiva." data-en="He entered a rehabilitation center where he experienced, for the first time, the true love of Jesus — a love that did not judge him, that loved him above his mistakes. After two years, he left with a new perspective.">Ingresó a un centro de rehabilitación donde experimentó, por primera vez, el amor verdadero de Jesús — un amor que no lo juzgó, que lo amó por encima de sus errores. Después de dos años, salió con una nueva perspectiva.</p></div></div>
-        <div class="tl-item"><div class="tl-marker tl-light"></div><div class="tl-content"><span class="tl-year">2017</span><p data-es="Abrió su propia barbería — no solo un medio de ingresos, sino un espacio para mostrar la esperanza de Jesús a otros jóvenes con historias parecidas a la suya." data-en="He opened his own barbershop — not just a source of income, but a space to show the hope of Jesus to other young people with stories like his.">Abrió su propia barbería — no solo un medio de ingresos, sino un espacio para mostrar la esperanza de Jesús a otros jóvenes con historias parecidas a la suya.</p></div></div>
-        <div class="tl-item"><div class="tl-marker tl-gold"></div><div class="tl-content"><span class="tl-year tl-year-gold" data-es="2019 · El Llamado" data-en="2019 · The Calling">2019 · El Llamado</span><p data-es="Dios puso en su corazón un llamado a prepararse en &lt;strong&gt;YWAM – Jóvenes con una Misión&lt;/strong&gt;. En viajes a Colombia y Ecuador, tuvo una visión: se vio en medio de la selva, rodeado de niños — algunos sonriendo, otros escondidos entre los árboles, llenos de vergüenza y temor." data-en="God placed a calling in his heart to train with &lt;strong&gt;YWAM – Youth With A Mission&lt;/strong&gt;. On trips to Colombia and Ecuador, he had a vision: he saw himself in the jungle, surrounded by children — some smiling, others hiding among the trees, full of shame and fear.">Dios puso en su corazón un llamado a prepararse en <strong>YWAM – Jóvenes con una Misión</strong>. En viajes a Colombia y Ecuador, tuvo una visión: se vio en medio de la selva, rodeado de niños — algunos sonriendo, otros escondidos entre los árboles, llenos de vergüenza y temor.</p></div></div>
-        <div class="tl-item tl-last"><div class="tl-marker tl-gold"></div><div class="tl-content"><span class="tl-year tl-year-gold" data-es="El Regreso" data-en="The Return">El Regreso</span><p data-es="De regreso al Perú, Dios lo llamó a regresar a Belén — el mismo lugar que representaba su pasado de tristeza, dolor y miedo — para llevar Su amor a los niños que hoy viven lo mismo que él vivió." data-en="Back in Peru, God called him to return to Belén — the very place that represented his past of sadness, pain, and fear — to bring His love to the children living today what he once lived.">De regreso al Perú, Dios lo llamó a regresar a Belén — el mismo lugar que representaba su pasado de tristeza, dolor y miedo — para llevar Su amor a los niños que hoy viven lo mismo que él vivió.</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="impact-section" id="impacto">
-  <div class="section-inner">
-    <div class="impact-grid">
-      <div class="impact-text">
-        <p class="section-label" data-es="Nuestro Impacto" data-en="Our Impact">Nuestro Impacto</p>
-        <h2 class="section-title" data-es="LO QUE<br/><span class='gold'>HEMOS VISTO</span>" data-en="WHAT WE<br/><span class='gold'>HAVE SEEN</span>">LO QUE<br/><span class="gold">HEMOS VISTO</span></h2>
-        <p class="impact-body" data-es="A través de estos programas, Reino de Luz está formando una generación que transforma su entorno — una vida a la vez." data-en="Through these programs, Reino de Luz is forming a generation that transforms its surroundings — one life at a time.">A través de estos programas, Reino de Luz está formando una generación que transforma su entorno — una vida a la vez.</p>
-        <div class="impact-tags">
-          <span data-es="✨ Genera valores" data-en="✨ Builds values">✨ Genera valores</span>
-          <span data-es="✨ Desarrolla talentos" data-en="✨ Develops talents">✨ Desarrolla talentos</span>
-          <span data-es="✨ Fortalece familias" data-en="✨ Strengthens families">✨ Fortalece familias</span>
-          <span data-es="✨ Lleva esperanza" data-en="✨ Brings hope">✨ Lleva esperanza</span>
-          <span data-es="✨ Abre oportunidades" data-en="✨ Opens opportunities">✨ Abre oportunidades</span>
-        </div>
-      </div>
-      <div class="impact-numbers">
-        <div class="impact-hero-num">
-          <span class="impact-big">60</span>
-          <div class="impact-big-label">
-            <span class="impact-big-title" data-es="Niños y Adolescentes" data-en="Children &amp; Teens">Niños y Adolescentes</span>
-            <span class="impact-big-sub" data-es="acompañados cada semana" data-en="served every week">acompañados cada semana</span>
-          </div>
-        </div>
-        <div class="impact-stats-row">
-          <div class="impact-stat"><span class="impact-stat-num">6</span><span class="impact-stat-label" data-es="Años de ministerio" data-en="Years of ministry">Años de ministerio</span></div>
-          <div class="impact-stat"><span class="impact-stat-num">8</span><span class="impact-stat-label" data-es="Programas activos" data-en="Active programs">Programas activos</span></div>
-          <div class="impact-stat"><span class="impact-stat-num">∞</span><span class="impact-stat-label" data-es="Vidas cambiadas" data-en="Lives changed">Vidas cambiadas</span></div>
-        </div>
-      </div>
-    </div>
+    <a href="impacto.html" class="btn-secondary" data-es="Ver impacto completo" data-en="See full impact">Ver impacto completo</a>
   </div>
 </section>
 
@@ -499,43 +414,11 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   <cite data-es="Mateo 5:14" data-en="Matthew 5:14">Mateo 5:14</cite>
 </div>
 
-<section class="programs-section" id="programas">
-  <div class="section-inner">
-    <div class="programs-header">
-      <p class="section-label" data-es="Programa Integral" data-en="Full Program">Programa Integral</p>
-      <h2 class="section-title" data-es="LO QUE<br/><span class='gold'>OFRECEMOS</span>" data-en="WHAT WE<br/><span class='gold'>OFFER</span>">LO QUE<br/><span class="gold">OFRECEMOS</span></h2>
-      <p class="section-body" data-es="Cada programa está diseñado para formar a la persona completa — espíritu, mente y cuerpo." data-en="Each program is designed to form the whole person — spirit, mind, and body.">Cada programa está diseñado para formar a la persona completa — espíritu, mente y cuerpo.</p>
-    </div>
-    <div class="programs-grid">
-      <div class="prog-card"><div class="prog-header"><span class="prog-day" data-es="Sábados" data-en="Saturdays">Sábados</span><span class="prog-cost">$350<span data-es="/mes" data-en="/mo">/mes</span></span></div><h3 class="prog-title" data-es="Atención a Niños" data-en="Children's Program">Atención a Niños</h3><ul class="prog-list"><li data-es="Dinámicas recreativas" data-en="Recreational activities">Dinámicas recreativas</li><li data-es="Música" data-en="Music">Música</li><li data-es="Enseñanza bíblica" data-en="Bible teaching">Enseñanza bíblica</li><li data-es="Alimentación" data-en="Meals provided">Alimentación</li></ul></div>
-      <div class="prog-card"><div class="prog-header"><span class="prog-day" data-es="Martes" data-en="Tuesdays">Martes</span><span class="prog-cost">$500<span data-es="/mes" data-en="/mo">/mes</span></span></div><h3 class="prog-title" data-es="Talleres de Talentos" data-en="Talent Workshops">Talleres de Talentos</h3><ul class="prog-list"><li data-es="Piano" data-en="Piano">Piano</li><li data-es="Batería" data-en="Drums">Batería</li><li data-es="Guitarra" data-en="Guitar">Guitarra</li><li data-es="Canto" data-en="Singing">Canto</li></ul></div>
-      <div class="prog-card"><div class="prog-header"><span class="prog-day" data-es="Jueves" data-en="Thursdays">Jueves</span><span class="prog-cost">$500<span data-es="/mes" data-en="/mo">/mes</span></span></div><h3 class="prog-title" data-es="Talleres de Formación" data-en="Skills Workshops">Talleres de Formación</h3><ul class="prog-list"><li data-es="Inglés" data-en="English">Inglés</li><li data-es="Computación" data-en="Computing">Computación</li><li data-es="Repostería" data-en="Baking">Repostería</li></ul></div>
-      <div class="prog-card prog-card-featured"><div class="prog-header"><span class="prog-day" data-es="Programa Mamás" data-en="Mothers' Program">Programa Mamás</span><span class="prog-cost">$600<span data-es="/mes" data-en="/mo">/mes</span></span></div><h3 class="prog-title" data-es="Fortalecimiento Familiar" data-en="Family Strengthening">Fortalecimiento Familiar</h3><ul class="prog-list"><li data-es="Amor propio e identidad" data-en="Self-love and identity">Amor propio e identidad</li><li data-es="Valor personal" data-en="Personal value">Valor personal</li><li data-es="Finanzas" data-en="Finances">Finanzas</li><li data-es="Crianza saludable" data-en="Healthy parenting">Crianza saludable</li></ul><div class="prog-badge" data-es="🎓 Certificación + Premio emprendimiento al finalizar el año" data-en="🎓 Certification + Entrepreneurship award at year's end">🎓 Certificación + Premio emprendimiento al finalizar el año</div></div>
-      <div class="prog-card"><div class="prog-header"><span class="prog-day" data-es="Comunidad" data-en="Community">Comunidad</span><span class="prog-cost">$300<span data-es="/mes" data-en="/mo">/mes</span></span></div><h3 class="prog-title" data-es="Servicio Comunitario" data-en="Community Service">Servicio Comunitario</h3><ul class="prog-list"><li data-es="Limpieza de calles" data-en="Street cleaning">Limpieza de calles</li><li data-es="Pintado de casas" data-en="House painting">Pintado de casas</li></ul></div>
-      <div class="prog-card"><div class="prog-header"><span class="prog-day" data-es="Salud" data-en="Health">Salud</span><span class="prog-cost free" data-es="Gratuito" data-en="Free">Gratuito</span></div><h3 class="prog-title" data-es="Programa de Salud" data-en="Health Program">Programa de Salud</h3><ul class="prog-list"><li data-es="Limpieza bucal" data-en="Dental cleaning">Limpieza bucal</li><li data-es="Desparasitación" data-en="Deworming">Desparasitación</li><li data-es="Medicina general" data-en="General medicine">Medicina general</li></ul></div>
-      <div class="prog-card prog-card-xmas"><div class="prog-header"><span class="prog-day" data-es="Diciembre" data-en="December">Diciembre</span><span class="prog-cost">$1,500</span></div><h3 class="prog-title" data-es="Navidad Especial" data-en="Special Christmas">Navidad Especial</h3><ul class="prog-list"><li data-es="Cena navideña" data-en="Christmas dinner">Cena navideña</li><li data-es="Chocolate caliente" data-en="Hot chocolate">Chocolate caliente</li><li data-es="Entrega de zapatillas 👟" data-en="Sneaker giveaway 👟">Entrega de zapatillas 👟</li></ul></div>
-      <div class="prog-card"><div class="prog-header"><span class="prog-day" data-es="Becas" data-en="Scholarships">Becas</span><span class="prog-cost free" data-es="En desarrollo" data-en="Coming soon">En desarrollo</span></div><h3 class="prog-title" data-es="Programa de Becas" data-en="Scholarship Program">Programa de Becas</h3><ul class="prog-list"><li data-es="Becas universitarias para jóvenes" data-en="University scholarships for youth">Becas universitarias para jóvenes</li><li data-es="Apoyo para continuar estudios" data-en="Support to continue studies">Apoyo para continuar estudios</li></ul></div>
-    </div>
-    <div class="budget-summary">
-      <p class="section-label" style="margin-bottom:1.25rem;" data-es="Inversión Mensual" data-en="Monthly Investment">Inversión Mensual</p>
-      <div class="budget-grid">
-        <div class="budget-item"><span data-es="Sábados" data-en="Saturdays">Sábados</span><span>$350</span></div>
-        <div class="budget-item"><span data-es="Talleres Martes" data-en="Tuesday Workshops">Talleres Martes</span><span>$500</span></div>
-        <div class="budget-item"><span data-es="Talleres Jueves" data-en="Thursday Workshops">Talleres Jueves</span><span>$500</span></div>
-        <div class="budget-item"><span data-es="Programa Mamás" data-en="Mothers' Program">Programa Mamás</span><span>$600</span></div>
-        <div class="budget-item"><span data-es="Servicio Comunitario" data-en="Community Service">Servicio Comunitario</span><span>$300</span></div>
-        <div class="budget-item budget-total"><span data-es="Total Mensual" data-en="Monthly Total">Total Mensual</span><span>$2,250</span></div>
-      </div>
-      <p class="budget-note" data-es="+ Navidad $1,500 anual · + Salud y Becas según necesidad" data-en="+ Christmas $1,500 annual · + Health and Scholarships as needed">+ Navidad $1,500 anual · + Salud y Becas según necesidad</p>
-    </div>
-  </div>
-</section>
-
 <section class="connect-section connect-cta">
   <div class="section-inner">
     <p class="section-label" data-es="Contáctanos" data-en="Get in Touch">Contáctanos</p>
     <h2 class="section-title" data-es="¿NOS <span class='gold'>ACOMPAÑAS?</span>" data-en="WILL YOU <span class='gold'>JOIN US?</span>">¿NOS <span class="gold">ACOMPAÑAS?</span></h2>
-    <p class="section-body" data-es="Escríbenos o apoya nuestra misión en las páginas dedicadas." data-en="Reach out or support our mission on the dedicated pages.">Escríbenos o apoya nuestra misión en las páginas dedicadas.</p>
+    <p class="section-body" data-es="Escríbenos o apoya nuestra misión — cada paso cuenta." data-en="Reach out or support our mission — every step counts.">Escríbenos o apoya nuestra misión — cada paso cuenta.</p>
     <div class="hero-cta">
       <a href="contacto.html" class="btn-primary" data-es="Contacto" data-en="Contact">Contacto</a>
       <a href="donar.html" class="btn-secondary" data-es="Donar" data-en="Donate">Donar</a>
@@ -562,6 +445,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   </ul>
 </footer>
 
+<script src="effects.js"></script>
 <script>
 let lang = 'es';
 function setLang(l) {
