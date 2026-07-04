@@ -28,6 +28,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-links a:hover{color:var(--gold);}
 .nav-donate{color:var(--black)!important;background:var(--gold);padding:0.45rem 1rem;border-radius:3px;font-weight:700;transition:background 0.2s,transform 0.15s;}
 .nav-donate:hover{background:var(--gold-light);color:var(--black)!important;transform:translateY(-1px);}
+.nav-actions{display:flex;align-items:center;gap:0.75rem;flex-shrink:0;}
+.nav-toggle{display:none;background:transparent;border:1px solid rgba(245,200,0,0.35);color:var(--gold);font-size:1.2rem;line-height:1;padding:0.4rem 0.65rem;border-radius:3px;cursor:pointer;}
+.connect-cta{text-align:center;}
+.connect-cta .section-body{margin:0 auto 2rem;}
 .lang-toggle{display:flex;align-items:center;background:var(--black-surface);border:1px solid rgba(245,200,0,0.3);border-radius:3px;overflow:hidden;cursor:pointer;flex-shrink:0;}
 .lang-btn{font-family:var(--font-condensed);font-size:0.72rem;font-weight:700;letter-spacing:0.1em;padding:0.35rem 0.75rem;color:var(--muted);transition:background 0.2s,color 0.2s;user-select:none;}
 .lang-btn.active{background:var(--gold);color:var(--black);}
@@ -230,8 +234,11 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
 .footer-links a{font-family:var(--font-condensed);font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
 .footer-links a:hover{color:var(--gold);}
 @media(max-width:860px){
-  nav{padding:0.85rem 1.25rem;}
-  .nav-links{display:none;}
+  nav{padding:0.85rem 1.25rem;flex-wrap:wrap;row-gap:0.75rem;}
+  .nav-toggle{display:block;margin-left:auto;}
+  .nav-actions{margin-left:0;}
+  .nav-links{display:none;width:100%;flex-direction:column;align-items:flex-start;gap:0.85rem;padding-top:0.75rem;border-top:1px solid rgba(245,200,0,0.12);}
+  .nav-links.open{display:flex;}
   .livestream-grid,.belen-grid,.testimony-grid,.connect-grid,.origin-grid,.impact-grid{grid-template-columns:1fr;}
 }
 @media(max-width:600px){
@@ -245,20 +252,19 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">
+  <a href="index.html" class="nav-logo">
     <img src="reinodeluzlogo.png" alt="Logo" class="nav-logo-img"/>
     <span class="nav-logo-text">REINO <span>DE LUZ</span></span>
   </a>
-  <ul class="nav-links">
+  <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="en-vivo.html" data-es="En Vivo" data-en="Live">En Vivo</a></li>
     <li><a href="mision.html" data-es="Misión" data-en="Mission">Misión</a></li>
     <li><a href="historia.html" data-es="Historia" data-en="History">Historia</a></li>
     <li><a href="programas.html" data-es="Programas" data-en="Programs">Programas</a></li>
     <li><a href="impacto.html" data-es="Impacto" data-en="Impact">Impacto</a></li>
     <li><a href="galeria.html" data-es="Momentos" data-en="Moments">Momentos</a></li>
-    <li><a href="contacto.html" data-es="Horarios" data-en="Schedule">Horarios</a></li>
     <li><a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a></li>
-    <li><a href="donar.html" class="nav-donate" data-es="Donar" data-en="Donate">Donar</a></li>
     <li>
       <div class="lang-toggle" id="langToggle">
         <span class="lang-btn active" data-lang="es">ES</span>
@@ -266,10 +272,13 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
       </div>
     </li>
   </ul>
-  <!-- Hidden by default. Add the "is-live" class (class="nav-live is-live") to show this button while streaming. -->
-  <a href="en-vivo.html" class="nav-live" data-es="En Vivo" data-en="Live Now">
-    <span class="live-dot"></span>En Vivo
-  </a>
+  <div class="nav-actions">
+    <a href="donar.html" class="nav-donate" data-es="Donar" data-en="Donate">Donar</a>
+    <!-- Hidden by default. Add the "is-live" class (class="nav-live is-live") to show this button while streaming. -->
+    <a href="en-vivo.html" class="nav-live" data-es="En Vivo" data-en="Live Now">
+      <span class="live-dot"></span>En Vivo
+    </a>
+  </div>
 </nav>
 
 <section class="hero">
@@ -521,31 +530,14 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   </div>
 </section>
 
-<section class="connect-section" id="horarios">
+<section class="connect-section connect-cta">
   <div class="section-inner">
-    <div class="connect-grid">
-      <div>
-        <p class="section-label" data-es="Horarios" data-en="Schedule">Horarios</p>
-        <h2 class="section-title" data-es="ÚNETE A<br/><span class='gold'>NOSOTROS</span>" data-en="JOIN<br/><span class='gold'>US</span>">ÚNETE A<br/><span class="gold">NOSOTROS</span></h2>
-        <p class="section-body" data-es="Nuestras puertas están siempre abiertas." data-en="Our doors are always open.">Nuestras puertas están siempre abiertas.</p>
-        <ul class="schedule-list">
-          <li><span class="schedule-day" data-es="DOMINGO" data-en="SUNDAY">DOMINGO</span><span class="schedule-info" data-es="Culto de Adoración<br/>10:00 AM" data-en="Sunday Worship<br/>10:00 AM">Culto de Adoración<br/>10:00 AM</span></li>
-          <li><span class="schedule-day" data-es="MARTES" data-en="TUESDAY">MARTES</span><span class="schedule-info" data-es="Talleres de Talentos" data-en="Talent Workshops">Talleres de Talentos</span></li>
-          <li><span class="schedule-day" data-es="JUEVES" data-en="THURSDAY">JUEVES</span><span class="schedule-info" data-es="Talleres de Formación" data-en="Skills Workshops">Talleres de Formación</span></li>
-          <li><span class="schedule-day" data-es="SÁBADO" data-en="SATURDAY">SÁBADO</span><span class="schedule-info" data-es="Programa de Niños" data-en="Children's Program">Programa de Niños</span></li>
-          <li><span class="schedule-day" data-es="EN VIVO" data-en="LIVE">EN VIVO</span><span class="schedule-info">YouTube · @asociacionreinodeluz</span></li>
-        </ul>
-      </div>
-      <div id="contacto">
-        <p class="section-label" data-es="Contacto" data-en="Contact">Contacto</p>
-        <h2 class="section-title" data-es="ESCRÍBENOS" data-en="GET IN TOUCH">ESCRÍBENOS</h2>
-        <form class="connect-form" onsubmit="return false;">
-          <input type="text" data-es-placeholder="Nombre" data-en-placeholder="Name" placeholder="Nombre"/>
-          <input type="email" data-es-placeholder="Correo electrónico" data-en-placeholder="Email address" placeholder="Correo electrónico"/>
-          <textarea data-es-placeholder="Mensaje" data-en-placeholder="Message" placeholder="Mensaje"></textarea>
-          <button type="submit" data-es="ENVIAR →" data-en="SEND →">ENVIAR →</button>
-        </form>
-      </div>
+    <p class="section-label" data-es="Contáctanos" data-en="Get in Touch">Contáctanos</p>
+    <h2 class="section-title" data-es="¿NOS <span class='gold'>ACOMPAÑAS?</span>" data-en="WILL YOU <span class='gold'>JOIN US?</span>">¿NOS <span class="gold">ACOMPAÑAS?</span></h2>
+    <p class="section-body" data-es="Horarios, formulario de contacto y más en nuestra página dedicada. Tu apoyo también nos ayuda a seguir sirviendo." data-en="Schedules, our contact form, and more are on our dedicated page. Your support also helps us keep serving.">Horarios, formulario de contacto y más en nuestra página dedicada. Tu apoyo también nos ayuda a seguir sirviendo.</p>
+    <div class="hero-cta">
+      <a href="contacto.html" class="btn-primary" data-es="Contacto" data-en="Contact">Contacto</a>
+      <a href="donar.html" class="btn-secondary" data-es="Donar" data-en="Donate">Donar</a>
     </div>
   </div>
 </section>
@@ -558,12 +550,13 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   <p data-es="Llevando la Luz de Cristo al Mundo" data-en="Carrying the Light of Christ to the World">Llevando la Luz de Cristo al Mundo</p>
   <p style="margin-top:0.4rem;" data-es="© 2025 Asociación Reino de Luz. Todos los derechos reservados." data-en="© 2025 Asociación Reino de Luz. All rights reserved.">© 2025 Asociación Reino de Luz. Todos los derechos reservados.</p>
   <ul class="footer-links">
-    <li><a href="#livestream" data-es="En Vivo" data-en="Live">En Vivo</a></li>
-    <li><a href="#mision" data-es="Misión" data-en="Mission">Misión</a></li>
-    <li><a href="#historia" data-es="Historia" data-en="History">Historia</a></li>
-    <li><a href="#programas" data-es="Programas" data-en="Programs">Programas</a></li>
+    <li><a href="en-vivo.html" data-es="En Vivo" data-en="Live">En Vivo</a></li>
+    <li><a href="mision.html" data-es="Misión" data-en="Mission">Misión</a></li>
+    <li><a href="historia.html" data-es="Historia" data-en="History">Historia</a></li>
+    <li><a href="programas.html" data-es="Programas" data-en="Programs">Programas</a></li>
+    <li><a href="galeria.html" data-es="Momentos" data-en="Moments">Momentos</a></li>
     <li><a href="https://www.youtube.com/@asociacionreinodeluz" target="_blank" rel="noopener">YouTube</a></li>
-    <li><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
+    <li><a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a></li>
     <li><a href="donar.html" data-es="Donar" data-en="Donate">Donar</a></li>
   </ul>
 </footer>
@@ -587,6 +580,9 @@ function setLang(l) {
 document.getElementById('langToggle').addEventListener('click', function(e) {
   const btn = e.target.closest('.lang-btn');
   if (btn) setLang(btn.getAttribute('data-lang'));
+});
+document.getElementById('navToggle')?.addEventListener('click', function () {
+  document.getElementById('navLinks')?.classList.toggle('open');
 });
 var savedLang = 'es';
 try { savedLang = localStorage.getItem('rdl-lang') || 'es'; } catch (e) {}
