@@ -6,44 +6,73 @@
   /* ── Floating light particles ── */
   if (!reducedMotion) {
     var isHome = document.body.classList.contains('page-home');
+    var heroEl = document.querySelector('.hero');
     var ambient = document.createElement('div');
-    ambient.className = 'ambient-bg' + (isHome ? ' ambient-bg--home' : '');
+    ambient.className = 'ambient-bg' + (isHome ? ' ambient-bg--home ambient-bg--hero' : '');
     ambient.setAttribute('aria-hidden', 'true');
-    document.body.prepend(ambient);
+
+    if (isHome && heroEl) {
+      heroEl.insertBefore(ambient, heroEl.firstChild);
+    } else {
+      document.body.prepend(ambient);
+    }
 
     function addParticle(opts) {
       var p = document.createElement('span');
-      p.className = 'ambient-particle' + (opts.large ? ' ambient-particle--lg' : '') + (opts.soft ? ' ambient-particle--soft' : '');
-      var size = opts.large ? (4 + Math.random() * 6) : (1.5 + Math.random() * 3.5);
-      var drift = isHome ? ((Math.random() * 40 - 20).toFixed(1) + 'px') : '0px';
-      p.style.cssText =
+      var spark = !!opts.spark;
+      p.className = 'ambient-particle' +
+        (opts.large ? ' ambient-particle--lg' : '') +
+        (opts.soft ? ' ambient-particle--soft' : '') +
+        (spark ? ' ambient-particle--spark' : ' ambient-particle--float');
+
+      var size;
+      if (isHome) {
+        size = opts.large ? (14 + Math.random() * 18) : spark ? (8 + Math.random() * 10) : (6 + Math.random() * 10);
+      } else {
+        size = opts.large ? (6 + Math.random() * 8) : (3 + Math.random() * 5);
+      }
+
+      var drift = isHome ? ((Math.random() * 50 - 25).toFixed(1) + 'px') : '0px';
+      var opacity = opts.opacity;
+      if (opacity == null) {
+        opacity = isHome ? (0.45 + Math.random() * 0.45) : (0.2 + Math.random() * 0.35);
+      }
+
+      var style =
         'width:' + size + 'px;height:' + size + 'px;' +
-        'left:' + (Math.random() * 100) + '%;' +
-        '--p-opacity:' + (opts.opacity || (0.12 + Math.random() * 0.35)) + ';' +
-        '--p-drift:' + drift + ';' +
-        'animation-duration:' + (opts.duration || (12 + Math.random() * 18)) + 's;' +
-        'animation-delay:' + (Math.random() * (opts.delaySpread || 15)) + 's;';
+        '--p-opacity:' + opacity + ';' +
+        '--p-drift:' + drift + ';';
+
+      if (spark) {
+        style += 'left:' + (5 + Math.random() * 90) + '%;top:' + (8 + Math.random() * 84) + '%;';
+        style += 'animation-duration:' + (3 + Math.random() * 4) + 's;';
+        style += 'animation-delay:' + (Math.random() * 2) + 's;';
+      } else {
+        style += 'left:' + (Math.random() * 100) + '%;';
+        style += 'animation-duration:' + (opts.duration || (10 + Math.random() * 14)) + 's;';
+        style += 'animation-delay:' + (Math.random() * (opts.delaySpread || 8)) + 's;';
+      }
+
+      p.style.cssText = style;
       ambient.appendChild(p);
     }
 
-    var count = isHome ? 72 : 28;
+    var count = isHome ? 45 : 28;
     for (var i = 0; i < count; i++) addParticle({});
 
     if (isHome) {
-      for (var j = 0; j < 18; j++) {
+      for (var j = 0; j < 20; j++) {
         addParticle({
           large: true,
-          opacity: 0.08 + Math.random() * 0.18,
-          duration: 16 + Math.random() * 22,
-          delaySpread: 20
+          opacity: 0.35 + Math.random() * 0.35,
+          duration: 12 + Math.random() * 16,
+          delaySpread: 6
         });
       }
-      for (var k = 0; k < 24; k++) {
+      for (var k = 0; k < 35; k++) {
         addParticle({
-          soft: true,
-          opacity: 0.06 + Math.random() * 0.12,
-          duration: 8 + Math.random() * 10,
-          delaySpread: 12
+          spark: true,
+          opacity: 0.5 + Math.random() * 0.4
         });
       }
     }
