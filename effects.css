@@ -1,5 +1,10 @@
 /* Reino de Luz — motion & atmosphere */
 
+/* Legacy bilingual hero labels removed from HTML — hide if cached */
+.page-hero-label {
+  display: none !important;
+}
+
 /* ── Ambient background ── */
 .ambient-bg {
   position: fixed;
