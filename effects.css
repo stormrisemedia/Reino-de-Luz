@@ -251,6 +251,13 @@ nav.nav-scrolled {
   animation: logo-glow 4s ease-in-out infinite;
 }
 
+.page-home .hero-logo-circle {
+  filter:
+    drop-shadow(0 0 2px rgba(255, 255, 255, 1))
+    drop-shadow(0 0 8px rgba(255, 255, 255, 0.65))
+    drop-shadow(0 0 16px rgba(255, 255, 255, 0.28));
+}
+
 .page-home .hero-rays svg.rays-bg {
   opacity: 0.28;
 }
@@ -446,6 +453,12 @@ nav.nav-scrolled {
   .page-hero *,
   .verse-banner::before {
     animation: none !important;
+  }
+
+  .page-home .hero-logo-circle {
+    filter:
+      drop-shadow(0 0 3px rgba(255, 255, 255, 1))
+      drop-shadow(0 0 10px rgba(255, 255, 255, 0.55)) !important;
   }
 
   .reveal {
