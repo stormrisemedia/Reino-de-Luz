@@ -29,6 +29,26 @@
   to { transform: translate(-2%, 2%) scale(1.05); }
 }
 
+.ambient-bg--home::before {
+  background:
+    radial-gradient(ellipse 90% 60% at 50% 45%, rgba(245, 200, 0, 0.09) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 15% 25%, rgba(245, 200, 0, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 45% at 85% 75%, rgba(255, 217, 61, 0.05) 0%, transparent 50%);
+}
+
+.ambient-bg--home::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(245, 200, 0, 0.04) 0%, transparent 42%);
+  animation: ambient-pulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes ambient-pulse {
+  from { opacity: 0.45; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.08); }
+}
+
 .ambient-particle {
   position: absolute;
   border-radius: 50%;
@@ -37,16 +57,51 @@
   animation: particle-float linear infinite;
 }
 
+.ambient-particle--lg {
+  background: radial-gradient(circle, rgba(255, 217, 61, 0.55) 0%, rgba(245, 200, 0, 0.08) 45%, transparent 72%);
+  filter: blur(0.5px);
+  box-shadow: 0 0 12px rgba(245, 200, 0, 0.25);
+}
+
+.ambient-particle--soft {
+  background: radial-gradient(circle, rgba(255, 217, 61, 0.35) 0%, transparent 65%);
+  filter: blur(1px);
+}
+
+.page-home .hero::before {
+  background:
+    radial-gradient(ellipse 75% 60% at 50% 55%, rgba(245, 200, 0, 0.12) 0%, transparent 62%),
+    radial-gradient(ellipse 35% 35% at 20% 85%, rgba(245, 200, 0, 0.06) 0%, transparent 60%);
+}
+
 @keyframes particle-float {
   0% {
     opacity: 0;
-    transform: translateY(100vh) scale(0);
+    transform: translateY(100vh) translateX(0) scale(0);
   }
   10% { opacity: var(--p-opacity, 0.5); }
   90% { opacity: var(--p-opacity, 0.5); }
   100% {
     opacity: 0;
-    transform: translateY(-10vh) scale(1);
+    transform: translateY(-10vh) translateX(18px) scale(1);
+  }
+}
+
+.ambient-bg--home .ambient-particle {
+  animation-name: particle-float-home;
+}
+
+@keyframes particle-float-home {
+  0% {
+    opacity: 0;
+    transform: translateY(105vh) translateX(0) scale(0);
+  }
+  8% { opacity: var(--p-opacity, 0.5); }
+  50% { transform: translateY(45vh) translateX(calc(var(--p-drift, 20px) * -1)) scale(1); }
+  92% { opacity: var(--p-opacity, 0.5); }
+  100% {
+    opacity: 0;
+    transform: translateY(-12vh) translateX(var(--p-drift, 20px)) scale(0.9);
   }
 }
 
@@ -343,6 +398,7 @@ nav.nav-scrolled {
 @media (prefers-reduced-motion: reduce) {
   .ambient-bg,
   .ambient-bg::before,
+  .ambient-bg--home::after,
   .ambient-particle,
   .hero *,
   .page-hero *,

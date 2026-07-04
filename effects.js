@@ -5,22 +5,47 @@
 
   /* ── Floating light particles ── */
   if (!reducedMotion) {
+    var isHome = document.body.classList.contains('page-home');
     var ambient = document.createElement('div');
-    ambient.className = 'ambient-bg';
+    ambient.className = 'ambient-bg' + (isHome ? ' ambient-bg--home' : '');
     ambient.setAttribute('aria-hidden', 'true');
     document.body.prepend(ambient);
 
-    for (var i = 0; i < 28; i++) {
+    function addParticle(opts) {
       var p = document.createElement('span');
-      p.className = 'ambient-particle';
-      var size = 2 + Math.random() * 4;
+      p.className = 'ambient-particle' + (opts.large ? ' ambient-particle--lg' : '') + (opts.soft ? ' ambient-particle--soft' : '');
+      var size = opts.large ? (4 + Math.random() * 6) : (1.5 + Math.random() * 3.5);
+      var drift = isHome ? ((Math.random() * 40 - 20).toFixed(1) + 'px') : '0px';
       p.style.cssText =
         'width:' + size + 'px;height:' + size + 'px;' +
         'left:' + (Math.random() * 100) + '%;' +
-        '--p-opacity:' + (0.15 + Math.random() * 0.35) + ';' +
-        'animation-duration:' + (12 + Math.random() * 18) + 's;' +
-        'animation-delay:' + (Math.random() * 15) + 's;';
+        '--p-opacity:' + (opts.opacity || (0.12 + Math.random() * 0.35)) + ';' +
+        '--p-drift:' + drift + ';' +
+        'animation-duration:' + (opts.duration || (12 + Math.random() * 18)) + 's;' +
+        'animation-delay:' + (Math.random() * (opts.delaySpread || 15)) + 's;';
       ambient.appendChild(p);
+    }
+
+    var count = isHome ? 72 : 28;
+    for (var i = 0; i < count; i++) addParticle({});
+
+    if (isHome) {
+      for (var j = 0; j < 18; j++) {
+        addParticle({
+          large: true,
+          opacity: 0.08 + Math.random() * 0.18,
+          duration: 16 + Math.random() * 22,
+          delaySpread: 20
+        });
+      }
+      for (var k = 0; k < 24; k++) {
+        addParticle({
+          soft: true,
+          opacity: 0.06 + Math.random() * 0.12,
+          duration: 8 + Math.random() * 10,
+          delaySpread: 12
+        });
+      }
     }
   }
 
