@@ -252,10 +252,11 @@ nav.nav-scrolled {
 }
 
 .page-home .hero-logo-circle {
-  filter:
-    drop-shadow(0 0 2px rgba(255, 255, 255, 1))
-    drop-shadow(0 0 8px rgba(255, 255, 255, 0.65))
-    drop-shadow(0 0 16px rgba(255, 255, 255, 0.28));
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.95),
+    0 0 14px rgba(255, 255, 255, 0.75),
+    0 0 28px rgba(255, 255, 255, 0.35);
 }
 
 .page-home .hero-rays svg.rays-bg {
@@ -456,9 +457,9 @@ nav.nav-scrolled {
   }
 
   .page-home .hero-logo-circle {
-    filter:
-      drop-shadow(0 0 3px rgba(255, 255, 255, 1))
-      drop-shadow(0 0 10px rgba(255, 255, 255, 0.55)) !important;
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.95),
+      0 0 16px rgba(255, 255, 255, 0.65) !important;
   }
 
   .reveal {
