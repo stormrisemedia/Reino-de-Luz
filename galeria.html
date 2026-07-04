@@ -49,22 +49,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .page-hero h1 span{color:var(--gold);}
 .page-hero-sub{font-family:var(--font-condensed);font-size:0.85rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);}
 
-/* UPLOAD ZONE */
-.upload-zone-wrap{max-width:1100px;margin:3rem auto 0;padding:0 2rem;}
-.upload-zone{border:2px dashed rgba(245,200,0,0.3);border-radius:6px;padding:2.5rem;text-align:center;cursor:pointer;transition:border-color 0.2s,background 0.2s;background:rgba(245,200,0,0.02);}
-.upload-zone:hover,.upload-zone.drag-over{border-color:var(--gold);background:rgba(245,200,0,0.05);}
-.upload-zone-icon{font-size:2rem;margin-bottom:0.75rem;display:block;}
-.upload-zone p{font-family:var(--font-condensed);font-size:0.85rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem;}
-.upload-zone small{font-size:0.75rem;color:var(--muted);font-style:italic;}
-.upload-zone input[type=file]{display:none;}
-
 /* GALLERY GRID */
 .gallery-wrap{max-width:1100px;margin:0 auto;padding:3rem 2rem 5rem;}
 .gallery-stats{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;}
 .gallery-count{font-family:var(--font-condensed);font-size:0.78rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);}
 .gallery-count span{color:var(--gold);}
-.gallery-clear{font-family:var(--font-condensed);font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);background:none;border:1px solid rgba(255,255,255,0.1);padding:0.3rem 0.75rem;border-radius:3px;cursor:pointer;transition:border-color 0.2s,color 0.2s;}
-.gallery-clear:hover{border-color:rgba(245,200,0,0.4);color:var(--gold);}
 .gallery-grid{columns:3;column-gap:4px;line-height:0;}
 .gallery-grid.cols-2{columns:2;}
 .gallery-grid.cols-4{columns:4;}
@@ -163,16 +152,6 @@ footer p{font-size:0.78rem;color:var(--muted);}
   <p class="page-hero-sub" data-es="Cada foto es un testimonio de lo que Dios está haciendo" data-en="Every photo is a testimony of what God is doing">Cada foto es un testimonio de lo que Dios está haciendo</p>
 </div>
 
-<!-- UPLOAD ZONE -->
-<div class="upload-zone-wrap">
-  <div class="upload-zone" id="uploadZone">
-    <span class="upload-zone-icon">📷</span>
-    <p data-es="Arrastra fotos aquí o haz clic para subir" data-en="Drag photos here or click to upload">Arrastra fotos aquí o haz clic para subir</p>
-    <small data-es="JPG, PNG, WEBP · Múltiples archivos permitidos" data-en="JPG, PNG, WEBP · Multiple files supported">JPG, PNG, WEBP · Múltiples archivos permitidos</small>
-    <input type="file" id="fileInput" multiple accept="image/*"/>
-  </div>
-</div>
-
 <!-- GALLERY -->
 <div class="gallery-wrap">
   <div class="gallery-stats">
@@ -185,104 +164,14 @@ footer p{font-size:0.78rem;color:var(--muted);}
         <button class="col-btn active" data-cols="3" title="3 columns">▐▐▐</button>
         <button class="col-btn" data-cols="4" title="4 columns">▐▐▐▐</button>
       </div>
-      <button class="gallery-clear" id="clearBtn" data-es="Limpiar todo" data-en="Clear all">Limpiar todo</button>
     </div>
   </div>
 
   <div class="gallery-grid" id="galleryGrid">
-    <!-- pre-loaded photos -->
-    <div class="gallery-item" data-src="fotos/foto-01.jpeg"><img src="fotos/foto-01.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-02.jpeg"><img src="fotos/foto-02.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-03.jpeg"><img src="fotos/foto-03.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-04.jpeg"><img src="fotos/foto-04.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-05.jpeg"><img src="fotos/foto-05.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-06.jpeg"><img src="fotos/foto-06.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-07.jpeg"><img src="fotos/foto-07.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-08.jpeg"><img src="fotos/foto-08.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-09.jpeg"><img src="fotos/foto-09.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-10.jpeg"><img src="fotos/foto-10.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-11.jpeg"><img src="fotos/foto-11.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-12.jpeg"><img src="fotos/foto-12.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-13.jpeg"><img src="fotos/foto-13.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-14.jpeg"><img src="fotos/foto-14.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-15.jpeg"><img src="fotos/foto-15.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-16.jpeg"><img src="fotos/foto-16.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-17.jpeg"><img src="fotos/foto-17.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-18.jpeg"><img src="fotos/foto-18.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-19.jpeg"><img src="fotos/foto-19.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-20.jpeg"><img src="fotos/foto-20.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-21.jpeg"><img src="fotos/foto-21.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-22.jpeg"><img src="fotos/foto-22.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-23.jpeg"><img src="fotos/foto-23.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-24.jpeg"><img src="fotos/foto-24.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-25.jpeg"><img src="fotos/foto-25.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-26.jpeg"><img src="fotos/foto-26.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-27.jpeg"><img src="fotos/foto-27.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-28.jpeg"><img src="fotos/foto-28.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-29.jpeg"><img src="fotos/foto-29.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-30.jpeg"><img src="fotos/foto-30.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-31.jpeg"><img src="fotos/foto-31.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-32.jpeg"><img src="fotos/foto-32.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-33.jpeg"><img src="fotos/foto-33.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-34.jpeg"><img src="fotos/foto-34.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-35.jpeg"><img src="fotos/foto-35.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-36.jpeg"><img src="fotos/foto-36.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-37.jpeg"><img src="fotos/foto-37.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-38.jpeg"><img src="fotos/foto-38.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-39.jpeg"><img src="fotos/foto-39.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-40.jpeg"><img src="fotos/foto-40.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-41.jpeg"><img src="fotos/foto-41.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-42.jpeg"><img src="fotos/foto-42.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-43.jpeg"><img src="fotos/foto-43.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-44.jpeg"><img src="fotos/foto-44.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-45.jpeg"><img src="fotos/foto-45.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-46.jpeg"><img src="fotos/foto-46.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-47.jpeg"><img src="fotos/foto-47.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-48.jpeg"><img src="fotos/foto-48.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-49.jpeg"><img src="fotos/foto-49.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-50.jpeg"><img src="fotos/foto-50.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-51.jpeg"><img src="fotos/foto-51.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-52.jpeg"><img src="fotos/foto-52.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-53.jpeg"><img src="fotos/foto-53.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-54.jpeg"><img src="fotos/foto-54.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-55.jpeg"><img src="fotos/foto-55.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-56.jpeg"><img src="fotos/foto-56.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-57.jpeg"><img src="fotos/foto-57.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-58.jpeg"><img src="fotos/foto-58.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-59.jpeg"><img src="fotos/foto-59.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-60.jpeg"><img src="fotos/foto-60.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-61.jpeg"><img src="fotos/foto-61.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-62.jpeg"><img src="fotos/foto-62.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-63.jpeg"><img src="fotos/foto-63.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-64.jpeg"><img src="fotos/foto-64.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-65.jpeg"><img src="fotos/foto-65.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-66.jpeg"><img src="fotos/foto-66.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-67.jpeg"><img src="fotos/foto-67.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-68.jpeg"><img src="fotos/foto-68.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-69.jpeg"><img src="fotos/foto-69.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-70.jpeg"><img src="fotos/foto-70.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-71.jpeg"><img src="fotos/foto-71.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-72.jpeg"><img src="fotos/foto-72.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-73.jpeg"><img src="fotos/foto-73.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-74.jpeg"><img src="fotos/foto-74.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-75.jpeg"><img src="fotos/foto-75.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-76.jpeg"><img src="fotos/foto-76.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-77.jpeg"><img src="fotos/foto-77.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-78.jpeg"><img src="fotos/foto-78.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-79.jpeg"><img src="fotos/foto-79.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-80.jpeg"><img src="fotos/foto-80.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-81.jpeg"><img src="fotos/foto-81.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-82.jpeg"><img src="fotos/foto-82.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-83.jpeg"><img src="fotos/foto-83.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-84.jpeg"><img src="fotos/foto-84.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-85.jpeg"><img src="fotos/foto-85.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-86.jpeg"><img src="fotos/foto-86.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-87.jpeg"><img src="fotos/foto-87.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-88.jpeg"><img src="fotos/foto-88.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-89.jpeg"><img src="fotos/foto-89.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-90.jpeg"><img src="fotos/foto-90.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-91.jpeg"><img src="fotos/foto-91.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
-    <div class="gallery-item" data-src="fotos/foto-92.jpeg"><img src="fotos/foto-92.jpeg" alt="Momentos Reino de Luz"/><div class="gallery-item-overlay"><span>⤢</span></div></div>
+    <div class="gallery-empty" id="emptyState">
+      <span class="gallery-empty-icon">🌟</span>
+      <p data-es="Próximamente más momentos" data-en="More moments coming soon">Próximamente más momentos</p>
+    </div>
   </div>
 </div>
 
@@ -332,13 +221,6 @@ function setLang(l) {
   });
   // update count label
   document.getElementById('countLabel').textContent = l === 'es' ? 'fotos' : 'photos';
-  document.getElementById('clearBtn').textContent = l === 'es' ? 'Limpiar todo' : 'Clear all';
-  const empty = document.querySelector('.gallery-empty p');
-  if (empty) empty.textContent = l === 'es' ? 'Sube las fotos para comenzar la galería' : 'Upload photos to start the gallery';
-  const uploadP = document.querySelector('.upload-zone p');
-  if (uploadP) uploadP.textContent = l === 'es' ? 'Arrastra fotos aquí o haz clic para subir' : 'Drag photos here or click to upload';
-  const uploadSm = document.querySelector('.upload-zone small');
-  if (uploadSm) uploadSm.textContent = l === 'es' ? 'JPG, PNG, WEBP · Múltiples archivos permitidos' : 'JPG, PNG, WEBP · Multiple files supported';
 }
 document.getElementById('langToggle').addEventListener('click', e => {
   const btn = e.target.closest('.lang-btn');
@@ -360,6 +242,7 @@ function initPhotos() {
     photos.push({ url: img.src, name: img.alt + ' ' + (i+1) });
     item.addEventListener('click', () => openLightbox(i));
   });
+  if (photos.length > 0) document.getElementById('emptyState')?.remove();
   updateCount();
 }
 let currentIdx = 0;
@@ -367,74 +250,6 @@ let currentIdx = 0;
 function updateCount() {
   document.getElementById('photoNum').textContent = photos.length;
 }
-
-function buildGrid() {
-  updateCount();
-}
-
-function appendPhoto(photo, idx) {
-  const grid = document.getElementById('galleryGrid');
-  const item = document.createElement('div');
-  item.className = 'gallery-item';
-  item.innerHTML = `<img src="${photo.url}" alt="${photo.name}"/><div class="gallery-item-overlay"><span>⤢</span></div>`;
-  item.addEventListener('click', () => openLightbox(idx));
-  grid.appendChild(item);
-}
-
-function createEmpty() {
-  const d = document.createElement('div');
-  d.className = 'gallery-empty';
-  d.id = 'emptyState';
-  d.innerHTML = `<span class="gallery-empty-icon">🌟</span><p>${lang === 'es' ? 'Sube las fotos para comenzar la galería' : 'Upload photos to start the gallery'}</p>`;
-  return d;
-}
-
-// ── FILE HANDLING ─────────────────────────────────────
-function handleFiles(files) {
-  Array.from(files).forEach(file => {
-    if (!file.type.startsWith('image/')) return;
-    const reader = new FileReader();
-    reader.onload = e => {
-      const idx = photos.length;
-      photos.push({ url: e.target.result, name: file.name });
-      appendPhoto(photos[idx], idx);
-      updateCount();
-    };
-    reader.readAsDataURL(file);
-  });
-}
-
-// Click to upload
-const uploadZone = document.getElementById('uploadZone');
-const fileInput = document.getElementById('fileInput');
-uploadZone.addEventListener('click', () => fileInput.click());
-fileInput.addEventListener('change', e => handleFiles(e.target.files));
-
-// Drag & drop
-uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
-uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
-uploadZone.addEventListener('drop', e => {
-  e.preventDefault();
-  uploadZone.classList.remove('drag-over');
-  handleFiles(e.dataTransfer.files);
-});
-
-// Clear uploaded (keep pre-loaded)
-document.getElementById('clearBtn').addEventListener('click', () => {
-  const preloaded = document.querySelectorAll('.gallery-item[data-src]');
-  const grid = document.getElementById('galleryGrid');
-  // Remove all items not pre-loaded
-  document.querySelectorAll('.gallery-item:not([data-src])').forEach(el => el.remove());
-  // Reset photos array to just pre-loaded
-  photos = [];
-  preloaded.forEach((item, i) => {
-    const img = item.querySelector('img');
-    photos.push({ url: img.src, name: img.alt });
-    // re-bind click with correct index
-    item.onclick = () => openLightbox(i);
-  });
-  updateCount();
-});
 
 // ── LIGHTBOX ──────────────────────────────────────────
 const lb = document.getElementById('lightbox');
