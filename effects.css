@@ -168,13 +168,13 @@ nav.nav-scrolled {
 
 /* ── Page hero (inner pages) ── */
 .page-hero h1,
-.page-hero .page-hero-label {
+.page-hero .page-hero-sub {
   opacity: 0;
   animation: hero-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.page-hero .page-hero-label { animation-delay: 0.15s; }
-.page-hero h1 { animation-delay: 0.3s; }
+.page-hero h1 { animation-delay: 0.15s; }
+.page-hero .page-hero-sub { animation-delay: 0.3s; }
 
 .page-hero::after {
   content: '';
@@ -360,7 +360,7 @@ nav.nav-scrolled {
   .hero .hero-verse-ref,
   .hero .hero-cta,
   .page-hero h1,
-  .page-hero .page-hero-label {
+  .page-hero .page-hero-sub {
     opacity: 1;
   }
 
