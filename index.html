@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Asociación Reino de Luz | Kingdom of Light</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;700&family=Barlow:wght@400;500&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="effects.css?v=13"/>
+<link rel="stylesheet" href="effects.css?v=14"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -59,15 +59,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .live-dot{width:7px;height:7px;background:var(--black);border-radius:50%;animation:pulse 1.5s infinite;}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.7)}}
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 65%,rgba(245,200,0,0.07) 0%,transparent 65%),radial-gradient(ellipse 30% 30% at 15% 85%,rgba(245,200,0,0.04) 0%,transparent 60%);pointer-events:none;}
-.hero-rays{position:relative;margin-bottom:2rem;width:260px;height:260px;display:flex;align-items:center;justify-content:center;isolation:isolate;}
-.hero-rays svg.rays-bg{position:absolute;inset:0;width:100%;height:100%;animation:rays-spin 30s linear infinite;opacity:0.5;z-index:3;pointer-events:none;}
-@keyframes rays-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-@keyframes ray-flash-a{0%,100%{opacity:1;stroke-width:2.5}50%{opacity:0.55;stroke-width:1.5}}
-@keyframes ray-flash-b{0%,100%{opacity:0.55;stroke-width:1.5}50%{opacity:1;stroke-width:2.5}}
-@keyframes ray-flash-c{0%,33%{opacity:0.7;stroke-width:2}33%,66%{opacity:1;stroke-width:3}66%,100%{opacity:0.5;stroke-width:1.5}}
-.hero-logo-frame{width:200px;height:200px;border-radius:50%;position:relative;z-index:1;flex-shrink:0;}
-.hero-logo-circle{width:100%;height:100%;border-radius:50%;border:none;object-fit:cover;display:block;}
 .hero-tag{font-family:var(--font-condensed);font-size:0.72rem;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
 .hero h1{font-family:var(--font-display);font-size:clamp(4.5rem,12vw,9rem);line-height:0.9;color:var(--white);letter-spacing:0.04em;margin-bottom:0.2rem;}
 .hero h1 .gold{color:var(--gold);}
@@ -272,7 +263,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
 
 <nav>
   <a href="index.html" class="nav-logo">
-    <img src="reinodeluzlogo.png?v=17" alt="Logo" class="nav-logo-img"/>
+    <img src="reinodeluzlogo.png?v=19" alt="Logo" class="nav-logo-img"/>
     <span class="nav-logo-text" data-es="REINO <span>DE LUZ</span>" data-en="KINGDOM <span>OF LIGHT</span>">REINO <span>DE LUZ</span></span>
   </a>
   <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
@@ -301,25 +292,6 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
 </nav>
 
 <section class="hero">
-  <div class="hero-rays">
-    <svg class="rays-bg" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg"><g transform="translate(80,80)">
-  <line x1="0" y1="-66" x2="0" y2="-92" stroke="#FFE566" stroke-width="2.5" stroke-linecap="round" style="animation:ray-flash-a 1.8s ease-in-out infinite;animation-delay:0s"/>
-  <line x1="0" y1="-66" x2="0" y2="-86" stroke="#FFD93D" stroke-width="2" stroke-linecap="round" transform="rotate(30)" style="animation:ray-flash-b 1.8s ease-in-out infinite;animation-delay:0.15s"/>
-  <line x1="0" y1="-66" x2="0" y2="-92" stroke="#FFE566" stroke-width="2.5" stroke-linecap="round" transform="rotate(60)" style="animation:ray-flash-c 1.8s ease-in-out infinite;animation-delay:0.3s"/>
-  <line x1="0" y1="-66" x2="0" y2="-86" stroke="#FFD93D" stroke-width="2" stroke-linecap="round" transform="rotate(90)" style="animation:ray-flash-a 1.8s ease-in-out infinite;animation-delay:0.45s"/>
-  <line x1="0" y1="-66" x2="0" y2="-92" stroke="#FFE566" stroke-width="2.5" stroke-linecap="round" transform="rotate(120)" style="animation:ray-flash-b 1.8s ease-in-out infinite;animation-delay:0.6s"/>
-  <line x1="0" y1="-66" x2="0" y2="-86" stroke="#FFD93D" stroke-width="2" stroke-linecap="round" transform="rotate(150)" style="animation:ray-flash-c 1.8s ease-in-out infinite;animation-delay:0.75s"/>
-  <line x1="0" y1="-66" x2="0" y2="-92" stroke="#FFE566" stroke-width="2.5" stroke-linecap="round" transform="rotate(180)" style="animation:ray-flash-a 1.8s ease-in-out infinite;animation-delay:0.9s"/>
-  <line x1="0" y1="-66" x2="0" y2="-86" stroke="#FFD93D" stroke-width="2" stroke-linecap="round" transform="rotate(210)" style="animation:ray-flash-b 1.8s ease-in-out infinite;animation-delay:1.05s"/>
-  <line x1="0" y1="-66" x2="0" y2="-92" stroke="#FFE566" stroke-width="2.5" stroke-linecap="round" transform="rotate(240)" style="animation:ray-flash-c 1.8s ease-in-out infinite;animation-delay:1.2s"/>
-  <line x1="0" y1="-66" x2="0" y2="-86" stroke="#FFD93D" stroke-width="2" stroke-linecap="round" transform="rotate(270)" style="animation:ray-flash-a 1.8s ease-in-out infinite;animation-delay:1.35s"/>
-  <line x1="0" y1="-66" x2="0" y2="-92" stroke="#FFE566" stroke-width="2.5" stroke-linecap="round" transform="rotate(300)" style="animation:ray-flash-b 1.8s ease-in-out infinite;animation-delay:1.5s"/>
-  <line x1="0" y1="-66" x2="0" y2="-86" stroke="#FFD93D" stroke-width="2" stroke-linecap="round" transform="rotate(330)" style="animation:ray-flash-c 1.8s ease-in-out infinite;animation-delay:1.65s"/>
-</g></svg>
-    <div class="hero-logo-frame">
-      <img src="reinodeluzlogo.png?v=17" alt="Asociación Reino de Luz" class="hero-logo-circle"/>
-    </div>
-  </div>
   <p class="hero-tag" data-es="Asociación · Iquitos, Perú" data-en="Association · Iquitos, Peru">Asociación · Iquitos, Perú</p>
   <h1 data-es="REINO<br/><span class='gold'>DE LUZ</span>" data-en="KINGDOM<br/><span class='gold'>OF LIGHT</span>">REINO<br/><span class="gold">DE LUZ</span></h1>
   <p class="hero-subtitle" data-es="Expandiendo la Luz de Cristo" data-en="Spreading the Light of Christ">Expandiendo la Luz de Cristo</p>
@@ -431,7 +403,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
 
 <footer>
   <div class="footer-logo-wrap">
-    <img src="reinodeluzlogo.png?v=17" alt="Logo" class="footer-logo-img"/>
+    <img src="reinodeluzlogo.png?v=19" alt="Logo" class="footer-logo-img"/>
     <div class="footer-wordmark" data-es="REINO <span>DE LUZ</span>" data-en="KINGDOM <span>OF LIGHT</span>">REINO <span>DE LUZ</span></div>
   </div>
   <p data-es="Llevando la Luz de Cristo al Mundo" data-en="Carrying the Light of Christ to the World">Llevando la Luz de Cristo al Mundo</p>
@@ -448,7 +420,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   </ul>
 </footer>
 
-<script src="effects.js?v=4"></script>
+<script src="effects.js?v=5"></script>
 <script>
 let lang = 'es';
 function setLang(l) {

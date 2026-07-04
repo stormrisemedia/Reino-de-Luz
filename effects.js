@@ -3,15 +3,15 @@
 
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ── Floating light particles ── */
-  if (!reducedMotion) {
-    var isHome = document.body.classList.contains('page-home');
+  /* ── Floating light particles (skip home hero) ── */
+  if (!reducedMotion && !document.body.classList.contains('page-home')) {
+    var isHome = false;
     var heroEl = document.querySelector('.hero');
     var ambient = document.createElement('div');
     ambient.className = 'ambient-bg' + (isHome ? ' ambient-bg--home ambient-bg--hero' : '');
     ambient.setAttribute('aria-hidden', 'true');
 
-    if (isHome && heroEl) {
+    if (heroEl) {
       heroEl.insertBefore(ambient, heroEl.firstChild);
     } else {
       document.body.prepend(ambient);
@@ -76,18 +76,6 @@
         });
       }
     }
-  }
-
-  /* ── Hero parallax ── */
-  var hero = document.querySelector('.hero');
-  if (hero && !reducedMotion) {
-    var heroRays = hero.querySelector('.hero-rays');
-    window.addEventListener('scroll', function () {
-      var y = window.scrollY;
-      if (heroRays && y < window.innerHeight * 1.2) {
-        heroRays.style.transform = 'translateY(' + (y * 0.22) + 'px)';
-      }
-    }, { passive: true });
   }
 
   /* ── Nav scroll effect ── */
