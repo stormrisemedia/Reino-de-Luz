@@ -26,6 +26,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
 .nav-links a{font-family:var(--font-condensed);font-size:0.82rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted-light);text-decoration:none;transition:color 0.2s;}
 .nav-links a:hover{color:var(--gold);}
+.nav-links a.active{color:var(--gold);}
 .nav-donate{color:var(--black)!important;background:var(--gold);padding:0.45rem 1rem;border-radius:3px;font-weight:700;transition:background 0.2s,transform 0.15s;}
 .nav-donate:hover{background:var(--gold-light);color:var(--black)!important;transform:translateY(-1px);}
 .nav-actions{display:flex;align-items:center;gap:0.75rem;flex-shrink:0;}
@@ -247,6 +248,13 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 100%,rgba(245,200,0,0.06) 0%,transparent 70%);pointer-events:none;}
   .page-hero-label{font-family:var(--font-condensed);font-size:0.72rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
   .page-hero h1{font-family:var(--font-display);font-size:clamp(3rem,8vw,5.5rem);color:var(--white);line-height:0.95;letter-spacing:0.04em;}
+  .contact-page .contact-wrap{max-width:520px;margin:0 auto;}
+  .contact-page .section-body{margin-bottom:1.5rem;}
+  .contact-details{margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(245,200,0,0.12);}
+  .contact-details p{font-size:0.9rem;color:var(--muted-light);line-height:1.6;margin-bottom:0.5rem;}
+  .contact-details a{color:var(--gold);text-decoration:none;}
+  .contact-details a:hover{text-decoration:underline;}
+  .contact-details strong{color:var(--white);font-weight:600;}
 </style>
 </head>
 <body>
@@ -280,33 +288,24 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   </div>
 </nav>
 <div class="page-hero">
-  <p class="page-hero-label">Horarios & Contacto · Schedule & Contact</p>
+  <p class="page-hero-label" data-es="Escríbenos · Asociación Reino de Luz" data-en="Get in Touch · Asociación Reino de Luz">Escríbenos · Asociación Reino de Luz</p>
   <h1 data-es="CONTACTO" data-en="CONTACT">CONTACTO</h1>
 </div>
-<section class="connect-section" id="horarios">
-  <div class="section-inner">
-    <div class="connect-grid">
-      <div>
-        <p class="section-label" data-es="Horarios" data-en="Schedule">Horarios</p>
-        <h2 class="section-title" data-es="ÚNETE A<br/><span class='gold'>NOSOTROS</span>" data-en="JOIN<br/><span class='gold'>US</span>">ÚNETE A<br/><span class="gold">NOSOTROS</span></h2>
-        <p class="section-body" data-es="Nuestras puertas están siempre abiertas." data-en="Our doors are always open.">Nuestras puertas están siempre abiertas.</p>
-        <ul class="schedule-list">
-          <li><span class="schedule-day" data-es="DOMINGO" data-en="SUNDAY">DOMINGO</span><span class="schedule-info" data-es="Culto de Adoración<br/>10:00 AM" data-en="Sunday Worship<br/>10:00 AM">Culto de Adoración<br/>10:00 AM</span></li>
-          <li><span class="schedule-day" data-es="MARTES" data-en="TUESDAY">MARTES</span><span class="schedule-info" data-es="Talleres de Talentos" data-en="Talent Workshops">Talleres de Talentos</span></li>
-          <li><span class="schedule-day" data-es="JUEVES" data-en="THURSDAY">JUEVES</span><span class="schedule-info" data-es="Talleres de Formación" data-en="Skills Workshops">Talleres de Formación</span></li>
-          <li><span class="schedule-day" data-es="SÁBADO" data-en="SATURDAY">SÁBADO</span><span class="schedule-info" data-es="Programa de Niños" data-en="Children's Program">Programa de Niños</span></li>
-          <li><span class="schedule-day" data-es="EN VIVO" data-en="LIVE">EN VIVO</span><span class="schedule-info">YouTube · @asociacionreinodeluz</span></li>
-        </ul>
-      </div>
-      <div id="contacto">
-        <p class="section-label" data-es="Contacto" data-en="Contact">Contacto</p>
-        <h2 class="section-title" data-es="ESCRÍBENOS" data-en="GET IN TOUCH">ESCRÍBENOS</h2>
-        <form class="connect-form" onsubmit="return false;">
-          <input type="text" data-es-placeholder="Nombre" data-en-placeholder="Name" placeholder="Nombre"/>
-          <input type="email" data-es-placeholder="Correo electrónico" data-en-placeholder="Email address" placeholder="Correo electrónico"/>
-          <textarea data-es-placeholder="Mensaje" data-en-placeholder="Message" placeholder="Mensaje"></textarea>
-          <button type="submit" data-es="ENVIAR →" data-en="SEND →">ENVIAR →</button>
-        </form>
+<section class="connect-section">
+  <div class="section-inner contact-page">
+    <div class="contact-wrap">
+      <p class="section-label" data-es="Contacto" data-en="Contact">Contacto</p>
+      <h2 class="section-title" data-es="ESCRÍBENOS" data-en="GET IN TOUCH">ESCRÍBENOS</h2>
+      <p class="section-body" data-es="Envíanos un mensaje y te responderemos lo antes posible." data-en="Send us a message and we'll get back to you as soon as possible.">Envíanos un mensaje y te responderemos lo antes posible.</p>
+      <form class="connect-form" onsubmit="return false;">
+        <input type="text" data-es-placeholder="Nombre" data-en-placeholder="Name" placeholder="Nombre"/>
+        <input type="email" data-es-placeholder="Correo electrónico" data-en-placeholder="Email address" placeholder="Correo electrónico"/>
+        <textarea data-es-placeholder="Mensaje" data-en-placeholder="Message" placeholder="Mensaje"></textarea>
+        <button type="submit" data-es="ENVIAR →" data-en="SEND →">ENVIAR →</button>
+      </form>
+      <div class="contact-details">
+        <p data-es="<strong>YouTube:</strong> <a href='https://www.youtube.com/@asociacionreinodeluz' target='_blank' rel='noopener'>@asociacionreinodeluz</a>" data-en="<strong>YouTube:</strong> <a href='https://www.youtube.com/@asociacionreinodeluz' target='_blank' rel='noopener'>@asociacionreinodeluz</a>"><strong>YouTube:</strong> <a href="https://www.youtube.com/@asociacionreinodeluz" target="_blank" rel="noopener">@asociacionreinodeluz</a></p>
+        <p data-es="<strong>Ubicación:</strong> Iquitos, Perú" data-en="<strong>Location:</strong> Iquitos, Peru"><strong>Ubicación:</strong> Iquitos, Perú</p>
       </div>
     </div>
   </div>
