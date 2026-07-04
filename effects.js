@@ -27,7 +27,7 @@
 
       var size;
       if (isHome) {
-        size = opts.large ? (14 + Math.random() * 18) : spark ? (8 + Math.random() * 10) : (6 + Math.random() * 10);
+        size = opts.large ? (5 + Math.random() * 6) : spark ? (3 + Math.random() * 4) : (3 + Math.random() * 5);
       } else {
         size = opts.large ? (6 + Math.random() * 8) : (3 + Math.random() * 5);
       }
@@ -61,18 +61,18 @@
     for (var i = 0; i < count; i++) addParticle({});
 
     if (isHome) {
-      for (var j = 0; j < 20; j++) {
+      for (var j = 0; j < 14; j++) {
         addParticle({
           large: true,
-          opacity: 0.35 + Math.random() * 0.35,
+          opacity: 0.3 + Math.random() * 0.25,
           duration: 12 + Math.random() * 16,
           delaySpread: 6
         });
       }
-      for (var k = 0; k < 35; k++) {
+      for (var k = 0; k < 28; k++) {
         addParticle({
           spark: true,
-          opacity: 0.5 + Math.random() * 0.4
+          opacity: 0.4 + Math.random() * 0.3
         });
       }
     }
