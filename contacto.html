@@ -26,6 +26,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
 .nav-links a{font-family:var(--font-condensed);font-size:0.82rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted-light);text-decoration:none;transition:color 0.2s;}
 .nav-links a:hover{color:var(--gold);}
+.nav-donate{color:var(--black)!important;background:var(--gold);padding:0.45rem 1rem;border-radius:3px;font-weight:700;transition:background 0.2s,transform 0.15s;}
+.nav-donate:hover{background:var(--gold-light);color:var(--black)!important;transform:translateY(-1px);}
 .lang-toggle{display:flex;align-items:center;background:var(--black-surface);border:1px solid rgba(245,200,0,0.3);border-radius:3px;overflow:hidden;cursor:pointer;flex-shrink:0;}
 .lang-btn{font-family:var(--font-condensed);font-size:0.72rem;font-weight:700;letter-spacing:0.1em;padding:0.35rem 0.75rem;color:var(--muted);transition:background 0.2s,color 0.2s;user-select:none;}
 .lang-btn.active{background:var(--gold);color:var(--black);}
@@ -256,6 +258,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
     <li><a href="impacto.html" data-es="Impacto" data-en="Impact">Impacto</a></li>
     <li><a href="galeria.html" data-es="Momentos" data-en="Moments">Momentos</a></li>
     <li><a href="contacto.html" class="active" data-es="Contacto" data-en="Contact">Contacto</a></li>
+    <li><a href="donar.html" class="nav-donate" data-es="Donar" data-en="Donate">Donar</a></li>
     <li>
       <div class="lang-toggle" id="langToggle">
         <span class="lang-btn active" data-lang="es">ES</span>
@@ -316,6 +319,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
     <li><a href="galeria.html" data-es="Momentos" data-en="Moments">Momentos</a></li>
     <li><a href="https://www.youtube.com/@asociacionreinodeluz" target="_blank" rel="noopener">YouTube</a></li>
     <li><a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a></li>
+    <li><a href="donar.html" data-es="Donar" data-en="Donate">Donar</a></li>
   </ul>
 </footer>
 <script>
