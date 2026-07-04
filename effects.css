@@ -259,8 +259,16 @@ nav.nav-scrolled {
     0 0 28px rgba(245, 200, 0, 0.22);
 }
 
+.page-home .hero-logo-frame {
+  z-index: 1;
+}
+
 .page-home .hero-rays svg.rays-bg {
-  opacity: 0.28;
+  z-index: 3;
+  opacity: 1;
+  filter:
+    drop-shadow(0 0 3px rgba(255, 229, 102, 0.95))
+    drop-shadow(0 0 8px rgba(245, 200, 0, 0.55));
 }
 
 @keyframes logo-glow {
