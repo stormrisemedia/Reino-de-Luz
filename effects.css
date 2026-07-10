@@ -256,6 +256,21 @@ body:not(.page-home) .hero::after {
   to { transform: translate(-46%, -54%) scale(1.06); opacity: 0.5; }
 }
 
+/* ── Tighter section spacing site-wide ── */
+section {
+  padding: 3.5rem 2rem;
+}
+
+.page-hero {
+  padding: 6rem 2rem 2rem;
+}
+
+@media (max-width: 600px) {
+  section {
+    padding: 2.5rem 1.25rem;
+  }
+}
+
 /* ── Page hero (inner pages) ── */
 .page-hero h1,
 .page-hero .page-hero-sub {
