@@ -1,0 +1,26 @@
+{
+  "name": "Asociación Reino de Luz",
+  "short_name": "Reino de Luz",
+  "description": "Adoración, predicación y oración en vivo desde Iquitos.",
+  "start_url": "/en-vivo.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0A0A0A",
+  "theme_color": "#0A0A0A",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "/reinodeluzlogo.png?v=20",
+      "sizes": "400x400",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/reinodeluzlogo.png?v=20",
+      "sizes": "400x400",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -4,6 +4,12 @@
 <meta name="google" content="notranslate" />
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#0A0A0A"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="Reino de Luz"/>
+<link rel="manifest" href="manifest.webmanifest"/>
+<link rel="apple-touch-icon" href="reinodeluzlogo.png?v=20"/>
 <title>En Vivo · Asociación Reino de Luz</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;700&family=Barlow:wght@400;500&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="effects.css?v=29"/>
@@ -468,9 +474,28 @@ setLang(savedLang);
   var buttons = [btn].filter(Boolean);
   if (!buttons.length) return;
 
-  var supported = 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
+  var hasSw = 'serviceWorker' in navigator;
+  var hasPush = 'PushManager' in window;
+  var hasNotification = 'Notification' in window;
+  var supported = hasSw && hasPush && hasNotification;
+  var busy = false;
 
   function t(es, en) { return lang === 'en' ? en : es; }
+
+  function isIos() {
+    var ua = navigator.userAgent || '';
+    if (/iPad|iPhone|iPod/.test(ua)) return true;
+    return navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+  }
+
+  function isStandalone() {
+    return window.matchMedia('(display-mode: standalone)').matches ||
+      window.navigator.standalone === true;
+  }
+
+  function needsIosInstall() {
+    return isIos() && !isStandalone();
+  }
 
   function setHint(es, en, isError) {
     if (!hint) return;
@@ -504,16 +529,75 @@ setLang(savedLang);
     return out;
   }
 
-  async function getRegistration() {
-    return navigator.serviceWorker.register('/sw.js');
+  function waitForActiveWorker(reg, timeoutMs) {
+    if (reg.active) return Promise.resolve(reg);
+    return new Promise(function (resolve, reject) {
+      var settled = false;
+      var timer = setTimeout(function () {
+        if (settled) return;
+        settled = true;
+        reject(new Error('Service worker timed out'));
+      }, timeoutMs || 8000);
+
+      function finish(ok, err) {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        if (ok) resolve(reg);
+        else reject(err || new Error('Service worker failed to activate'));
+      }
+
+      function watch(worker) {
+        if (!worker) return;
+        if (worker.state === 'activated') {
+          finish(true);
+          return;
+        }
+        worker.addEventListener('statechange', function () {
+          if (worker.state === 'activated') finish(true);
+          if (worker.state === 'redundant') finish(false);
+        });
+      }
+
+      watch(reg.installing);
+      watch(reg.waiting);
+      navigator.serviceWorker.ready.then(function () { finish(true); }).catch(function (err) { finish(false, err); });
+    });
   }
 
-  async function currentSubscription() {
-    var reg = await navigator.serviceWorker.ready;
+  async function getRegistration() {
+    var reg = await navigator.serviceWorker.register('/sw.js', { scope: '/' });
+    await waitForActiveWorker(reg);
+    return navigator.serviceWorker.ready;
+  }
+
+  async function getExistingSubscription() {
+    if (!hasSw) return null;
+    var reg = await navigator.serviceWorker.getRegistration('/');
+    if (!reg || !reg.active) return null;
     return reg.pushManager.getSubscription();
   }
 
+  async function currentSubscription() {
+    var reg = await getRegistration();
+    return reg.pushManager.getSubscription();
+  }
+
+  function showIosInstallHint() {
+    setButton(false);
+    setDisabled(false);
+    setHint(
+      'En iPhone/iPad: toca Compartir → “Añadir a pantalla de inicio”, abre la app desde ahí, y luego pulsa este botón.',
+      'On iPhone/iPad: tap Share → “Add to Home Screen”, open the app from there, then tap this button.',
+      true
+    );
+  }
+
   async function refreshUi() {
+    if (needsIosInstall()) {
+      showIosInstallHint();
+      return;
+    }
     if (!supported) {
       setDisabled(true);
       setHint(
@@ -527,16 +611,20 @@ setLang(savedLang);
       setDisabled(true);
       setButton(false);
       setHint(
-        'Las notificaciones están bloqueadas. Actívalas en la configuración del navegador.',
-        'Notifications are blocked. Enable them in your browser settings.',
+        'Las notificaciones están bloqueadas. Actívalas en Ajustes → Apps → Chrome → Notificaciones.',
+        'Notifications are blocked. Enable them in Settings → Apps → Chrome → Notifications.',
         true
       );
       return;
     }
     setDisabled(false);
     try {
-      await getRegistration();
-      var sub = await currentSubscription();
+      // Don't force SW install on page load — only inspect if already active.
+      var sub = Notification.permission === 'granted' ? await getExistingSubscription() : null;
+      if (Notification.permission === 'granted' && !sub) {
+        // Worker may not be active yet; register quietly in the background.
+        sub = await currentSubscription();
+      }
       setButton(!!sub);
       if (sub) {
         setHint(
@@ -550,6 +638,7 @@ setLang(savedLang);
         );
       }
     } catch (e) {
+      setDisabled(false);
       setHint(
         'No se pudieron preparar las notificaciones. Intenta de nuevo.',
         'Could not set up notifications. Please try again.',
@@ -558,26 +647,33 @@ setLang(savedLang);
     }
   }
 
-  async function subscribe() {
+  async function subscribeWithPermission() {
+    // Android Chrome requires requestPermission() during the tap gesture.
+    // Do not await anything else before this call.
     var permission = Notification.permission;
     if (permission !== 'granted') {
       permission = await Notification.requestPermission();
     }
     if (permission !== 'granted') {
       setHint(
-        'Necesitamos tu permiso para enviarte avisos.',
-        'We need your permission to send alerts.',
+        permission === 'denied'
+          ? 'Las notificaciones están bloqueadas. Actívalas en Ajustes → Apps → Chrome → Notificaciones.'
+          : 'Necesitamos tu permiso para enviarte avisos.',
+        permission === 'denied'
+          ? 'Notifications are blocked. Enable them in Settings → Apps → Chrome → Notifications.'
+          : 'We need your permission to send alerts.',
         true
       );
+      if (permission === 'denied') setDisabled(true);
       return;
     }
 
     var keyRes = await fetch(API + '/vapid-public-key');
+    if (!keyRes.ok) throw new Error('VAPID fetch failed');
     var keyData = await keyRes.json();
     if (!keyData.publicKey) throw new Error('Missing VAPID key');
 
-    await getRegistration();
-    var reg = await navigator.serviceWorker.ready;
+    var reg = await getRegistration();
     var sub = await reg.pushManager.subscribe({
       userVisibleOnly: true,
       applicationServerKey: urlBase64ToUint8Array(keyData.publicKey),
@@ -616,12 +712,32 @@ setLang(savedLang);
   }
 
   async function onClick() {
-    if (!supported) return;
+    if (busy) return;
+    if (needsIosInstall()) {
+      showIosInstallHint();
+      return;
+    }
+    if (!supported) {
+      setHint(
+        'Tu navegador no admite notificaciones push.',
+        'Your browser does not support push notifications.',
+        true
+      );
+      return;
+    }
+    busy = true;
     setDisabled(true);
     try {
-      var sub = await currentSubscription();
-      if (sub) await unsubscribe();
-      else await subscribe();
+      // If already allowed, check for an existing sub first (safe to await).
+      // If not yet allowed, request permission immediately — before any SW work.
+      if (Notification.permission === 'granted') {
+        var existing = await getExistingSubscription();
+        if (!existing) existing = await currentSubscription();
+        if (existing) await unsubscribe();
+        else await subscribeWithPermission();
+      } else {
+        await subscribeWithPermission();
+      }
     } catch (e) {
       setHint(
         'No se pudo actualizar las notificaciones. Intenta de nuevo.',
@@ -629,7 +745,8 @@ setLang(savedLang);
         true
       );
     } finally {
-      setDisabled(Notification.permission === 'denied');
+      busy = false;
+      setDisabled(hasNotification && Notification.permission === 'denied');
       refreshUi();
     }
   }
