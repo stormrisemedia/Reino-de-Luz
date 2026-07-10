@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Asociación Reino de Luz | Kingdom of Light</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;700&family=Barlow:wght@400;500&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="effects.css?v=16"/>
+<link rel="stylesheet" href="effects.css?v=17"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -59,6 +59,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .live-dot{width:7px;height:7px;background:var(--black);border-radius:50%;animation:pulse 1.5s infinite;}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.7)}}
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;z-index:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center center;}
+.hero-bg-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.78) 0%,rgba(10,10,10,0.55) 42%,rgba(10,10,10,0.88) 100%),radial-gradient(ellipse 85% 65% at 50% 45%,rgba(10,10,10,0.25) 0%,transparent 70%);}
+.hero-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;}
 .hero h1{font-family:var(--font-display);font-size:clamp(4.5rem,12vw,9rem);line-height:0.9;color:var(--white);letter-spacing:0.04em;margin-bottom:0.2rem;}
 .hero h1 .gold{color:var(--gold);}
 .hero-subtitle{font-family:var(--font-condensed);font-size:clamp(0.85rem,2vw,1.1rem);font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-bottom:2.5rem;}
@@ -290,14 +294,20 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
 </nav>
 
 <section class="hero">
-  <h1 data-es="REINO<br/><span class='gold'>DE LUZ</span>" data-en="KINGDOM<br/><span class='gold'>OF LIGHT</span>">REINO<br/><span class="gold">DE LUZ</span></h1>
-  <p class="hero-subtitle" data-es="Expandiendo la Luz de Cristo" data-en="Spreading the Light of Christ">Expandiendo la Luz de Cristo</p>
-  <div class="hero-rule"></div>
-  <p class="hero-verse" data-es="&quot;Yo soy la luz del mundo; el que me sigue no andará en tinieblas.&quot;" data-en="&quot;I am the light of the world. Whoever follows me will never walk in darkness.&quot;">"Yo soy la luz del mundo; el que me sigue no andará en tinieblas."</p>
-  <p class="hero-verse-ref" data-es="Juan 8:12" data-en="John 8:12">Juan 8:12</p>
-  <div class="hero-cta">
-    <a href="en-vivo.html" class="btn-primary" data-es="Ver En Vivo" data-en="Watch Live">Ver En Vivo</a>
-    <a href="donar.html" class="btn-secondary" data-es="Donar" data-en="Donate">Donar</a>
+  <div class="hero-bg" aria-hidden="true">
+    <img src="hero.jpg?v=2" alt="" width="1920" height="1080" fetchpriority="high" decoding="async"/>
+    <div class="hero-bg-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <h1 data-es="REINO<br/><span class='gold'>DE LUZ</span>" data-en="KINGDOM<br/><span class='gold'>OF LIGHT</span>">REINO<br/><span class="gold">DE LUZ</span></h1>
+    <p class="hero-subtitle" data-es="Expandiendo la Luz de Cristo" data-en="Spreading the Light of Christ">Expandiendo la Luz de Cristo</p>
+    <div class="hero-rule"></div>
+    <p class="hero-verse" data-es="&quot;Yo soy la luz del mundo; el que me sigue no andará en tinieblas.&quot;" data-en="&quot;I am the light of the world. Whoever follows me will never walk in darkness.&quot;">"Yo soy la luz del mundo; el que me sigue no andará en tinieblas."</p>
+    <p class="hero-verse-ref" data-es="Juan 8:12" data-en="John 8:12">Juan 8:12</p>
+    <div class="hero-cta">
+      <a href="en-vivo.html" class="btn-primary" data-es="Ver En Vivo" data-en="Watch Live">Ver En Vivo</a>
+      <a href="donar.html" class="btn-secondary" data-es="Donar" data-en="Donate">Donar</a>
+    </div>
   </div>
 </section>
 
