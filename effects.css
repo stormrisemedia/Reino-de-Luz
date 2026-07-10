@@ -10,6 +10,10 @@ html {
   }
 }
 
+.nav-actions .nav-donate { order: 1; }
+.nav-actions .nav-live { order: 2; }
+.nav-actions .lang-toggle { order: 3; }
+
 /* Legacy bilingual hero labels removed from HTML — hide if cached */
 .page-hero-label {
   display: none !important;

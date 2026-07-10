@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>En Vivo · Asociación Reino de Luz</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;700&family=Barlow:wght@400;500&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="effects.css?v=18"/>
+<link rel="stylesheet" href="effects.css?v=19"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -69,6 +69,17 @@ section{padding:5rem 2rem;}
 .livestream-grid{display:grid;grid-template-columns:1fr 320px;gap:3rem;align-items:start;}
 .embed-wrapper{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:4px;overflow:hidden;border:1px solid rgba(245,200,0,0.2);}
 .embed-wrapper iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
+.embed-offline{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem 1.5rem;background:
+  radial-gradient(ellipse 70% 55% at 50% 40%,rgba(245,200,0,0.12) 0%,transparent 65%),
+  linear-gradient(160deg,#141414 0%,#0A0A0A 55%,#111 100%);
+  transition:opacity 0.35s ease,visibility 0.35s ease;}
+.embed-wrapper.is-live .embed-offline{opacity:0;visibility:hidden;pointer-events:none;}
+.embed-offline-logo{width:72px;height:72px;border-radius:50%;border:2px solid rgba(245,200,0,0.55);object-fit:cover;margin-bottom:1.25rem;box-shadow:0 0 28px rgba(245,200,0,0.18);}
+.embed-offline-label{font-family:var(--font-condensed);font-size:0.7rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:0.65rem;}
+.embed-offline-title{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);color:var(--white);letter-spacing:0.04em;line-height:1;margin-bottom:0.75rem;}
+.embed-offline-body{font-size:0.9rem;color:var(--muted-light);max-width:340px;line-height:1.65;margin-bottom:1.5rem;}
+.embed-offline-cta{font-family:var(--font-condensed);font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0.65rem 1.35rem;border-radius:3px;text-decoration:none;transition:background 0.2s,transform 0.15s;}
+.embed-offline-cta:hover{background:var(--gold-light);transform:translateY(-1px);}
 .embed-caption{margin-top:0.65rem;font-size:0.78rem;color:var(--muted);font-style:italic;line-height:1.5;}
 .livestream-meta{padding-top:0.25rem;}
 .livestream-meta .section-body{margin-bottom:1.75rem;}
@@ -79,8 +90,10 @@ section{padding:5rem 2rem;}
 .channel-handle{font-size:0.76rem;color:var(--muted);margin-top:1px;}
 .channel-card p{font-size:0.83rem;color:var(--muted-light);line-height:1.65;margin-bottom:0.9rem;}
 .channel-card a{font-family:var(--font-condensed);font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);text-decoration:none;}
-.live-badge{display:inline-flex;align-items:center;gap:0.4rem;background:var(--black-card);color:var(--gold);border:1px solid rgba(245,200,0,0.35);font-family:var(--font-condensed);font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:0.28rem 0.7rem;border-radius:2px;margin-bottom:1.25rem;}
-.live-badge .live-dot{background:var(--gold);}
+.live-badge{display:inline-flex;align-items:center;gap:0.4rem;background:var(--black-card);color:var(--muted-light);border:1px solid rgba(255,255,255,0.12);font-family:var(--font-condensed);font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:0.28rem 0.7rem;border-radius:2px;margin-bottom:1.25rem;transition:color 0.2s,border-color 0.2s,background 0.2s;}
+.live-badge .live-dot{background:var(--muted);animation:none;}
+.live-badge.is-live{color:var(--gold);border-color:rgba(245,200,0,0.35);}
+.live-badge.is-live .live-dot{background:var(--gold);animation:pulse 1.5s infinite;}
 .mission-section{background:var(--black);}
 .vision-mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-bottom:1px;background:rgba(245,200,0,0.12);border:1px solid rgba(245,200,0,0.12);border-radius:4px 4px 0 0;overflow:hidden;}
 .vm-card{background:var(--black-surface);padding:2.5rem 2rem;position:relative;transition:background 0.2s;}
@@ -274,15 +287,15 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
     <li><a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a></li>
   </ul>
   <div class="nav-actions">
-    <div class="lang-toggle" id="langToggle">
-      <span class="lang-btn active" data-lang="es">ES</span>
-      <span class="lang-btn" data-lang="en">EN</span>
-    </div>
     <a href="donar.html" class="nav-donate" data-es="Donar" data-en="Donate">Donar</a>
     <!-- Hidden by default. Add the "is-live" class (class="nav-live is-live") to show this button while streaming. -->
     <a href="en-vivo.html" class="nav-live" data-es="En Vivo" data-en="Live Now">
       <span class="live-dot"></span>En Vivo
     </a>
+    <div class="lang-toggle" id="langToggle">
+      <span class="lang-btn active" data-lang="es">ES</span>
+      <span class="lang-btn" data-lang="en">EN</span>
+    </div>
   </div>
 </nav>
 <div class="page-hero">
@@ -292,11 +305,20 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   <div class="section-inner">
     <div class="livestream-grid">
       <div>
-        <div class="live-badge"><span class="live-dot"></span><span data-es="Transmisión en Vivo" data-en="Live Stream">Transmisión en Vivo</span></div>
-        <div class="embed-wrapper">
-          <iframe src="https://www.youtube.com/embed/live_stream?channel=UC3kfwg4h0cpsGh_7Rsgk9LQ&autoplay=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Asociación Reino de Luz — Live"></iframe>
+        <div class="live-badge" id="liveBadge">
+          <span class="live-dot"></span>
+          <span class="live-badge-text" data-es="Fuera de aire" data-en="Offline">Fuera de aire</span>
         </div>
-        <p class="embed-caption" data-es="Si no hay transmisión activa, aparecerá el video más reciente." data-en="If no live stream is active, the latest video will appear here.">Si no hay transmisión activa, aparecerá el video más reciente.</p>
+        <div class="embed-wrapper" id="embedWrapper">
+          <div class="embed-offline" id="embedOffline" aria-live="polite">
+            <img src="reinodeluzlogo.png?v=20" alt="" class="embed-offline-logo"/>
+            <div class="embed-offline-label" data-es="No estamos en vivo" data-en="We're not live">No estamos en vivo</div>
+            <div class="embed-offline-title" data-es="PRÓXIMAMENTE" data-en="COMING SOON">PRÓXIMAMENTE</div>
+            <p class="embed-offline-body" data-es="Vuelve pronto para adoración, predicación y oración en vivo. Suscríbete para enterarte cuando empecemos." data-en="Come back soon for live worship, preaching, and prayer. Subscribe to get notified when we go live.">Vuelve pronto para adoración, predicación y oración en vivo. Suscríbete para enterarte cuando empecemos.</p>
+            <a href="https://www.youtube.com/@asociacionreinodeluz?sub_confirmation=1" target="_blank" rel="noopener" class="embed-offline-cta" data-es="Suscribirse en YouTube" data-en="Subscribe on YouTube">Suscribirse en YouTube</a>
+          </div>
+        </div>
+        <p class="embed-caption" id="embedCaption" data-es="Te avisaremos cuando la transmisión esté al aire." data-en="We'll let you know when the stream is on air.">Te avisaremos cuando la transmisión esté al aire.</p>
       </div>
       <div class="livestream-meta">
 <h2 class="section-title" data-es="ÚNETE A LA<br/><span class='gold'>TRANSMISIÓN</span>" data-en="JOIN THE<br/><span class='gold'>LIVESTREAM</span>">ÚNETE A LA<br/><span class="gold">TRANSMISIÓN</span></h2>
@@ -361,31 +383,76 @@ var savedLang = 'es';
 try { savedLang = localStorage.getItem('rdl-lang') || 'es'; } catch (e) {}
 setLang(savedLang);
 
-/* --- Auto-detect YouTube live via Cloudflare Worker: show the nav "En Vivo" button only while streaming --- */
+/* --- Auto-detect YouTube live via Cloudflare Worker --- */
 (function () {
   var LIVE_STATUS_URL = 'https://reino-de-luz-live.startekno.workers.dev';
   var CACHE_KEY = 'rdl-live-status';
   var CACHE_MS = 2 * 60 * 1000; // re-check at most every 2 minutes per visitor
+  var EMBED_SRC = 'https://www.youtube.com/embed/live_stream?channel=UC3kfwg4h0cpsGh_7Rsgk9LQ&autoplay=0';
 
   var liveBtn = document.querySelector('.nav-live');
-  if (!liveBtn) return;
-  function showLive(isLive) { liveBtn.classList.toggle('is-live', !!isLive); }
+  var embedWrapper = document.getElementById('embedWrapper');
+  var liveBadge = document.getElementById('liveBadge');
+  var badgeText = liveBadge && liveBadge.querySelector('.live-badge-text');
+  var embedCaption = document.getElementById('embedCaption');
+
+  function setPlayerLive(isLive) {
+    if (liveBtn) liveBtn.classList.toggle('is-live', !!isLive);
+    if (embedWrapper) {
+      embedWrapper.classList.toggle('is-live', !!isLive);
+      var iframe = embedWrapper.querySelector('iframe');
+      if (isLive) {
+        if (!iframe) {
+          iframe = document.createElement('iframe');
+          iframe.src = EMBED_SRC;
+          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+          iframe.allowFullscreen = true;
+          iframe.title = 'Asociación Reino de Luz — Live';
+          embedWrapper.appendChild(iframe);
+        }
+      } else if (iframe) {
+        iframe.remove();
+      }
+    }
+    if (liveBadge) liveBadge.classList.toggle('is-live', !!isLive);
+    if (badgeText) {
+      badgeText.setAttribute('data-es', isLive ? 'En vivo ahora' : 'Fuera de aire');
+      badgeText.setAttribute('data-en', isLive ? 'Live now' : 'Offline');
+      badgeText.textContent = isLive
+        ? (lang === 'en' ? 'Live now' : 'En vivo ahora')
+        : (lang === 'en' ? 'Offline' : 'Fuera de aire');
+    }
+    if (embedCaption) {
+      embedCaption.setAttribute('data-es', isLive
+        ? 'Estás viendo la transmisión en vivo de Asociación Reino de Luz.'
+        : 'Te avisaremos cuando la transmisión esté al aire.');
+      embedCaption.setAttribute('data-en', isLive
+        ? 'You are watching Asociación Reino de Luz live.'
+        : "We'll let you know when the stream is on air.");
+      embedCaption.textContent = isLive
+        ? (lang === 'en' ? 'You are watching Asociación Reino de Luz live.' : 'Estás viendo la transmisión en vivo de Asociación Reino de Luz.')
+        : (lang === 'en' ? "We'll let you know when the stream is on air." : 'Te avisaremos cuando la transmisión esté al aire.');
+    }
+  }
 
   try {
     var cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
-    if (cached && (Date.now() - cached.t) < CACHE_MS) { showLive(cached.live); return; }
+    if (cached && (Date.now() - cached.t) < CACHE_MS) {
+      setPlayerLive(cached.live);
+      return;
+    }
   } catch (e) {}
 
-  if (!LIVE_STATUS_URL) return; // no Worker URL set -> button stays hidden
+  if (!LIVE_STATUS_URL) return;
 
   fetch(LIVE_STATUS_URL)
     .then(function (r) { return r.json(); })
     .then(function (data) {
       var live = !!(data && data.live);
-      showLive(live);
+      setPlayerLive(live);
       try { localStorage.setItem(CACHE_KEY, JSON.stringify({ t: Date.now(), live: live })); } catch (e) {}
     })
-    .catch(function () {});
+    .catch(function () { setPlayerLive(false); });
 })();
 </script>
 </body>
