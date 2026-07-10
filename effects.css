@@ -261,40 +261,46 @@ section {
   padding: 3.5rem 2rem;
 }
 
-.page-hero {
-  padding: 6rem 2rem 2rem;
+/* Clear fixed nav on inner pages (no redundant page-hero titles) */
+body:not(.page-home) > section:first-of-type,
+body:not(.page-home) > .about-intro:first-of-type,
+body:not(.page-home) > .gallery-wrap:first-of-type {
+  padding-top: 4.5rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.gallery-tagline {
+  font-family: var(--font-condensed);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+  margin: 0 0 1.75rem;
 }
 
 @media (max-width: 600px) {
   section {
     padding: 2.5rem 1.25rem;
   }
-}
 
-/* ── Page hero (inner pages) ── */
-.page-hero h1,
-.page-hero .page-hero-sub {
-  opacity: 0;
-  animation: hero-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.page-hero h1 { animation-delay: 0.15s; }
-.page-hero .page-hero-sub { animation-delay: 0.3s; }
-
-.page-hero::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  animation: page-hero-line 1s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
-}
-
-@keyframes page-hero-line {
-  to { width: min(200px, 40vw); }
+  body:not(.page-home) > section:first-of-type,
+  body:not(.page-home) > .about-intro:first-of-type,
+  body:not(.page-home) > .gallery-wrap:first-of-type {
+    padding-top: 4rem;
+  }
 }
 
 /* ── Enhanced cards & buttons ── */

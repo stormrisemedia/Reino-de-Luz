@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Donar · Asociación Reino de Luz</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;700&family=Barlow:wght@400;500&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="effects.css?v=22"/>
+<link rel="stylesheet" href="effects.css?v=24"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -50,10 +50,6 @@ section{padding:3.5rem 2rem;}
 .section-title .gold{color:var(--gold);}
 .section-body{font-size:0.95rem;color:var(--muted-light);max-width:560px;line-height:1.8;}
 .give-lead{font-size:1.05rem;color:var(--off-white);max-width:580px;margin-bottom:0;}
-.page-hero{padding:6rem 2rem 2rem;text-align:center;border-bottom:1px solid rgba(245,200,0,0.12);position:relative;}
-.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 100%,rgba(245,200,0,0.06) 0%,transparent 70%);pointer-events:none;}
-.page-hero-label{font-family:var(--font-condensed);font-size:0.72rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
-.page-hero h1{font-family:var(--font-display);font-size:clamp(3rem,8vw,5.5rem);color:var(--white);line-height:0.95;letter-spacing:0.04em;}
 .give-section{background:var(--black-mid);}
 .give-grid{display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:start;}
 .give-scripture{background:var(--black-surface);border-left:3px solid var(--gold);border-radius:0 4px 4px 0;padding:1.1rem 1.4rem;margin:1.75rem 0;}
@@ -131,12 +127,9 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   </div>
 </nav>
 
-<div class="page-hero">
-  <h1 data-es="DONAR" data-en="DONATE">DONAR</h1>
-</div>
-
 <section class="give-section">
   <div class="section-inner">
+    <h1 class="visually-hidden" data-es="Donar" data-en="Donate">Donar</h1>
     <div class="give-grid">
       <div>
         <p class="section-body give-lead" data-es="Cada aporte nos permite llevar la luz de Cristo a más personas: alimentar a los niños, sostener nuestros talleres y seguir sirviendo a la comunidad. Gracias por ser parte de esta misión." data-en="Every gift helps us carry the light of Christ to more people: feeding children, sustaining our workshops, and continuing to serve the community. Thank you for being part of this mission.">Cada aporte nos permite llevar la luz de Cristo a más personas: alimentar a los niños, sostener nuestros talleres y seguir sirviendo a la comunidad. Gracias por ser parte de esta misión.</p>
