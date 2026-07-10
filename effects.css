@@ -322,16 +322,21 @@ body:not(.page-home) > .gallery-wrap:first-of-type {
     border-color 0.25s;
 }
 
+/* Free-standing cards can lift; tight overflow grids clip translateY and look broken */
+.stat-card:hover,
+.channel-card:hover,
+.founder-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(245, 200, 0, 0.12);
+}
+
 .mission-card:hover,
 .prog-card:hover,
 .vm-card:hover,
-.stat-card:hover,
-.channel-card:hover,
-.founder-card:hover,
 .impact-stat:hover,
 .explore-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(245, 200, 0, 0.12);
+  transform: none;
+  box-shadow: none;
 }
 
 .btn-primary,
@@ -534,6 +539,7 @@ body:not(.page-home) > .gallery-wrap:first-of-type {
   .channel-card:hover,
   .founder-card:hover,
   .impact-stat:hover,
+  .explore-card:hover,
   .btn-primary:hover,
   .btn-secondary:hover,
   .nav-donate:hover,
