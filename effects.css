@@ -334,39 +334,67 @@ body:not(.page-home) > .gallery-wrap:first-of-type {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(245, 200, 0, 0.12);
 }
 
-.btn-primary {
+.btn-primary,
+.btn-secondary,
+.nav-donate,
+.donate-btn,
+.nav-live,
+.amount-btn,
+.connect-form button {
   position: relative;
   overflow: hidden;
-  transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+  transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.2s, box-shadow 0.25s;
 }
 
-.btn-primary::after {
+/* Inline links need a box so the shine sweep can clip and animate */
+.btn-secondary,
+.nav-donate,
+.amount-btn {
+  display: inline-block;
+}
+
+.btn-primary::after,
+.btn-secondary::after,
+.nav-donate::after,
+.donate-btn::after,
+.nav-live::after,
+.amount-btn::after,
+.connect-form button::after {
   content: '';
   position: absolute;
   top: 0;
   left: -120%;
   width: 80%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
   transform: skewX(-20deg);
-  transition: left 0.5s ease;
+  transition: left 0.55s ease;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.donate-btn:hover,
+.nav-donate:hover,
+.nav-live:hover,
+.connect-form button:hover {
   box-shadow: 0 6px 24px rgba(245, 200, 0, 0.35);
 }
 
-.btn-primary:hover::after {
-  left: 140%;
-}
-
-.btn-secondary {
-  transition: border-color 0.25s, color 0.25s, transform 0.2s, box-shadow 0.25s;
-}
-
-.btn-secondary:hover {
+.btn-secondary:hover,
+.amount-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 0 20px rgba(245, 200, 0, 0.12);
+}
+
+.btn-primary:hover::after,
+.btn-secondary:hover::after,
+.nav-donate:hover::after,
+.donate-btn:hover::after,
+.nav-live:hover::after,
+.amount-btn:hover::after,
+.connect-form button:hover::after {
+  left: 140%;
 }
 
 /* ── Verse banner shimmer ── */
@@ -482,7 +510,21 @@ body:not(.page-home) > .gallery-wrap:first-of-type {
   .founder-card:hover,
   .impact-stat:hover,
   .btn-primary:hover,
-  .btn-secondary:hover {
+  .btn-secondary:hover,
+  .nav-donate:hover,
+  .donate-btn:hover,
+  .nav-live:hover,
+  .amount-btn:hover {
     transform: none;
+  }
+
+  .btn-primary::after,
+  .btn-secondary::after,
+  .nav-donate::after,
+  .donate-btn::after,
+  .nav-live::after,
+  .amount-btn::after,
+  .connect-form button::after {
+    display: none;
   }
 }
