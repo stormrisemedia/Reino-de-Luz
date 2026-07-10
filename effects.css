@@ -197,6 +197,41 @@ nav.nav-scrolled {
 .reveal-stagger > .reveal:nth-child(7) { transition-delay: 0.48s; }
 .reveal-stagger > .reveal:nth-child(8) { transition-delay: 0.56s; }
 
+/* On mobile, cards enter one-by-one — skip grid stagger delays */
+@media (max-width: 860px) {
+  .reveal-stagger > .reveal {
+    transition-delay: 0s !important;
+  }
+
+  .prog-card.reveal {
+    transform: translateY(36px);
+  }
+
+  .prog-card.reveal.is-visible {
+    transform: none;
+  }
+}
+
+/* Card hover rules also set `transition` — keep opacity/transform reveal intact */
+.mission-card.reveal,
+.prog-card.reveal,
+.vm-card.reveal,
+.stat-card.reveal,
+.channel-card.reveal,
+.founder-card.reveal,
+.miracle-item.reveal,
+.impact-stat.reveal,
+.schedule-list li.reveal,
+.gallery-item.reveal,
+.explore-card.reveal {
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.25s,
+    box-shadow 0.35s ease,
+    border-color 0.25s;
+}
+
 /* ── Hero entrance (home) ── */
 .hero h1,
 .hero .hero-subtitle,
