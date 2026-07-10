@@ -3,8 +3,10 @@
 
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ── Floating light particles (skip home hero) ── */
-  if (!reducedMotion && !document.body.classList.contains('page-home')) {
+  /* ── Floating light particles (skip full-bleed photo heroes) ── */
+  var skipAmbientHero = document.body.classList.contains('page-home') ||
+    document.body.classList.contains('page-mission');
+  if (!reducedMotion && !skipAmbientHero) {
     var isHome = false;
     var heroEl = document.querySelector('.hero');
     var ambient = document.createElement('div');
@@ -117,6 +119,15 @@
     '.gallery-item',
     '.donate-card',
     '.explore-card',
+    '.purpose-block',
+    '.pillar',
+    '.impact-outcomes li',
+    '.impact-panel',
+    '.stories-featured',
+    '.story',
+    '.mission-cta .section-title',
+    '.mission-cta .section-body',
+    '.mission-cta .hero-cta',
     '.page-section > *'
   ].join(',');
 
@@ -125,7 +136,7 @@
   });
 
   document.querySelectorAll(
-    '.mission-grid, .programs-grid, .belen-stats, .impact-stats-row, .miracles-list, .explore-grid'
+    '.mission-grid, .programs-grid, .belen-stats, .impact-stats-row, .miracles-list, .explore-grid, .pillars-list, .stories-grid'
   ).forEach(function (grid) {
     grid.classList.add('reveal-stagger');
   });
