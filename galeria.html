@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Momentos · Asociación Reino de Luz</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;700&family=Barlow:wght@400;500&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="effects.css?v=13"/>
+<link rel="stylesheet" href="effects.css?v=18"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -21,7 +21,8 @@ html{scroll-behavior:smooth;}
 body{background:var(--black);color:var(--off-white);font-family:var(--font-body);font-size:16px;line-height:1.7;overflow-x:hidden;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0.85rem 2.5rem;background:rgba(10,10,10,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(245,200,0,0.18);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0.85rem 2.5rem;background:rgba(10,10,10,0.92);backdrop-filter:blur(14px);border-bottom:none;}
+nav::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,transparent 0%,rgba(245,200,0,0.15) 18%,rgba(245,200,0,0.75) 42%,#fff6a8 50%,rgba(245,200,0,0.75) 58%,rgba(245,200,0,0.15) 82%,transparent 100%);box-shadow:0 0 10px rgba(245,200,0,0.35),0 0 22px rgba(245,200,0,0.12);pointer-events:none;}
 .nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none;}
 .nav-logo-img{width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(245,200,0,0.5);object-fit:cover;}
 .nav-logo-text{font-family:var(--font-display);font-size:1.4rem;letter-spacing:0.06em;color:var(--white);line-height:1;}
@@ -98,6 +99,11 @@ footer p{font-size:0.78rem;color:var(--muted);}
 .footer-links a{font-family:var(--font-condensed);font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
 .footer-links a:hover{color:var(--gold);}
 
+@media(max-width:1100px){
+  .nav-links{gap:1rem;}
+  .nav-links a{font-size:0.76rem;letter-spacing:0.08em;}
+  nav{padding-left:1.5rem;padding-right:1.5rem;}
+}
 @media(max-width:860px){
   nav{padding:0.85rem 1.25rem;flex-wrap:wrap;row-gap:0.75rem;}
   .nav-toggle{display:block;margin-left:auto;}
@@ -130,14 +136,12 @@ footer p{font-size:0.78rem;color:var(--muted);}
     <li><a href="galeria.html" class="active" data-es="Momentos" data-en="Moments">Momentos</a></li>
     <li><a href="about.html" data-es="Nosotros" data-en="About">Nosotros</a></li>
     <li><a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a></li>
-    <li>
-      <div class="lang-toggle" id="langToggle">
-        <span class="lang-btn active" data-lang="es">ES</span>
-        <span class="lang-btn" data-lang="en">EN</span>
-      </div>
-    </li>
   </ul>
   <div class="nav-actions">
+    <div class="lang-toggle" id="langToggle">
+      <span class="lang-btn active" data-lang="es">ES</span>
+      <span class="lang-btn" data-lang="en">EN</span>
+    </div>
     <a href="donar.html" class="nav-donate" data-es="Donar" data-en="Donate">Donar</a>
     <!-- Hidden by default. Add the "is-live" class (class="nav-live is-live") to show this button while streaming. -->
     <a href="en-vivo.html" class="nav-live" data-es="En Vivo" data-en="Live Now">
