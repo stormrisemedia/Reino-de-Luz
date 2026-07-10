@@ -4,7 +4,7 @@
 <meta name="google" content="notranslate" />
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Misión · Asociación Reino de Luz</title>
+<title>Nosotros · Asociación Reino de Luz</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;700&family=Barlow:wght@400;500&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="effects.css?v=13"/>
 <style>
@@ -247,8 +247,15 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
 
   .page-hero{padding:8rem 2rem 3rem;text-align:center;border-bottom:1px solid rgba(245,200,0,0.12);position:relative;}
   .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 100%,rgba(245,200,0,0.06) 0%,transparent 70%);pointer-events:none;}
-  .page-hero-label{font-family:var(--font-condensed);font-size:0.72rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
+  .page-hero-label{font-family:var(--font-condensed);font-size:clamp(0.82rem,1.6vw,0.95rem);font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
   .page-hero h1{font-family:var(--font-display);font-size:clamp(3rem,8vw,5.5rem);color:var(--white);line-height:0.95;letter-spacing:0.04em;}
+  .about-hero{position:relative;width:100%;height:clamp(260px,44vw,580px);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;border-bottom:1px solid rgba(245,200,0,0.12);background:var(--black-mid);}
+  .about-hero-bg{position:absolute;inset:0;}
+  .about-hero-bg img{width:100%;height:100%;object-fit:contain;object-position:center bottom;}
+  .about-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,0.94) 0%,rgba(10,10,10,0.25) 50%,rgba(10,10,10,0.45) 100%);}
+  .about-hero-content{position:relative;z-index:2;text-align:center;padding:6.5rem 2rem 2.5rem;width:100%;max-width:1100px;}
+  .about-hero h1{font-family:var(--font-display);font-size:clamp(3rem,8vw,5.5rem);color:var(--white);line-height:0.95;letter-spacing:0.04em;margin-bottom:0.65rem;}
+  .about-hero-caption{font-family:var(--font-condensed);font-size:0.78rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted-light);}
 </style>
 </head>
 <body>
@@ -260,11 +267,11 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
   <ul class="nav-links" id="navLinks">
     <li><a href="en-vivo.html" data-es="En Vivo" data-en="Live">En Vivo</a></li>
-    <li><a href="mision.html" class="active" data-es="Misión" data-en="Mission">Misión</a></li>
+    <li><a href="mision.html" data-es="Misión" data-en="Mission">Misión</a></li>
     <li><a href="programas.html" data-es="Programas" data-en="Programs">Programas</a></li>
     <li><a href="impacto.html" data-es="Impacto" data-en="Impact">Impacto</a></li>
     <li><a href="galeria.html" data-es="Momentos" data-en="Moments">Momentos</a></li>
-    <li><a href="about.html" data-es="Nosotros" data-en="About">Nosotros</a></li>
+    <li><a href="about.html" class="active" data-es="Nosotros" data-en="About">Nosotros</a></li>
     <li><a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a></li>
     <li>
       <div class="lang-toggle" id="langToggle">
@@ -281,28 +288,105 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
     </a>
   </div>
 </nav>
-<div class="page-hero">
-  <h1 data-es="MISIÓN" data-en="MISSION">MISIÓN</h1>
+<div class="about-hero">
+  <div class="about-hero-bg" aria-hidden="true">
+    <img src="historia-familia.jpg?v=2" alt="" width="1200" height="675" fetchpriority="high" decoding="async"/>
+    <div class="about-hero-overlay"></div>
+  </div>
+  <div class="about-hero-content">
+    <h1 data-es="NOSOTROS" data-en="ABOUT">NOSOTROS</h1>
+    <p class="about-hero-caption" data-es="Bryan, Yuri, Lucian y Fe Gracia · Belén, Iquitos" data-en="Bryan, Yuri, Lucian, and Fe Gracia · Belén, Iquitos">Bryan, Yuri, Lucian y Fe Gracia · Belén, Iquitos</p>
+  </div>
 </div>
-<section class="mission-section" id="mision">
+<section class="origin-section" id="about">
   <div class="section-inner">
-    <div class="vision-mission-grid">
-      <div class="vm-card vision-card">
-        <div class="vm-icon">✨</div>
-<h3 class="vm-title" data-es="UNA GENERACIÓN<br/><span class='gold'>TRANSFORMADA</span>" data-en="A TRANSFORMED<br/><span class='gold'>GENERATION</span>">UNA GENERACIÓN<br/><span class="gold">TRANSFORMADA</span></h3>
-        <p class="vm-body" data-es="Ser una generación transformada que impacte cada área de la sociedad, reflejando el amor y el servicio de Dios." data-en="To be a transformed generation that impacts every area of society, reflecting the love and service of God.">Ser una generación transformada que impacte cada área de la sociedad, reflejando el amor y el servicio de Dios.</p>
+    <div class="origin-grid">
+      <div class="origin-text">
+        <h2 class="section-title" data-es="NACIDOS EN<br/><span class='gold'>PANDEMIA</span>" data-en="BORN IN A<br/><span class='gold'>PANDEMIC</span>">NACIDOS EN<br/><span class="gold">PANDEMIA</span></h2>
+        <p class="origin-year">2020 · Belén, Iquitos</p>
+        <p class="origin-body" data-es="Reino de Luz nació en 2020, en medio de la pandemia del COVID. Con algunos miedos e inseguridades, decidimos como familia irnos a Belén para entregar nuestra vida a servir, amar y discipular a niños y adolescentes en situación de vulnerabilidad. Durante ese tiempo repartíamos comida y entregábamos paquetes de víveres." data-en="Reino de Luz was born in 2020, in the midst of the COVID pandemic. With some fears and insecurities, we decided as a family to go to Belén to give our lives to serve, love, and disciple children and adolescents in vulnerable situations. During that time we distributed food and delivered care packages.">Reino de Luz nació en 2020, en medio de la pandemia del COVID. Con algunos miedos e inseguridades, decidimos como familia irnos a Belén para entregar nuestra vida a servir, amar y discipular a niños y adolescentes en situación de vulnerabilidad. Durante ese tiempo repartíamos comida y entregábamos paquetes de víveres.</p>
+        <div class="origin-years">
+          <span class="origin-years-num">6</span>
+          <span class="origin-years-label" data-es="años" data-en="years">años</span>
+        </div>
+        <p class="origin-body" data-es="No ha sido un camino fácil. Hemos reído, hemos llorado, hemos dudado, hemos sufrido — y muchas veces nos hemos cansado. Pero también hemos visto muchos milagros." data-en="It has not been an easy road. We have laughed, cried, doubted, and suffered — and many times we have grown weary. But we have also witnessed many miracles.">No ha sido un camino fácil. Hemos reído, hemos llorado, hemos dudado, hemos sufrido — y muchas veces nos hemos cansado. Pero también hemos visto muchos milagros.</p>
       </div>
-      <div class="vm-card mision-card">
-        <div class="vm-icon">🔥</div>
-<h3 class="vm-title" data-es="CAPACITAR,<br/><span class='gold'>FORMAR Y DISCIPULAR</span>" data-en="EQUIP,<br/><span class='gold'>TRAIN AND DISCIPLE</span>">CAPACITAR,<br/><span class="gold">FORMAR Y DISCIPULAR</span></h3>
-        <p class="vm-body" data-es="Capacitar, formar y discipular a niños y adolescentes en los planes de Dios, desarrollando sus dones y talentos para que vivan con propósito y cumplan la Gran Comisión." data-en="To equip, train and disciple children and adolescents in God's plans, developing their gifts and talents so they live with purpose and fulfill the Great Commission.">Capacitar, formar y discipular a niños y adolescentes en los planes de Dios, desarrollando sus dones y talentos para que vivan con propósito y cumplan la Gran Comisión.</p>
+      <div class="origin-right">
+        <div class="miracles-list">
+          <div class="miracle-item"><span class="miracle-icon">✨</span><span data-es="Niños restaurados" data-en="Restored children">Niños restaurados</span></div>
+          <div class="miracle-item"><span class="miracle-icon">😊</span><span data-es="Sonrisas donde antes había dolor" data-en="Smiles where there was once pain">Sonrisas donde antes había dolor</span></div>
+          <div class="miracle-item"><span class="miracle-icon">☀️</span><span data-es="Esperanza donde antes solo había oscuridad" data-en="Hope where there was once only darkness">Esperanza donde antes solo había oscuridad</span></div>
+        </div>
+        <div class="origin-declaration">
+          <p data-es="&quot;Dios ha sido bueno. Cada paso valió la pena. Cada semilla sembrada dio fruto. Y cada batalla nos enseñó a depender más de Él.&quot;" data-en="&quot;God has been good. Every step was worth it. Every seed sown bore fruit. And every battle taught us to depend on Him more.&quot;">"Dios ha sido bueno. Cada paso valió la pena. Cada semilla sembrada dio fruto. Y cada batalla nos enseñó a depender más de Él."</p>
+        </div>
+        <div class="origin-closing">
+          <p data-es="Seguimos creyendo que <strong>una vida transformada puede cambiar muchas más.</strong>" data-en="We keep believing that <strong>one transformed life can change many more.</strong>">Seguimos creyendo que <strong>una vida transformada puede cambiar muchas más.</strong></p>
+        </div>
       </div>
     </div>
-    <div class="mission-grid" style="margin-top:1px;">
-      <div class="mission-card"><span class="mission-num">01</span><h3 data-es="ESPIRITUAL" data-en="SPIRITUAL">ESPIRITUAL</h3><p data-es="Enseñanza bíblica semanal y discipulado profundo para que cada niño conozca el amor de Dios." data-en="Weekly Bible teaching and deep discipleship so every child can know the love of God.">Enseñanza bíblica semanal y discipulado profundo para que cada niño conozca el amor de Dios.</p></div>
-      <div class="mission-card"><span class="mission-num">02</span><h3 data-es="TALENTOS" data-en="TALENTS">TALENTOS</h3><p data-es="Talleres de música, canto y artes para que cada joven descubra los dones que Dios le dio." data-en="Music, singing, and arts workshops so every young person can discover the gifts God gave them.">Talleres de música, canto y artes para que cada joven descubra los dones que Dios le dio.</p></div>
-      <div class="mission-card"><span class="mission-num">03</span><h3 data-es="FORMACIÓN" data-en="FORMATION">FORMACIÓN</h3><p data-es="Inglés, computación y habilidades prácticas para prepararlos con herramientas reales para el futuro." data-en="English, computing, and practical skills to equip them with real tools for the future.">Inglés, computación y habilidades prácticas para prepararlos con herramientas reales para el futuro.</p></div>
-      <div class="mission-card"><span class="mission-num">04</span><h3 data-es="FAMILIA" data-en="FAMILY">FAMILIA</h3><p data-es="Programa para mamás que fortalece identidad, finanzas y crianza — transformando hogares enteros." data-en="A program for mothers that strengthens identity, finances, and parenting — transforming entire households.">Programa para mamás que fortalece identidad, finanzas y crianza — transformando hogares enteros.</p></div>
+  </div>
+</section>
+
+<section class="testimony-section" id="testimonio">
+  <div class="section-inner">
+    <div class="belen-sub">
+      <div class="belen-grid">
+        <div class="belen-text">
+<h2 class="section-title" data-es="DISTRITO DE<br/><span class='gold'>BELÉN</span>" data-en="DISTRICT OF<br/><span class='gold'>BELÉN</span>">DISTRITO DE<br/><span class="gold">BELÉN</span></h2>
+          <h3 class="belen-location">Iquitos, Loreto · Perú</h3>
+          <p class="belen-tagline" data-es="&quot;Un lugar donde&lt;br/&gt;&lt;span&gt;Jesús transforma vidas&quot;" data-en="&quot;A place where&lt;br/&gt;&lt;span&gt;Jesus transforms lives&quot;">"Un lugar donde<br/><span>Jesús transforma vidas"</span></p>
+          <p class="belen-body" data-es="El distrito de Belén es uno de los cuatro distritos urbanos de Iquitos, considerado el &lt;strong&gt;distrito más pobre de la ciudad&lt;/strong&gt;. Con más de 60,804 habitantes en condiciones de alta densidad poblacional, muchas familias viven en pobreza extrema, sin acceso adecuado a electricidad ni agua potable." data-en="The Belén district is one of four urban districts of Iquitos, considered the &lt;strong&gt;poorest district in the city&lt;/strong&gt;. With over 60,804 inhabitants in extremely dense conditions, many families live in extreme poverty, lacking adequate access to electricity or clean water.">El distrito de Belén es uno de los cuatro distritos urbanos de Iquitos, considerado el <strong>distrito más pobre de la ciudad</strong>. Con más de 60,804 habitantes en condiciones de alta densidad poblacional, muchas familias viven en pobreza extrema, sin acceso adecuado a electricidad ni agua potable.</p>
+          <div class="belen-callout">
+            <p data-es="Es en este contexto donde Reino de Luz trabaja — llevando luz, esperanza y propósito a los que más lo necesitan." data-en="This is the context in which Reino de Luz works — bringing light, hope, and purpose to those who need it most.">Es en este contexto donde Reino de Luz trabaja — llevando luz, esperanza y propósito a los que más lo necesitan.</p>
+          </div>
+        </div>
+        <div class="belen-stats">
+          <div class="stat-card"><span class="stat-num">60,804</span><span class="stat-label" data-es="Habitantes" data-en="Inhabitants">Habitantes</span></div>
+          <div class="stat-card stat-card-accent"><span class="stat-num">#1</span><span class="stat-label" data-es="Distrito más pobre de Iquitos" data-en="Poorest district in Iquitos">Distrito más pobre de Iquitos</span></div>
+          <div class="stat-card"><span class="stat-num">4°</span><span class="stat-label" data-es="Distrito urbano de Iquitos" data-en="Urban district of Iquitos">Distrito urbano de Iquitos</span></div>
+          <div class="stat-card"><span class="stat-num">∞</span><span class="stat-label" data-es="Razones para servir" data-en="Reasons to serve">Razones para servir</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="history-divider">
+      <span data-es="Historia del Fundador" data-en="Founder's Story">Historia del Fundador</span>
+    </div>
+
+    <div class="testimony-header">
+<h2 class="section-title" data-es="UNA HISTORIA DE<br/><span class='gold'>REDENCIÓN</span>" data-en="A STORY OF<br/><span class='gold'>REDEMPTION</span>">UNA HISTORIA DE<br/><span class="gold">REDENCIÓN</span></h2>
+    </div>
+
+    <div class="testimony-grid">
+      <div class="testimony-identity">
+        <div class="founder-card">
+          <div class="founder-initials">BA</div>
+          <div>
+            <div class="founder-name">Bryan Acipali Vela</div>
+            <div class="founder-detail" data-es="Iquitos, Perú · 29 años" data-en="Iquitos, Peru · Age 29">Iquitos, Perú · 29 años</div>
+            <div class="founder-detail" data-es="Esposo de Yuri · Padre de Lucian Josiah &amp; Fe Gracia" data-en="Husband of Yuri · Father of Lucian Josiah &amp; Fe Gracia">Esposo de Yuri · Padre de Lucian Josiah &amp; Fe Gracia</div>
+          </div>
+        </div>
+        <div class="scripture-pull">
+          <p class="scripture-text" data-es="&quot;El Espíritu del Señor está sobre mí, por cuanto me ha ungido para anunciar buenas nuevas a los pobres... para proclamar libertad a los cautivos...&quot;" data-en="&quot;The Spirit of the Lord is on me, because he has anointed me to proclaim good news to the poor... to proclaim freedom for the captives...&quot;">"El Espíritu del Señor está sobre mí, por cuanto me ha ungido para anunciar buenas nuevas a los pobres..."</p>
+          <cite data-es="Isaías 61:1–4" data-en="Isaiah 61:1–4">Isaías 61:1–4</cite>
+        </div>
+        <div class="calling-box">
+          <p class="calling-label" data-es="El Llamado" data-en="The Calling">El Llamado</p>
+          <p class="calling-quote" data-es="&quot;Bryan, quiero que lleves Mi amor a los niños de Belén que viven lo mismo que tú viviste.&quot;" data-en="&quot;Bryan, I want you to bring My love to the children of Belén who are living what you once lived.&quot;">"Bryan, quiero que lleves Mi amor a los niños de Belén que viven lo mismo que tú viviste."</p>
+          <p class="calling-source" data-es="— Dios, en oración" data-en="— God, in prayer">— Dios, en oración</p>
+        </div>
+      </div>
+      <div class="testimony-story">
+        <div class="tl-item"><div class="tl-marker tl-dark"></div><div class="tl-content"><span class="tl-year" data-es="Infancia" data-en="Childhood">Infancia</span><p data-es="Creció en Belén — uno de los distritos más golpeados por la extrema pobreza, la prostitución y la venta de droga. Nunca conoció a su papá. Su madre lo abandonó a los 6 años." data-en="He grew up in Belén — one of the districts hardest hit by extreme poverty, prostitution, and drug trafficking. He never knew his father. His mother abandoned him at age 6.">Creció en Belén — uno de los distritos más golpeados por la extrema pobreza, la prostitución y la venta de droga. Nunca conoció a su papá. Su madre lo abandonó a los 6 años.</p></div></div>
+        <div class="tl-item"><div class="tl-marker tl-dark"></div><div class="tl-content"><span class="tl-year" data-es="8 años" data-en="Age 8">8 años</span><p data-es="Cayó en las drogas, el alcohol y la delincuencia. Por 9 años vivió en las calles, sin rumbo y sin dirección." data-en="He fell into drugs, alcohol, and crime. For 9 years he lived on the streets, without direction or purpose.">Cayó en las drogas, el alcohol y la delincuencia. Por 9 años vivió en las calles, sin rumbo y sin dirección.</p></div></div>
+        <div class="tl-item"><div class="tl-marker tl-turn"></div><div class="tl-content"><span class="tl-year tl-year-gold" data-es="El Encuentro" data-en="The Encounter">El Encuentro</span><p data-es="Cuando ya no esperaba nada de la vida, Dios lo encontró. &lt;em&gt;No lo encontró fuerte, ni limpio, ni con respuestas. Lo encontró borracho, drogado, sucio, roto, quebrado y perdido… y aun así, decidió amarlo.&lt;/em&gt;" data-en="When he no longer expected anything from life, God found him. &lt;em&gt;Not strong, not clean, not with answers. He found him drunk, drugged, dirty, broken, shattered and lost… and yet, He chose to love him.&lt;/em&gt;">Cuando ya no esperaba nada de la vida, Dios lo encontró. <em>No lo encontró fuerte, ni limpio, ni con respuestas. Lo encontró borracho, drogado, sucio, roto, quebrado y perdido… y aun así, decidió amarlo.</em></p></div></div>
+        <div class="tl-item"><div class="tl-marker tl-light"></div><div class="tl-content"><span class="tl-year" data-es="2012 · 17 años" data-en="2012 · Age 17">2012 · 17 años</span><p data-es="Ingresó a un centro de rehabilitación donde experimentó, por primera vez, el amor verdadero de Jesús — un amor que no lo juzgó, que lo amó por encima de sus errores. Después de dos años, salió con una nueva perspectiva." data-en="He entered a rehabilitation center where he experienced, for the first time, the true love of Jesus — a love that did not judge him, that loved him above his mistakes. After two years, he left with a new perspective.">Ingresó a un centro de rehabilitación donde experimentó, por primera vez, el amor verdadero de Jesús — un amor que no lo juzgó, que lo amó por encima de sus errores. Después de dos años, salió con una nueva perspectiva.</p></div></div>
+        <div class="tl-item"><div class="tl-marker tl-light"></div><div class="tl-content"><span class="tl-year">2017</span><p data-es="Abrió su propia barbería — no solo un medio de ingresos, sino un espacio para mostrar la esperanza de Jesús a otros jóvenes con historias parecidas a la suya." data-en="He opened his own barbershop — not just a source of income, but a space to show the hope of Jesus to other young people with stories like his.">Abrió su propia barbería — no solo un medio de ingresos, sino un espacio para mostrar la esperanza de Jesús a otros jóvenes con historias parecidas a la suya.</p></div></div>
+        <div class="tl-item"><div class="tl-marker tl-gold"></div><div class="tl-content"><span class="tl-year tl-year-gold" data-es="2019 · El Llamado" data-en="2019 · The Calling">2019 · El Llamado</span><p data-es="Dios puso en su corazón un llamado a prepararse en &lt;strong&gt;YWAM – Jóvenes con una Misión&lt;/strong&gt;. En viajes a Colombia y Ecuador, tuvo una visión: se vio en medio de la selva, rodeado de niños — algunos sonriendo, otros escondidos entre los árboles, llenos de vergüenza y temor." data-en="God placed a calling in his heart to train with &lt;strong&gt;YWAM – Youth With A Mission&lt;/strong&gt;. On trips to Colombia and Ecuador, he had a vision: he saw himself in the jungle, surrounded by children — some smiling, others hiding among the trees, full of shame and fear.">Dios puso en su corazón un llamado a prepararse en <strong>YWAM – Jóvenes con una Misión</strong>. En viajes a Colombia y Ecuador, tuvo una visión: se vio en medio de la selva, rodeado de niños — algunos sonriendo, otros escondidos entre los árboles, llenos de vergüenza y temor.</p></div></div>
+        <div class="tl-item tl-last"><div class="tl-marker tl-gold"></div><div class="tl-content"><span class="tl-year tl-year-gold" data-es="El Regreso" data-en="The Return">El Regreso</span><p data-es="De regreso al Perú, Dios lo llamó a regresar a Belén — el mismo lugar que representaba su pasado de tristeza, dolor y miedo — para llevar Su amor a los niños que hoy viven lo mismo que él vivió." data-en="Back in Peru, God called him to return to Belén — the very place that represented his past of sadness, pain, and fear — to bring His love to the children living today what he once lived.">De regreso al Perú, Dios lo llamó a regresar a Belén — el mismo lugar que representaba su pasado de tristeza, dolor y miedo — para llevar Su amor a los niños que hoy viven lo mismo que él vivió.</p></div></div>
+      </div>
     </div>
   </div>
 </section>
