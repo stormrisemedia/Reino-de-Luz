@@ -71,8 +71,9 @@ section{padding:3.5rem 2rem;}
 .section-title{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,3.8rem);color:var(--white);line-height:0.95;letter-spacing:0.03em;margin-bottom:1rem;}
 .section-title .gold{color:var(--gold);}
 .section-body{font-size:0.95rem;color:var(--muted-light);max-width:560px;line-height:1.8;}
-.livestream-section{background:var(--black-mid);border-top:1px solid rgba(245,200,0,0.12);border-bottom:1px solid rgba(245,200,0,0.12);}
-.livestream-grid{display:grid;grid-template-columns:1fr 320px;gap:3rem;align-items:start;}
+.livestream-section{background:var(--black-mid);border-top:1px solid rgba(245,200,0,0.12);border-bottom:1px solid rgba(245,200,0,0.12);padding-top:5.5rem;padding-bottom:4rem;}
+.livestream-section .section-inner{max-width:1400px;}
+.livestream-grid{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:2.5rem;align-items:start;}
 .embed-wrapper{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:4px;overflow:hidden;border:1px solid rgba(245,200,0,0.2);}
 .embed-wrapper iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
 .embed-offline{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem 1.5rem;background:
@@ -83,11 +84,7 @@ section{padding:3.5rem 2rem;}
 .embed-offline-logo{width:72px;height:72px;border-radius:50%;border:2px solid rgba(245,200,0,0.55);object-fit:cover;margin-bottom:1.25rem;box-shadow:0 0 28px rgba(245,200,0,0.18);}
 .embed-offline-label{font-family:var(--font-condensed);font-size:0.7rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:0.65rem;}
 .embed-offline-title{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);color:var(--white);letter-spacing:0.04em;line-height:1;margin-bottom:0.75rem;}
-.embed-offline-body{font-size:0.9rem;color:var(--muted-light);max-width:340px;line-height:1.65;margin-bottom:1.5rem;}
-.embed-offline-cta{font-family:var(--font-condensed);font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0.65rem 1.35rem;border-radius:3px;text-decoration:none;transition:background 0.2s,transform 0.15s;border:none;cursor:pointer;display:inline-block;}
-.embed-offline-cta:hover{background:var(--gold-light);transform:translateY(-1px);}
-.embed-offline-cta.is-on{background:transparent;color:var(--gold);border:1px solid rgba(245,200,0,0.45);}
-.embed-offline-cta.is-on:hover{background:rgba(245,200,0,0.08);color:var(--gold-light);}
+.embed-offline-body{font-size:0.9rem;color:var(--muted-light);max-width:340px;line-height:1.65;margin:0;}
 .embed-caption{margin-top:0.65rem;font-size:0.78rem;color:var(--muted);font-style:italic;line-height:1.5;}
 .livestream-meta{padding-top:0.25rem;}
 .livestream-meta .section-body{margin-bottom:1.75rem;}
@@ -315,8 +312,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
             <img src="reinodeluzlogo.png?v=20" alt="" class="embed-offline-logo"/>
             <div class="embed-offline-label" data-es="No estamos en vivo" data-en="We're not live">No estamos en vivo</div>
             <div class="embed-offline-title" data-es="PRÓXIMAMENTE" data-en="COMING SOON">PRÓXIMAMENTE</div>
-            <p class="embed-offline-body" data-es="Vuelve pronto para adoración, predicación y oración en vivo. Activa las notificaciones para enterarte cuando empecemos." data-en="Come back soon for live worship, preaching, and prayer. Turn on notifications to know when we start.">Vuelve pronto para adoración, predicación y oración en vivo. Activa las notificaciones para enterarte cuando empecemos.</p>
-            <button type="button" class="embed-offline-cta" id="notifyBtnOffline" data-es="Avisarme cuando estemos en vivo" data-en="Notify me when we go live">Avisarme cuando estemos en vivo</button>
+            <p class="embed-offline-body" data-es="Vuelve pronto para adoración, predicación y oración en vivo." data-en="Come back soon for live worship, preaching, and prayer.">Vuelve pronto para adoración, predicación y oración en vivo.</p>
           </div>
         </div>
         <p class="embed-caption" id="embedCaption" data-es="Te avisaremos cuando la transmisión esté al aire." data-en="We'll let you know when the stream is on air.">Te avisaremos cuando la transmisión esté al aire.</p>
@@ -466,9 +462,8 @@ setLang(savedLang);
 (function () {
   var API = 'https://reino-de-luz-live.startekno.workers.dev';
   var btn = document.getElementById('notifyBtn');
-  var btnOffline = document.getElementById('notifyBtnOffline');
   var hint = document.getElementById('notifyHint');
-  var buttons = [btn, btnOffline].filter(Boolean);
+  var buttons = [btn].filter(Boolean);
   if (!buttons.length) return;
 
   var supported = 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
