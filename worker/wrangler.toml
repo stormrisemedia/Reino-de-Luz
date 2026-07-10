@@ -1,3 +1,15 @@
 name = "reino-de-luz-live"
 main = "src/index.js"
 compatibility_date = "2024-11-01"
+
+[[kv_namespaces]]
+binding = "PUSH_SUBS"
+id = "fe501978a5464de79130b33464a7a408"
+
+[triggers]
+crons = ["*/2 * * * *"]
+
+[vars]
+VAPID_PUBLIC_KEY = "BNANzk60u3EIt56bJikPj-MKDiduLjQjYtDBPtuvybycTbrfpJMxt5fLM1vvVUhn_MR5tCkW8e60Q9_d6JjyOck"
+VAPID_SUBJECT = "mailto:contacto@reinodeluz.org"
+SITE_ORIGIN = "https://reinodeluz.org"

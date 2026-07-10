@@ -55,10 +55,16 @@ nav::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;backg
 .hero-verse{font-family:'Barlow',sans-serif;font-size:1rem;font-style:italic;color:var(--muted-light);max-width:480px;margin-bottom:0.4rem;line-height:1.6;}
 .hero-verse-ref{font-family:var(--font-condensed);font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-dark);}
 .hero-cta{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;}
-.btn-primary{font-family:var(--font-condensed);font-size:0.85rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;background:var(--gold);color:var(--black);padding:0.8rem 2rem;border-radius:3px;text-decoration:none;transition:background 0.2s,transform 0.15s;display:inline-block;}
+.btn-primary{font-family:var(--font-condensed);font-size:0.85rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;background:var(--gold);color:var(--black);padding:0.8rem 2rem;border-radius:3px;text-decoration:none;transition:background 0.2s,transform 0.15s;display:inline-block;border:none;cursor:pointer;}
 .btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);}
-.btn-secondary{font-family:var(--font-condensed);font-size:0.85rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;background:transparent;color:var(--white);padding:0.8rem 2rem;border-radius:3px;border:1px solid rgba(245,200,0,0.35);text-decoration:none;transition:border-color 0.2s,color 0.2s;}
+.btn-secondary{font-family:var(--font-condensed);font-size:0.85rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;background:transparent;color:var(--white);padding:0.8rem 2rem;border-radius:3px;border:1px solid rgba(245,200,0,0.35);text-decoration:none;transition:border-color 0.2s,color 0.2s;cursor:pointer;}
 .btn-secondary:hover{border-color:var(--gold);color:var(--gold);}
+.notify-actions{display:flex;flex-direction:column;gap:0.75rem;margin-top:1rem;}
+.notify-btn{width:100%;text-align:center;}
+.notify-btn.is-on{background:transparent;color:var(--gold);border:1px solid rgba(245,200,0,0.45);}
+.notify-btn.is-on:hover{background:rgba(245,200,0,0.08);color:var(--gold-light);}
+.notify-hint{font-size:0.78rem;color:var(--muted);line-height:1.5;margin:0;}
+.notify-hint.is-error{color:#e8a0a0;}
 section{padding:3.5rem 2rem;}
 .section-inner{max-width:1100px;margin:0 auto;}
 .section-label{font-family:var(--font-condensed);font-size:0.7rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
@@ -78,8 +84,10 @@ section{padding:3.5rem 2rem;}
 .embed-offline-label{font-family:var(--font-condensed);font-size:0.7rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:0.65rem;}
 .embed-offline-title{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);color:var(--white);letter-spacing:0.04em;line-height:1;margin-bottom:0.75rem;}
 .embed-offline-body{font-size:0.9rem;color:var(--muted-light);max-width:340px;line-height:1.65;margin-bottom:1.5rem;}
-.embed-offline-cta{font-family:var(--font-condensed);font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0.65rem 1.35rem;border-radius:3px;text-decoration:none;transition:background 0.2s,transform 0.15s;}
+.embed-offline-cta{font-family:var(--font-condensed);font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0.65rem 1.35rem;border-radius:3px;text-decoration:none;transition:background 0.2s,transform 0.15s;border:none;cursor:pointer;display:inline-block;}
 .embed-offline-cta:hover{background:var(--gold-light);transform:translateY(-1px);}
+.embed-offline-cta.is-on{background:transparent;color:var(--gold);border:1px solid rgba(245,200,0,0.45);}
+.embed-offline-cta.is-on:hover{background:rgba(245,200,0,0.08);color:var(--gold-light);}
 .embed-caption{margin-top:0.65rem;font-size:0.78rem;color:var(--muted);font-style:italic;line-height:1.5;}
 .livestream-meta{padding-top:0.25rem;}
 .livestream-meta .section-body{margin-bottom:1.75rem;}
@@ -307,8 +315,8 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
             <img src="reinodeluzlogo.png?v=20" alt="" class="embed-offline-logo"/>
             <div class="embed-offline-label" data-es="No estamos en vivo" data-en="We're not live">No estamos en vivo</div>
             <div class="embed-offline-title" data-es="PRÓXIMAMENTE" data-en="COMING SOON">PRÓXIMAMENTE</div>
-            <p class="embed-offline-body" data-es="Vuelve pronto para adoración, predicación y oración en vivo. Suscríbete para enterarte cuando empecemos." data-en="Come back soon for live worship, preaching, and prayer. Subscribe to get notified when we go live.">Vuelve pronto para adoración, predicación y oración en vivo. Suscríbete para enterarte cuando empecemos.</p>
-            <a href="https://www.youtube.com/@asociacionreinodeluz?sub_confirmation=1" target="_blank" rel="noopener" class="embed-offline-cta" data-es="Suscribirse en YouTube" data-en="Subscribe on YouTube">Suscribirse en YouTube</a>
+            <p class="embed-offline-body" data-es="Vuelve pronto para adoración, predicación y oración en vivo. Activa las notificaciones para enterarte cuando empecemos." data-en="Come back soon for live worship, preaching, and prayer. Turn on notifications to know when we start.">Vuelve pronto para adoración, predicación y oración en vivo. Activa las notificaciones para enterarte cuando empecemos.</p>
+            <button type="button" class="embed-offline-cta" id="notifyBtnOffline" data-es="Avisarme cuando estemos en vivo" data-en="Notify me when we go live">Avisarme cuando estemos en vivo</button>
           </div>
         </div>
         <p class="embed-caption" id="embedCaption" data-es="Te avisaremos cuando la transmisión esté al aire." data-en="We'll let you know when the stream is on air.">Te avisaremos cuando la transmisión esté al aire.</p>
@@ -321,10 +329,14 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
             <img src="reinodeluzlogo.png?v=20" alt="Canal" class="channel-logo-sm"/>
             <div><div class="channel-name">Asociación Reino de Luz</div><div class="channel-handle">@AsociaciónReinodeLuz</div></div>
           </div>
-          <p data-es="Suscríbete para recibir notificaciones cuando estemos en vivo." data-en="Subscribe to get notified when we go live.">Suscríbete para recibir notificaciones cuando estemos en vivo.</p>
+          <p data-es="Activa las notificaciones del sitio para enterarte al instante cuando empecemos a transmitir." data-en="Turn on site notifications to know the moment we go live.">Activa las notificaciones del sitio para enterarte al instante cuando empecemos a transmitir.</p>
           <a href="https://www.youtube.com/@asociacionreinodeluz" target="_blank" rel="noopener" data-es="Visitar Canal →" data-en="Visit Channel →">Visitar Canal →</a>
         </div>
-        <a href="https://www.youtube.com/@asociacionreinodeluz?sub_confirmation=1" target="_blank" rel="noopener" class="btn-primary" data-es="Suscribirse" data-en="Subscribe">Suscribirse</a>
+        <div class="notify-actions">
+          <button type="button" class="btn-primary notify-btn" id="notifyBtn" data-es="Avisarme cuando estemos en vivo" data-en="Notify me when we go live">Avisarme cuando estemos en vivo</button>
+          <p class="notify-hint" id="notifyHint" data-es="Recibirás un aviso en este dispositivo cuando la transmisión comience." data-en="You'll get an alert on this device when the stream starts.">Recibirás un aviso en este dispositivo cuando la transmisión comience.</p>
+          <a href="https://www.youtube.com/@asociacionreinodeluz?sub_confirmation=1" target="_blank" rel="noopener" class="btn-secondary" style="text-align:center;" data-es="Suscribirse en YouTube" data-en="Subscribe on YouTube">Suscribirse en YouTube</a>
+        </div>
       </div>
     </div>
   </div>
@@ -448,6 +460,185 @@ setLang(savedLang);
       try { localStorage.setItem(CACHE_KEY, JSON.stringify({ t: Date.now(), live: live })); } catch (e) {}
     })
     .catch(function () { setPlayerLive(false); });
+})();
+
+/* --- Web Push: notify when the stream goes live --- */
+(function () {
+  var API = 'https://reino-de-luz-live.startekno.workers.dev';
+  var btn = document.getElementById('notifyBtn');
+  var btnOffline = document.getElementById('notifyBtnOffline');
+  var hint = document.getElementById('notifyHint');
+  var buttons = [btn, btnOffline].filter(Boolean);
+  if (!buttons.length) return;
+
+  var supported = 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
+
+  function t(es, en) { return lang === 'en' ? en : es; }
+
+  function setHint(es, en, isError) {
+    if (!hint) return;
+    hint.textContent = t(es, en);
+    hint.setAttribute('data-es', es);
+    hint.setAttribute('data-en', en);
+    hint.classList.toggle('is-error', !!isError);
+  }
+
+  function setButton(on) {
+    var es = on ? 'Desactivar notificaciones' : 'Avisarme cuando estemos en vivo';
+    var en = on ? 'Turn off notifications' : 'Notify me when we go live';
+    buttons.forEach(function (b) {
+      b.classList.toggle('is-on', !!on);
+      b.setAttribute('data-es', es);
+      b.setAttribute('data-en', en);
+      b.textContent = t(es, en);
+    });
+  }
+
+  function setDisabled(disabled) {
+    buttons.forEach(function (b) { b.disabled = !!disabled; });
+  }
+
+  function urlBase64ToUint8Array(base64String) {
+    var padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+    var base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+    var raw = atob(base64);
+    var out = new Uint8Array(raw.length);
+    for (var i = 0; i < raw.length; i++) out[i] = raw.charCodeAt(i);
+    return out;
+  }
+
+  async function getRegistration() {
+    return navigator.serviceWorker.register('/sw.js');
+  }
+
+  async function currentSubscription() {
+    var reg = await navigator.serviceWorker.ready;
+    return reg.pushManager.getSubscription();
+  }
+
+  async function refreshUi() {
+    if (!supported) {
+      setDisabled(true);
+      setHint(
+        'Tu navegador no admite notificaciones push.',
+        'Your browser does not support push notifications.',
+        true
+      );
+      return;
+    }
+    if (Notification.permission === 'denied') {
+      setDisabled(true);
+      setButton(false);
+      setHint(
+        'Las notificaciones están bloqueadas. Actívalas en la configuración del navegador.',
+        'Notifications are blocked. Enable them in your browser settings.',
+        true
+      );
+      return;
+    }
+    setDisabled(false);
+    try {
+      await getRegistration();
+      var sub = await currentSubscription();
+      setButton(!!sub);
+      if (sub) {
+        setHint(
+          'Listo. Te avisaremos en este dispositivo cuando estemos en vivo.',
+          "You're set. We'll alert this device when we go live."
+        );
+      } else {
+        setHint(
+          'Recibirás un aviso en este dispositivo cuando la transmisión comience.',
+          "You'll get an alert on this device when the stream starts."
+        );
+      }
+    } catch (e) {
+      setHint(
+        'No se pudieron preparar las notificaciones. Intenta de nuevo.',
+        'Could not set up notifications. Please try again.',
+        true
+      );
+    }
+  }
+
+  async function subscribe() {
+    var permission = Notification.permission;
+    if (permission !== 'granted') {
+      permission = await Notification.requestPermission();
+    }
+    if (permission !== 'granted') {
+      setHint(
+        'Necesitamos tu permiso para enviarte avisos.',
+        'We need your permission to send alerts.',
+        true
+      );
+      return;
+    }
+
+    var keyRes = await fetch(API + '/vapid-public-key');
+    var keyData = await keyRes.json();
+    if (!keyData.publicKey) throw new Error('Missing VAPID key');
+
+    await getRegistration();
+    var reg = await navigator.serviceWorker.ready;
+    var sub = await reg.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: urlBase64ToUint8Array(keyData.publicKey),
+    });
+
+    var res = await fetch(API + '/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(sub.toJSON()),
+    });
+    if (!res.ok) throw new Error('Subscribe failed');
+    setButton(true);
+    setHint(
+      'Listo. Te avisaremos en este dispositivo cuando estemos en vivo.',
+      "You're set. We'll alert this device when we go live."
+    );
+  }
+
+  async function unsubscribe() {
+    var sub = await currentSubscription();
+    if (sub) {
+      try {
+        await fetch(API + '/unsubscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ endpoint: sub.endpoint }),
+        });
+      } catch (e) {}
+      await sub.unsubscribe();
+    }
+    setButton(false);
+    setHint(
+      'Notificaciones desactivadas en este dispositivo.',
+      'Notifications turned off on this device.'
+    );
+  }
+
+  async function onClick() {
+    if (!supported) return;
+    setDisabled(true);
+    try {
+      var sub = await currentSubscription();
+      if (sub) await unsubscribe();
+      else await subscribe();
+    } catch (e) {
+      setHint(
+        'No se pudo actualizar las notificaciones. Intenta de nuevo.',
+        'Could not update notifications. Please try again.',
+        true
+      );
+    } finally {
+      setDisabled(Notification.permission === 'denied');
+      refreshUi();
+    }
+  }
+
+  buttons.forEach(function (b) { b.addEventListener('click', onClick); });
+  refreshUi();
 })();
 </script>
 </body>
