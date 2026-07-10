@@ -1,6 +1,36 @@
 (function () {
   'use strict';
 
+  /* ── Normalize nav: Donate then language toggle at the far right ── */
+  (function normalizeNav() {
+    var nav = document.querySelector('nav');
+    if (!nav) return;
+
+    var navLinks = nav.querySelector('.nav-links');
+    var navActions = nav.querySelector('.nav-actions');
+    if (!navActions) return;
+
+    var langInLinks = navLinks && navLinks.querySelector('.lang-toggle');
+    if (langInLinks) {
+      navActions.appendChild(langInLinks);
+    }
+
+    if (navLinks) {
+      navLinks.querySelectorAll('li').forEach(function (li) {
+        if (!li.querySelector('a, button, .lang-toggle')) {
+          li.remove();
+        }
+      });
+    }
+
+    var donate = navActions.querySelector('.nav-donate');
+    var live = navActions.querySelector('.nav-live');
+    var lang = navActions.querySelector('.lang-toggle');
+    if (donate) navActions.appendChild(donate);
+    if (live) navActions.appendChild(live);
+    if (lang) navActions.appendChild(lang);
+  })();
+
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ── Floating light particles (skip home hero) ── */
