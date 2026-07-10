@@ -353,6 +353,31 @@ body:not(.page-home) > .gallery-wrap:first-of-type {
   display: inline-block;
 }
 
+/* Donate sits at the end of the link row, slightly separated from Contact */
+.nav-links > li:last-child {
+  margin-left: 0.5rem;
+}
+
+.nav-links a.nav-donate {
+  font-family: var(--font-condensed);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.nav-links a.nav-donate:hover,
+.nav-links a.nav-donate.active {
+  color: var(--black) !important;
+}
+
+@media (max-width: 860px) {
+  .nav-links > li:last-child {
+    margin-left: 0;
+  }
+}
+
 .btn-primary::after,
 .btn-secondary::after,
 .nav-donate::after,
