@@ -10,36 +10,6 @@ html {
   }
 }
 
-.nav-actions .nav-donate { order: 1; }
-.nav-actions .nav-live { order: 2; }
-.nav-actions .lang-toggle { order: 3; }
-
-/* Nav — pin Donate + language toggle consistently on every page */
-nav .nav-logo {
-  flex-shrink: 0;
-}
-
-nav .nav-links {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-nav .nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-shrink: 0;
-  flex-wrap: nowrap;
-  margin-left: auto;
-}
-
-@media (max-width: 860px) {
-  nav .nav-logo { order: 1; }
-  nav .nav-toggle { order: 2; margin-left: auto; }
-  nav .nav-actions { order: 3; margin-left: 0; }
-  nav .nav-links { order: 4; }
-}
-
 /* Legacy bilingual hero labels removed from HTML — hide if cached */
 .page-hero-label {
   display: none !important;
