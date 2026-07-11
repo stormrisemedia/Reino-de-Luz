@@ -1,6 +1,6 @@
 # Live status + push notifications Worker
 
-Checks whether Asociación Reino de Luz is live on YouTube and sends browser push notifications when a stream starts.
+Checks whether Reino de Luz is live on YouTube and sends browser push notifications when a stream starts.
 
 ## Deploy
 

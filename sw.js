@@ -32,7 +32,7 @@ self.addEventListener('push', (event) => {
   const body =
     typeof data.body === 'string' && data.body
       ? data.body
-      : 'Asociación Reino de Luz está transmitiendo ahora.';
+      : 'Reino de Luz está transmitiendo ahora.';
   const icon = sameOriginUrl(data.icon, '/icons/icon-192.png');
   const badge = sameOriginUrl(data.badge, '/icons/icon-192.png');
   const clickUrl = sameOriginUrl(

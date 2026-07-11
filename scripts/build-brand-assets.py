@@ -80,7 +80,7 @@ def center_text(text, font, y, fill):
     draw.text(((W - tw) // 2, y), text, font=font, fill=fill)
 
 
-center_text("ASOCIACION REINO DE LUZ", title_font, 430, (255, 255, 255))
+center_text("REINO DE LUZ", title_font, 430, (255, 255, 255))
 draw.rectangle([W // 2 - 48, 478, W // 2 + 48, 480], fill=(245, 200, 0))
 center_text("Llevando la Luz de Cristo al Mundo", sub_font, 500, (245, 200, 0))
 

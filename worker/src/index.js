@@ -253,7 +253,7 @@ async function notifySubscribers(env, live) {
   const site = (env.SITE_ORIGIN || 'https://reinodeluz.org').replace(/\/$/, '');
   const payload = {
     title: '¡Estamos en vivo!',
-    body: 'Asociación Reino de Luz está transmitiendo ahora. Únete a la transmisión.',
+    body: 'Reino de Luz está transmitiendo ahora. Únete a la transmisión.',
     icon: site + '/reinodeluzlogo.png',
     badge: site + '/reinodeluzlogo.png',
     tag: 'rdl-live',
