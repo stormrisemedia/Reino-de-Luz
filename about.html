@@ -123,24 +123,19 @@ section{padding:3.5rem 2rem;}
 .mission-card h3{font-family:var(--font-display);font-size:1.6rem;color:var(--white);letter-spacing:0.04em;margin-bottom:0.75rem;line-height:1;}
 .mission-card p{font-size:0.85rem;color:var(--muted-light);line-height:1.7;}
 .origin-section{background:var(--black-surface);border-top:1px solid rgba(245,200,0,0.1);border-bottom:1px solid rgba(245,200,0,0.1);}
-.origin-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
-.origin-year{font-family:var(--font-condensed);font-size:0.78rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem;}
-.origin-serve{font-size:0.95rem;color:var(--muted-light);margin-bottom:1.5rem;line-height:1.6;}
-.origin-serve a{color:var(--gold);text-decoration:none;font-family:var(--font-condensed);font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-left:0.35rem;}
-.origin-serve a:hover{text-decoration:underline;}
-.origin-body{font-size:0.95rem;color:var(--muted-light);line-height:1.85;margin-bottom:1.5rem;}
-.origin-years{display:inline-flex;align-items:baseline;gap:0.5rem;margin:0.5rem 0 1.75rem;padding:0.75rem 1.25rem;border-left:3px solid var(--gold);background:rgba(245,200,0,0.05);}
-.origin-years-num{font-family:var(--font-display);font-size:3.5rem;color:var(--gold);line-height:1;}
-.origin-years-label{font-family:var(--font-condensed);font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);line-height:1.4;}
-.miracles-list{display:flex;flex-direction:column;gap:1px;margin-bottom:1.5rem;border:1px solid rgba(245,200,0,0.12);border-radius:4px;overflow:hidden;}
-.miracle-item{display:flex;align-items:center;gap:1rem;padding:0.9rem 1.1rem;background:var(--black-card);font-size:0.9rem;color:var(--muted-light);transition:background 0.2s;}
-.miracle-item:hover{background:var(--black-mid);}
-.miracle-icon{font-size:1.1rem;flex-shrink:0;}
-.origin-declaration{background:var(--gold);border-radius:4px;padding:1.5rem;margin-bottom:1.5rem;}
-.origin-declaration p{font-family:var(--font-display);font-size:1.1rem;color:var(--black);line-height:1.4;letter-spacing:0.01em;}
+.origin-flow{display:flex;flex-direction:column;width:100%;max-width:780px;}
+.origin-year{font-family:var(--font-condensed);font-size:0.78rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.75rem;}
+.origin-body{font-size:1rem;color:var(--muted-light);line-height:1.85;margin-bottom:1.25rem;}
+.origin-body:last-of-type{margin-bottom:2.25rem;}
+.origin-close{display:flex;flex-direction:column;gap:1.25rem;margin-bottom:1.75rem;}
+.origin-declaration{background:var(--gold);border-radius:4px;padding:1.5rem 1.65rem;}
+.origin-declaration p{font-family:var(--font-display);font-size:1.15rem;color:var(--black);line-height:1.4;letter-spacing:0.01em;}
 .origin-closing{padding:1rem 1.25rem;border-left:3px solid rgba(245,200,0,0.35);}
-.origin-closing p{font-size:0.9rem;color:var(--off-white);line-height:1.7;}
+.origin-closing p{font-size:0.95rem;color:var(--off-white);line-height:1.7;}
 .origin-closing strong{color:var(--white);font-weight:600;}
+.origin-belen{margin:0;}
+.origin-belen a{color:var(--gold);text-decoration:none;font-family:var(--font-condensed);font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;}
+.origin-belen a:hover{text-decoration:underline;}
 .testimony-section{background:var(--black);border-top:1px solid rgba(245,200,0,0.1);}
 .history-divider{display:flex;align-items:center;gap:1.75rem;margin:1.5rem 0 4rem;}
 .history-divider::before,.history-divider::after{content:'';flex:1;height:1px;background:rgba(245,200,0,0.2);}
@@ -253,7 +248,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   .nav-actions{margin-left:0;}
   .nav-links{display:none;width:100%;flex-direction:column;align-items:flex-start;gap:0.85rem;padding-top:0.75rem;border-top:1px solid rgba(245,200,0,0.12);}
   .nav-links.open{display:flex;}
-  .livestream-grid,.connect-grid,.origin-grid,.impact-grid{grid-template-columns:1fr;}
+  .livestream-grid,.connect-grid,.impact-grid{grid-template-columns:1fr;}
 }
 @media(max-width:600px){
   section{padding:2.5rem 1.25rem;}
@@ -319,24 +314,12 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
 </div>
 <section class="origin-section" id="about">
   <div class="section-inner">
-    <div class="origin-grid">
-      <div class="origin-text">
-        <h1 class="section-title" data-es="NACIDOS EN<br/><span class='gold'>PANDEMIA</span>" data-en="BORN IN A<br/><span class='gold'>PANDEMIC</span>">NACIDOS EN<br/><span class="gold">PANDEMIA</span></h1>
-        <p class="origin-year">2020 · Belén, Iquitos</p>
-        <p class="origin-serve" data-es="Servimos en Belén, Iquitos. <a href='mision.html#belen'>Conoce el distrito →</a>" data-en="We serve in Belén, Iquitos. <a href='mision.html#belen'>See the district →</a>">Servimos en Belén, Iquitos. <a href="mision.html#belen">Conoce el distrito →</a></p>
-        <p class="origin-body" data-es="Reino de Luz nació en 2020, en medio de la pandemia del COVID. Con algunos miedos e inseguridades, decidimos como familia irnos a Belén para entregar nuestra vida a servir, amar y discipular a niños y adolescentes en situación de vulnerabilidad. Durante ese tiempo repartíamos comida y entregábamos paquetes de víveres." data-en="Reino de Luz was born in 2020, in the midst of the COVID pandemic. With some fears and insecurities, we decided as a family to go to Belén to give our lives to serve, love, and disciple children and adolescents in vulnerable situations. During that time we distributed food and delivered care packages.">Reino de Luz nació en 2020, en medio de la pandemia del COVID. Con algunos miedos e inseguridades, decidimos como familia irnos a Belén para entregar nuestra vida a servir, amar y discipular a niños y adolescentes en situación de vulnerabilidad. Durante ese tiempo repartíamos comida y entregábamos paquetes de víveres.</p>
-        <div class="origin-years">
-          <span class="origin-years-num">6</span>
-          <span class="origin-years-label" data-es="años" data-en="years">años</span>
-        </div>
-        <p class="origin-body" data-es="No ha sido un camino fácil. Hemos reído, hemos llorado, hemos dudado, hemos sufrido — y muchas veces nos hemos cansado. Pero también hemos visto muchos milagros." data-en="It has not been an easy road. We have laughed, cried, doubted, and suffered — and many times we have grown weary. But we have also witnessed many miracles.">No ha sido un camino fácil. Hemos reído, hemos llorado, hemos dudado, hemos sufrido — y muchas veces nos hemos cansado. Pero también hemos visto muchos milagros.</p>
-      </div>
-      <div class="origin-right">
-        <div class="miracles-list">
-          <div class="miracle-item"><span class="miracle-icon">✨</span><span data-es="Niños restaurados" data-en="Restored children">Niños restaurados</span></div>
-          <div class="miracle-item"><span class="miracle-icon">😊</span><span data-es="Sonrisas donde antes había dolor" data-en="Smiles where there was once pain">Sonrisas donde antes había dolor</span></div>
-          <div class="miracle-item"><span class="miracle-icon">☀️</span><span data-es="Esperanza donde antes solo había oscuridad" data-en="Hope where there was once only darkness">Esperanza donde antes solo había oscuridad</span></div>
-        </div>
+    <div class="origin-flow">
+      <h1 class="section-title" data-es="NACIDOS EN<br/><span class='gold'>PANDEMIA</span>" data-en="BORN IN A<br/><span class='gold'>PANDEMIC</span>">NACIDOS EN<br/><span class="gold">PANDEMIA</span></h1>
+      <p class="origin-year">2020 · Belén, Iquitos</p>
+      <p class="origin-body" data-es="Reino de Luz nació en 2020, en medio de la pandemia del COVID. Con algunos miedos e inseguridades, decidimos como familia irnos a Belén para entregar nuestra vida a servir, amar y discipular a niños y adolescentes en situación de vulnerabilidad. Durante ese tiempo repartíamos comida y entregábamos paquetes de víveres." data-en="Reino de Luz was born in 2020, in the midst of the COVID pandemic. With some fears and insecurities, we decided as a family to go to Belén to give our lives to serve, love, and disciple children and adolescents in vulnerable situations. During that time we distributed food and delivered care packages.">Reino de Luz nació en 2020, en medio de la pandemia del COVID. Con algunos miedos e inseguridades, decidimos como familia irnos a Belén para entregar nuestra vida a servir, amar y discipular a niños y adolescentes en situación de vulnerabilidad. Durante ese tiempo repartíamos comida y entregábamos paquetes de víveres.</p>
+      <p class="origin-body" data-es="No ha sido un camino fácil. Hemos reído, hemos llorado, hemos dudado, hemos sufrido — y muchas veces nos hemos cansado. Pero también hemos visto muchos milagros." data-en="It has not been an easy road. We have laughed, cried, doubted, and suffered — and many times we have grown weary. But we have also witnessed many miracles.">No ha sido un camino fácil. Hemos reído, hemos llorado, hemos dudado, hemos sufrido — y muchas veces nos hemos cansado. Pero también hemos visto muchos milagros.</p>
+      <div class="origin-close">
         <div class="origin-declaration">
           <p data-es="&quot;Dios ha sido bueno. Cada paso valió la pena. Cada semilla sembrada dio fruto. Y cada batalla nos enseñó a depender más de Él.&quot;" data-en="&quot;God has been good. Every step was worth it. Every seed sown bore fruit. And every battle taught us to depend on Him more.&quot;">"Dios ha sido bueno. Cada paso valió la pena. Cada semilla sembrada dio fruto. Y cada batalla nos enseñó a depender más de Él."</p>
         </div>
@@ -344,6 +327,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
           <p data-es="Seguimos creyendo que <strong>una vida transformada puede cambiar muchas más.</strong>" data-en="We keep believing that <strong>one transformed life can change many more.</strong>">Seguimos creyendo que <strong>una vida transformada puede cambiar muchas más.</strong></p>
         </div>
       </div>
+      <p class="origin-belen"><a href="mision.html#belen" data-es="Conoce el distrito →" data-en="See the district →">Conoce el distrito →</a></p>
     </div>
   </div>
 </section>
