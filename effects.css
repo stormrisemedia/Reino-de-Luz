@@ -154,6 +154,10 @@ body > *:not(.ambient-bg):not(nav):not(.lightbox) {
   position: relative;
   z-index: 1;
 }
+.lightbox {
+  position: fixed !important;
+  z-index: 10000 !important;
+}
 
 /* ── Nav scroll state ── */
 nav.nav-scrolled {
