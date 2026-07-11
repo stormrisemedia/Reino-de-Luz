@@ -186,8 +186,14 @@ async function notifySubscribers(env, live) {
 
 async function syncLiveAndMaybeNotify(env, live) {
   const prev = await env.PUSH_SUBS.get(LAST_LIVE_KEY);
-  await env.PUSH_SUBS.put(LAST_LIVE_KEY, live ? 'true' : 'false');
   const wasLive = prev === 'true';
+  const next = live ? 'true' : 'false';
+
+  // Only write when status changes — avoids burning free KV write quota every cron tick.
+  if (prev !== next) {
+    await env.PUSH_SUBS.put(LAST_LIVE_KEY, next);
+  }
+
   if (live && !wasLive) {
     return notifySubscribers(env, true);
   }
