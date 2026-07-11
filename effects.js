@@ -185,10 +185,15 @@
   }
 
   function isYearValue(n) {
-    return Number.isInteger(n) && n >= 1900 && n <= 2100;
+    var whole = Math.round(n);
+    return Math.abs(n - whole) < 1e-9 && whole >= 1900 && whole <= 2100;
   }
 
   function animateCounter(el) {
+    if (el.hasAttribute('data-no-count')) {
+      el.classList.add('is-counted');
+      return;
+    }
     var parsed = parseNumber(el.textContent);
     if (!parsed) return;
     if (parsed.type === 'symbol') {
@@ -197,7 +202,7 @@
     }
     // Years stay static — no count-up, no commas
     if (isYearValue(parsed.value) && !parsed.prefix && !parsed.suffix && parsed.decimals === 0) {
-      el.textContent = String(parsed.value);
+      el.textContent = String(Math.round(parsed.value));
       el.classList.add('is-counted');
       return;
     }
