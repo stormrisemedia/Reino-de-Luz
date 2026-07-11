@@ -124,7 +124,10 @@ section{padding:3.5rem 2rem;}
 .mission-card p{font-size:0.85rem;color:var(--muted-light);line-height:1.7;}
 .origin-section{background:var(--black-surface);border-top:1px solid rgba(245,200,0,0.1);border-bottom:1px solid rgba(245,200,0,0.1);}
 .origin-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
-.origin-year{font-family:var(--font-condensed);font-size:0.78rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;}
+.origin-year{font-family:var(--font-condensed);font-size:0.78rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem;}
+.origin-serve{font-size:0.95rem;color:var(--muted-light);margin-bottom:1.5rem;line-height:1.6;}
+.origin-serve a{color:var(--gold);text-decoration:none;font-family:var(--font-condensed);font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-left:0.35rem;}
+.origin-serve a:hover{text-decoration:underline;}
 .origin-body{font-size:0.95rem;color:var(--muted-light);line-height:1.85;margin-bottom:1.5rem;}
 .origin-years{display:inline-flex;align-items:baseline;gap:0.5rem;margin:0.5rem 0 1.75rem;padding:0.75rem 1.25rem;border-left:3px solid var(--gold);background:rgba(245,200,0,0.05);}
 .origin-years-num{font-family:var(--font-display);font-size:3.5rem;color:var(--gold);line-height:1;}
@@ -139,7 +142,6 @@ section{padding:3.5rem 2rem;}
 .origin-closing p{font-size:0.9rem;color:var(--off-white);line-height:1.7;}
 .origin-closing strong{color:var(--white);font-weight:600;}
 .testimony-section{background:var(--black);border-top:1px solid rgba(245,200,0,0.1);}
-.belen-sub{padding-bottom:2.5rem;border-bottom:1px solid rgba(245,200,0,0.1);margin-bottom:2.5rem;}
 .history-divider{display:flex;align-items:center;gap:1.25rem;margin:1rem 0 3.5rem;}
 .history-divider::before,.history-divider::after{content:'';flex:1;height:1px;background:rgba(245,200,0,0.2);}
 .history-divider span{font-family:var(--font-condensed);font-size:0.82rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);white-space:nowrap;}
@@ -165,21 +167,6 @@ section{padding:3.5rem 2rem;}
   .testimony-story{padding-left:1.85rem;}
   .testimony-story::before{left:8px;}
 }
-.belen-grid{display:grid;grid-template-columns:1fr 340px;gap:4rem;align-items:start;}
-.belen-location{font-family:var(--font-condensed);font-size:0.85rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.75rem;}
-.belen-tagline{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--muted);line-height:1.1;letter-spacing:0.02em;margin-bottom:2rem;}
-.belen-tagline span{color:var(--white);}
-.belen-body{font-size:0.95rem;color:var(--muted-light);line-height:1.8;max-width:560px;margin-bottom:1rem;}
-.belen-body strong{color:var(--white);font-weight:600;}
-.belen-callout{margin-top:1rem;padding:1.25rem 1.5rem;border-left:3px solid var(--gold);background:rgba(245,200,0,0.05);border-radius:0 4px 4px 0;}
-.belen-callout p{font-size:0.9rem;color:var(--off-white);line-height:1.65;font-weight:500;}
-.belen-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(245,200,0,0.1);border:1px solid rgba(245,200,0,0.1);border-radius:4px;overflow:hidden;}
-.stat-card{background:var(--black-surface);padding:1.5rem 1.25rem;display:flex;flex-direction:column;gap:0.4rem;transition:background 0.2s;}
-.stat-card:hover{background:var(--black-card);}
-.stat-card-accent{background:var(--black-card);}
-.stat-card-accent .stat-num{color:var(--gold);}
-.stat-num{font-family:var(--font-display);font-size:2.4rem;color:var(--white);line-height:1;letter-spacing:0.02em;}
-.stat-label{font-size:0.72rem;color:var(--muted);line-height:1.4;font-family:var(--font-condensed);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;}
 .testimony-header{margin-bottom:3rem;}
 .testimony-grid{display:grid;grid-template-columns:300px 1fr;gap:4rem;align-items:start;}
 .founder-card{display:flex;align-items:center;gap:1rem;background:var(--black-surface);border:1px solid rgba(245,200,0,0.18);border-radius:4px;padding:1.1rem 1.25rem;margin-bottom:1.5rem;}
@@ -287,7 +274,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   .nav-actions{margin-left:0;}
   .nav-links{display:none;width:100%;flex-direction:column;align-items:flex-start;gap:0.85rem;padding-top:0.75rem;border-top:1px solid rgba(245,200,0,0.12);}
   .nav-links.open{display:flex;}
-  .livestream-grid,.belen-grid,.testimony-grid,.connect-grid,.origin-grid,.impact-grid{grid-template-columns:1fr;}
+  .livestream-grid,.testimony-grid,.connect-grid,.origin-grid,.impact-grid{grid-template-columns:1fr;}
 }
 @media(max-width:600px){
   section{padding:2.5rem 1.25rem;}
@@ -339,6 +326,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
       <div class="origin-text">
         <h1 class="section-title" data-es="NACIDOS EN<br/><span class='gold'>PANDEMIA</span>" data-en="BORN IN A<br/><span class='gold'>PANDEMIC</span>">NACIDOS EN<br/><span class="gold">PANDEMIA</span></h1>
         <p class="origin-year">2020 · Belén, Iquitos</p>
+        <p class="origin-serve" data-es="Servimos en Belén, Iquitos. <a href='mision.html#belen'>Conoce el distrito →</a>" data-en="We serve in Belén, Iquitos. <a href='mision.html#belen'>See the district →</a>">Servimos en Belén, Iquitos. <a href="mision.html#belen">Conoce el distrito →</a></p>
         <p class="origin-body" data-es="Reino de Luz nació en 2020, en medio de la pandemia del COVID. Con algunos miedos e inseguridades, decidimos como familia irnos a Belén para entregar nuestra vida a servir, amar y discipular a niños y adolescentes en situación de vulnerabilidad. Durante ese tiempo repartíamos comida y entregábamos paquetes de víveres." data-en="Reino de Luz was born in 2020, in the midst of the COVID pandemic. With some fears and insecurities, we decided as a family to go to Belén to give our lives to serve, love, and disciple children and adolescents in vulnerable situations. During that time we distributed food and delivered care packages.">Reino de Luz nació en 2020, en medio de la pandemia del COVID. Con algunos miedos e inseguridades, decidimos como familia irnos a Belén para entregar nuestra vida a servir, amar y discipular a niños y adolescentes en situación de vulnerabilidad. Durante ese tiempo repartíamos comida y entregábamos paquetes de víveres.</p>
         <div class="origin-years">
           <span class="origin-years-num">6</span>
@@ -365,26 +353,6 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
 
 <section class="testimony-section" id="testimonio">
   <div class="section-inner">
-    <div class="belen-sub">
-      <div class="belen-grid">
-        <div class="belen-text">
-<h2 class="section-title" data-es="DISTRITO DE<br/><span class='gold'>BELÉN</span>" data-en="DISTRICT OF<br/><span class='gold'>BELÉN</span>">DISTRITO DE<br/><span class="gold">BELÉN</span></h2>
-          <h3 class="belen-location">Iquitos, Loreto · Perú</h3>
-          <p class="belen-tagline" data-es="&quot;Un lugar donde&lt;br/&gt;&lt;span&gt;Jesús transforma vidas&quot;" data-en="&quot;A place where&lt;br/&gt;&lt;span&gt;Jesus transforms lives&quot;">"Un lugar donde<br/><span>Jesús transforma vidas"</span></p>
-          <p class="belen-body" data-es="El distrito de Belén es uno de los cuatro distritos urbanos de Iquitos, considerado el &lt;strong&gt;distrito más pobre de la ciudad&lt;/strong&gt;. Con más de 60,804 habitantes en condiciones de alta densidad poblacional, muchas familias viven en pobreza extrema, sin acceso adecuado a electricidad ni agua potable." data-en="The Belén district is one of four urban districts of Iquitos, considered the &lt;strong&gt;poorest district in the city&lt;/strong&gt;. With over 60,804 inhabitants in extremely dense conditions, many families live in extreme poverty, lacking adequate access to electricity or clean water.">El distrito de Belén es uno de los cuatro distritos urbanos de Iquitos, considerado el <strong>distrito más pobre de la ciudad</strong>. Con más de 60,804 habitantes en condiciones de alta densidad poblacional, muchas familias viven en pobreza extrema, sin acceso adecuado a electricidad ni agua potable.</p>
-          <div class="belen-callout">
-            <p data-es="Es en este contexto donde Reino de Luz trabaja — llevando luz, esperanza y propósito a los que más lo necesitan." data-en="This is the context in which Reino de Luz works — bringing light, hope, and purpose to those who need it most.">Es en este contexto donde Reino de Luz trabaja — llevando luz, esperanza y propósito a los que más lo necesitan.</p>
-          </div>
-        </div>
-        <div class="belen-stats">
-          <div class="stat-card"><span class="stat-num">60,804</span><span class="stat-label" data-es="Habitantes" data-en="Inhabitants">Habitantes</span></div>
-          <div class="stat-card stat-card-accent"><span class="stat-num">#1</span><span class="stat-label" data-es="Distrito más pobre de Iquitos" data-en="Poorest district in Iquitos">Distrito más pobre de Iquitos</span></div>
-          <div class="stat-card"><span class="stat-num">4°</span><span class="stat-label" data-es="Distrito urbano de Iquitos" data-en="Urban district of Iquitos">Distrito urbano de Iquitos</span></div>
-          <div class="stat-card"><span class="stat-num">∞</span><span class="stat-label" data-es="Razones para servir" data-en="Reasons to serve">Razones para servir</span></div>
-        </div>
-      </div>
-    </div>
-
     <div class="history-divider">
       <span data-es="Historia del Fundador" data-en="Founder's Story">Historia del Fundador</span>
     </div>
