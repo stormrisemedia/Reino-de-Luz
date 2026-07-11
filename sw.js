@@ -33,8 +33,8 @@ self.addEventListener('push', (event) => {
     typeof data.body === 'string' && data.body
       ? data.body
       : 'Asociación Reino de Luz está transmitiendo ahora.';
-  const icon = sameOriginUrl(data.icon, '/reinodeluzlogo.png');
-  const badge = sameOriginUrl(data.badge, '/reinodeluzlogo.png');
+  const icon = sameOriginUrl(data.icon, '/icons/icon-192.png');
+  const badge = sameOriginUrl(data.badge, '/icons/icon-192.png');
   const clickUrl = sameOriginUrl(
     data.data && data.data.url,
     '/en-vivo.html'
