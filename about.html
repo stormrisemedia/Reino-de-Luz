@@ -145,42 +145,13 @@ section{padding:3.5rem 2rem;}
 .history-divider{display:flex;align-items:center;gap:1.25rem;margin:1rem 0 3.5rem;}
 .history-divider::before,.history-divider::after{content:'';flex:1;height:1px;background:rgba(245,200,0,0.2);}
 .history-divider span{font-family:var(--font-condensed);font-size:0.82rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);white-space:nowrap;}
-@media(min-width:861px){
-  .history-divider{gap:1.75rem;margin:1.5rem 0 4rem;}
-  .history-divider span{font-size:1.15rem;letter-spacing:0.28em;}
-  .testimony-grid{grid-template-columns:minmax(420px,0.95fr) minmax(0,1.15fr);gap:4.5rem;}
-  .founder-card{padding:1.9rem 2rem;gap:1.45rem;margin-bottom:2rem;border-radius:5px;}
-  .founder-initials{width:80px;height:80px;font-size:1.85rem;}
-  .founder-name{font-size:1.55rem;letter-spacing:0.04em;margin-bottom:0.5rem;}
-  .founder-detail{font-size:1.25rem;line-height:1.7;}
-  .scripture-pull{padding:1.85rem 2rem;margin-bottom:2rem;border-left-width:4px;}
-  .scripture-text{font-size:1.3rem;line-height:1.9;}
-  .scripture-pull cite{font-size:0.95rem;letter-spacing:0.16em;}
-  .calling-box{padding:1.9rem 2rem;}
-  .calling-label{font-size:0.9rem;letter-spacing:0.22em;margin-bottom:1.1rem;}
-  .calling-quote{font-size:1.7rem;line-height:1.3;margin-bottom:0.9rem;}
-  .calling-source{font-size:1rem;}
-  .tl-year{font-size:1.05rem;letter-spacing:0.14em;margin-bottom:0.65rem;}
-  .tl-content p{font-size:1.35rem;line-height:1.9;}
-  .tl-item{padding-bottom:2.9rem;gap:1.75rem;}
-  .tl-marker{width:16px;height:16px;margin-top:6px;}
-  .testimony-story{padding-left:1.85rem;}
-  .testimony-story::before{left:8px;}
-}
-.testimony-header{margin-bottom:3rem;}
-.testimony-grid{display:grid;grid-template-columns:300px 1fr;gap:4rem;align-items:start;}
-.founder-card{display:flex;align-items:center;gap:1rem;background:var(--black-surface);border:1px solid rgba(245,200,0,0.18);border-radius:4px;padding:1.1rem 1.25rem;margin-bottom:1.5rem;}
+.testimony-header{margin-bottom:2rem;}
+.testimony-flow{max-width:720px;}
+.founder-card{display:flex;align-items:center;gap:1rem;background:var(--black-surface);border:1px solid rgba(245,200,0,0.18);border-radius:4px;padding:1.1rem 1.25rem;margin-bottom:2.5rem;}
 .founder-initials{width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--black);font-family:var(--font-display);font-size:1.2rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .founder-name{font-family:var(--font-condensed);font-size:0.95rem;font-weight:700;color:var(--white);margin-bottom:0.2rem;}
 .founder-detail{font-size:0.75rem;color:var(--muted);line-height:1.5;}
-.scripture-pull{background:var(--black-surface);border-left:3px solid var(--gold);border-radius:0 4px 4px 0;padding:1.1rem 1.25rem;margin-bottom:1.5rem;}
-.scripture-text{font-style:italic;color:var(--muted-light);line-height:1.7;margin-bottom:0.5rem;font-size:0.85rem;}
-.scripture-pull cite{font-family:var(--font-condensed);font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-dark);font-style:normal;}
-.calling-box{background:rgba(245,200,0,0.06);border:1px solid rgba(245,200,0,0.25);border-radius:4px;padding:1.25rem;}
-.calling-label{font-family:var(--font-condensed);font-size:0.68rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
-.calling-quote{font-family:var(--font-display);font-size:1.05rem;color:var(--white);line-height:1.3;letter-spacing:0.02em;margin-bottom:0.6rem;}
-.calling-source{font-size:0.75rem;color:var(--muted);font-style:italic;}
-.testimony-story{position:relative;padding-left:1.5rem;}
+.testimony-story{position:relative;padding-left:1.5rem;margin-bottom:2.75rem;}
 .testimony-story::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,rgba(255,255,255,0.05) 0%,rgba(245,200,0,0.3) 40%,rgba(245,200,0,0.6) 70%,rgba(245,200,0,0.3) 100%);}
 .tl-item{display:flex;gap:1.25rem;padding-bottom:2rem;position:relative;}
 .tl-last{padding-bottom:0;}
@@ -194,6 +165,37 @@ section{padding:3.5rem 2rem;}
 .tl-content p{font-size:0.9rem;color:var(--muted-light);line-height:1.75;}
 .tl-content p em{color:var(--off-white);font-style:italic;}
 .tl-content p strong{color:var(--white);font-weight:600;}
+.testimony-close{display:flex;flex-direction:column;gap:1.25rem;}
+.calling-box{background:rgba(245,200,0,0.06);border:1px solid rgba(245,200,0,0.25);border-radius:4px;padding:1.25rem;}
+.calling-label{font-family:var(--font-condensed);font-size:0.68rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
+.calling-quote{font-family:var(--font-display);font-size:1.05rem;color:var(--white);line-height:1.3;letter-spacing:0.02em;margin-bottom:0.6rem;}
+.calling-source{font-size:0.75rem;color:var(--muted);font-style:italic;}
+.scripture-pull{background:var(--black-surface);border-left:3px solid var(--gold);border-radius:0 4px 4px 0;padding:1.1rem 1.25rem;}
+.scripture-text{font-style:italic;color:var(--muted-light);line-height:1.7;margin-bottom:0.5rem;font-size:0.85rem;}
+.scripture-pull cite{font-family:var(--font-condensed);font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-dark);font-style:normal;}
+@media(min-width:861px){
+  .history-divider{gap:1.75rem;margin:1.5rem 0 4rem;}
+  .history-divider span{font-size:1.15rem;letter-spacing:0.28em;}
+  .testimony-flow{max-width:780px;}
+  .founder-card{padding:1.5rem 1.75rem;gap:1.25rem;margin-bottom:3rem;border-radius:5px;}
+  .founder-initials{width:64px;height:64px;font-size:1.5rem;}
+  .founder-name{font-size:1.35rem;letter-spacing:0.04em;margin-bottom:0.4rem;}
+  .founder-detail{font-size:1.05rem;line-height:1.65;}
+  .testimony-story{padding-left:1.85rem;margin-bottom:3.25rem;}
+  .testimony-story::before{left:8px;}
+  .tl-year{font-size:1.05rem;letter-spacing:0.14em;margin-bottom:0.65rem;}
+  .tl-content p{font-size:1.35rem;line-height:1.9;}
+  .tl-item{padding-bottom:2.9rem;gap:1.75rem;}
+  .tl-marker{width:16px;height:16px;margin-top:6px;}
+  .testimony-close{gap:1.5rem;}
+  .calling-box{padding:1.75rem 1.85rem;}
+  .calling-label{font-size:0.9rem;letter-spacing:0.22em;margin-bottom:1.1rem;}
+  .calling-quote{font-size:1.55rem;line-height:1.3;margin-bottom:0.9rem;}
+  .calling-source{font-size:1rem;}
+  .scripture-pull{padding:1.6rem 1.75rem;border-left-width:4px;}
+  .scripture-text{font-size:1.2rem;line-height:1.85;}
+  .scripture-pull cite{font-size:0.9rem;letter-spacing:0.16em;}
+}
 .impact-section{background:var(--black-mid);border-top:1px solid rgba(245,200,0,0.1);}
 .impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
 .impact-body{font-size:0.95rem;color:var(--muted-light);line-height:1.8;margin-bottom:0.5rem;}
@@ -274,7 +276,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   .nav-actions{margin-left:0;}
   .nav-links{display:none;width:100%;flex-direction:column;align-items:flex-start;gap:0.85rem;padding-top:0.75rem;border-top:1px solid rgba(245,200,0,0.12);}
   .nav-links.open{display:flex;}
-  .livestream-grid,.testimony-grid,.connect-grid,.origin-grid,.impact-grid{grid-template-columns:1fr;}
+  .livestream-grid,.connect-grid,.origin-grid,.impact-grid{grid-template-columns:1fr;}
 }
 @media(max-width:600px){
   section{padding:2.5rem 1.25rem;}
@@ -358,29 +360,19 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
     </div>
 
     <div class="testimony-header">
-<h2 class="section-title" data-es="UNA HISTORIA DE<br/><span class='gold'>REDENCIÓN</span>" data-en="A STORY OF<br/><span class='gold'>REDEMPTION</span>">UNA HISTORIA DE<br/><span class="gold">REDENCIÓN</span></h2>
+      <h2 class="section-title" data-es="UNA HISTORIA DE<br/><span class='gold'>REDENCIÓN</span>" data-en="A STORY OF<br/><span class='gold'>REDEMPTION</span>">UNA HISTORIA DE<br/><span class="gold">REDENCIÓN</span></h2>
     </div>
 
-    <div class="testimony-grid">
-      <div class="testimony-identity">
-        <div class="founder-card">
-          <div class="founder-initials">BA</div>
-          <div>
-            <div class="founder-name">Bryan Acipali Vela</div>
-            <div class="founder-detail" data-es="Iquitos, Perú · 29 años" data-en="Iquitos, Peru · Age 29">Iquitos, Perú · 29 años</div>
-            <div class="founder-detail" data-es="Esposo de Yuri · Padre de Lucian Josiah &amp; Fe Gracia" data-en="Husband of Yuri · Father of Lucian Josiah &amp; Fe Gracia">Esposo de Yuri · Padre de Lucian Josiah &amp; Fe Gracia</div>
-          </div>
-        </div>
-        <div class="scripture-pull">
-          <p class="scripture-text" data-es="&quot;El Espíritu del Señor está sobre mí, por cuanto me ha ungido para anunciar buenas nuevas a los pobres... para proclamar libertad a los cautivos...&quot;" data-en="&quot;The Spirit of the Lord is on me, because he has anointed me to proclaim good news to the poor... to proclaim freedom for the captives...&quot;">"El Espíritu del Señor está sobre mí, por cuanto me ha ungido para anunciar buenas nuevas a los pobres..."</p>
-          <cite data-es="Isaías 61:1–4" data-en="Isaiah 61:1–4">Isaías 61:1–4</cite>
-        </div>
-        <div class="calling-box">
-          <p class="calling-label" data-es="El Llamado" data-en="The Calling">El Llamado</p>
-          <p class="calling-quote" data-es="&quot;Bryan, quiero que lleves Mi amor a los niños de Belén que viven lo mismo que tú viviste.&quot;" data-en="&quot;Bryan, I want you to bring My love to the children of Belén who are living what you once lived.&quot;">"Bryan, quiero que lleves Mi amor a los niños de Belén que viven lo mismo que tú viviste."</p>
-          <p class="calling-source" data-es="— Dios, en oración" data-en="— God, in prayer">— Dios, en oración</p>
+    <div class="testimony-flow">
+      <div class="founder-card">
+        <div class="founder-initials">BA</div>
+        <div>
+          <div class="founder-name">Bryan Acipali Vela</div>
+          <div class="founder-detail" data-es="Iquitos, Perú · 29 años" data-en="Iquitos, Peru · Age 29">Iquitos, Perú · 29 años</div>
+          <div class="founder-detail" data-es="Esposo de Yuri · Padre de Lucian Josiah &amp; Fe Gracia" data-en="Husband of Yuri · Father of Lucian Josiah &amp; Fe Gracia">Esposo de Yuri · Padre de Lucian Josiah &amp; Fe Gracia</div>
         </div>
       </div>
+
       <div class="testimony-story">
         <div class="tl-item"><div class="tl-marker tl-dark"></div><div class="tl-content"><span class="tl-year" data-es="Infancia" data-en="Childhood">Infancia</span><p data-es="Creció en Belén — uno de los distritos más golpeados por la extrema pobreza, la prostitución y la venta de droga. Nunca conoció a su papá. Su madre lo abandonó a los 6 años." data-en="He grew up in Belén — one of the districts hardest hit by extreme poverty, prostitution, and drug trafficking. He never knew his father. His mother abandoned him at age 6.">Creció en Belén — uno de los distritos más golpeados por la extrema pobreza, la prostitución y la venta de droga. Nunca conoció a su papá. Su madre lo abandonó a los 6 años.</p></div></div>
         <div class="tl-item"><div class="tl-marker tl-dark"></div><div class="tl-content"><span class="tl-year" data-es="8 años" data-en="Age 8">8 años</span><p data-es="Cayó en las drogas, el alcohol y la delincuencia. Por 9 años vivió en las calles, sin rumbo y sin dirección." data-en="He fell into drugs, alcohol, and crime. For 9 years he lived on the streets, without direction or purpose.">Cayó en las drogas, el alcohol y la delincuencia. Por 9 años vivió en las calles, sin rumbo y sin dirección.</p></div></div>
@@ -389,6 +381,18 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
         <div class="tl-item"><div class="tl-marker tl-light"></div><div class="tl-content"><span class="tl-year">2017</span><p data-es="Abrió su propia barbería — no solo un medio de ingresos, sino un espacio para mostrar la esperanza de Jesús a otros jóvenes con historias parecidas a la suya." data-en="He opened his own barbershop — not just a source of income, but a space to show the hope of Jesus to other young people with stories like his.">Abrió su propia barbería — no solo un medio de ingresos, sino un espacio para mostrar la esperanza de Jesús a otros jóvenes con historias parecidas a la suya.</p></div></div>
         <div class="tl-item"><div class="tl-marker tl-gold"></div><div class="tl-content"><span class="tl-year tl-year-gold" data-es="2019 · El Llamado" data-en="2019 · The Calling">2019 · El Llamado</span><p data-es="Dios puso en su corazón un llamado a prepararse en &lt;strong&gt;YWAM – Jóvenes con una Misión&lt;/strong&gt;. En viajes a Colombia y Ecuador, tuvo una visión: se vio en medio de la selva, rodeado de niños — algunos sonriendo, otros escondidos entre los árboles, llenos de vergüenza y temor." data-en="God placed a calling in his heart to train with &lt;strong&gt;YWAM – Youth With A Mission&lt;/strong&gt;. On trips to Colombia and Ecuador, he had a vision: he saw himself in the jungle, surrounded by children — some smiling, others hiding among the trees, full of shame and fear.">Dios puso en su corazón un llamado a prepararse en <strong>YWAM – Jóvenes con una Misión</strong>. En viajes a Colombia y Ecuador, tuvo una visión: se vio en medio de la selva, rodeado de niños — algunos sonriendo, otros escondidos entre los árboles, llenos de vergüenza y temor.</p></div></div>
         <div class="tl-item tl-last"><div class="tl-marker tl-gold"></div><div class="tl-content"><span class="tl-year tl-year-gold" data-es="El Regreso" data-en="The Return">El Regreso</span><p data-es="De regreso al Perú, Dios lo llamó a regresar a Belén — el mismo lugar que representaba su pasado de tristeza, dolor y miedo — para llevar Su amor a los niños que hoy viven lo mismo que él vivió." data-en="Back in Peru, God called him to return to Belén — the very place that represented his past of sadness, pain, and fear — to bring His love to the children living today what he once lived.">De regreso al Perú, Dios lo llamó a regresar a Belén — el mismo lugar que representaba su pasado de tristeza, dolor y miedo — para llevar Su amor a los niños que hoy viven lo mismo que él vivió.</p></div></div>
+      </div>
+
+      <div class="testimony-close">
+        <div class="calling-box">
+          <p class="calling-label" data-es="El Llamado" data-en="The Calling">El Llamado</p>
+          <p class="calling-quote" data-es="&quot;Bryan, quiero que lleves Mi amor a los niños de Belén que viven lo mismo que tú viviste.&quot;" data-en="&quot;Bryan, I want you to bring My love to the children of Belén who are living what you once lived.&quot;">"Bryan, quiero que lleves Mi amor a los niños de Belén que viven lo mismo que tú viviste."</p>
+          <p class="calling-source" data-es="— Dios, en oración" data-en="— God, in prayer">— Dios, en oración</p>
+        </div>
+        <div class="scripture-pull">
+          <p class="scripture-text" data-es="&quot;El Espíritu del Señor está sobre mí, por cuanto me ha ungido para anunciar buenas nuevas a los pobres... para proclamar libertad a los cautivos...&quot;" data-en="&quot;The Spirit of the Lord is on me, because he has anointed me to proclaim good news to the poor... to proclaim freedom for the captives...&quot;">"El Espíritu del Señor está sobre mí, por cuanto me ha ungido para anunciar buenas nuevas a los pobres..."</p>
+          <cite data-es="Isaías 61:1–4" data-en="Isaiah 61:1–4">Isaías 61:1–4</cite>
+        </div>
       </div>
     </div>
   </div>
