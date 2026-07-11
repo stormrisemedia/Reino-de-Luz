@@ -149,8 +149,8 @@ body.page-home .ambient-bg {
   }
 }
 
-/* Keep content above ambient layer */
-body > *:not(.ambient-bg) {
+/* Keep content above ambient layer (exclude fixed chrome/overlays) */
+body > *:not(.ambient-bg):not(nav):not(.lightbox) {
   position: relative;
   z-index: 1;
 }
