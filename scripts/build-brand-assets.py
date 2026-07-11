@@ -51,6 +51,8 @@ if logo.mode == "RGBA":
 else:
     og.paste(logo.convert("RGB"), (lx, ly))
 
+# Distinct filename — Facebook ignores ?v= query busts on og:image
+og.save(root / "share.jpg", quality=95, optimize=True, subsampling=0)
 og.save(root / "og-image.jpg", quality=95, optimize=True, subsampling=0)
 
 print("OK")
@@ -60,6 +62,7 @@ for p in [
     icons / "icon-maskable-512.png",
     icons / "apple-touch-icon.png",
     root / "reinodeluzlogo.png",
+    root / "share.jpg",
     root / "og-image.jpg",
     root / "reinodeluzlogo.original.png",
 ]:

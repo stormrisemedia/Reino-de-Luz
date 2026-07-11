@@ -65,14 +65,14 @@ def head_block(meta):
         f'<meta property="og:url" content="https://reinodeluz.org{meta["path"]}"/>\n'
         f'<meta property="og:title" content="{meta["title"]}"/>\n'
         f'<meta property="og:description" content="{meta["desc"]}"/>\n'
-        '<meta property="og:image" content="https://reinodeluz.org/og-image.jpg?v=23"/>\n'
+        '<meta property="og:image" content="https://reinodeluz.org/share.jpg"/>\n'
         '<meta property="og:image:width" content="1200"/>\n'
         '<meta property="og:image:height" content="630"/>\n'
         f'<meta property="og:image:alt" content="{site}"/>\n'
         '<meta name="twitter:card" content="summary_large_image"/>\n'
         f'<meta name="twitter:title" content="{meta["title"]}"/>\n'
         f'<meta name="twitter:description" content="{meta["desc"]}"/>\n'
-        '<meta name="twitter:image" content="https://reinodeluz.org/og-image.jpg?v=23"/>'
+        '<meta name="twitter:image" content="https://reinodeluz.org/share.jpg"/>'
     )
 
 # This script is only kept as a reference for regenerating meta; do not auto-run on current pages.
