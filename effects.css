@@ -166,6 +166,52 @@ nav.nav-scrolled {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(245, 200, 0, 0.08);
 }
 
+/* Desktop: center nav links so they line up with footer links.
+   body > nav beats each page's later inline `nav { display:flex }` rule. */
+@media (min-width: 861px) {
+  body > nav {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    justify-content: unset;
+    column-gap: 1.25rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  body > nav .nav-logo {
+    justify-self: start;
+  }
+
+  body > nav .nav-toggle {
+    display: none;
+  }
+
+  body > nav .nav-links {
+    justify-self: center;
+    grid-column: 2;
+  }
+
+  body > nav .nav-actions {
+    justify-self: end;
+    grid-column: 3;
+  }
+
+  body > footer {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  body > footer .footer-links {
+    gap: 1.5rem;
+  }
+
+  body > footer .footer-links a {
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+  }
+}
+
 /* ── Scroll reveal ── */
 .reveal {
   opacity: 0;
