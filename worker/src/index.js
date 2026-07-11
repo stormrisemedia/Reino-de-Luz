@@ -24,6 +24,8 @@ function allowedOrigins(env) {
   origins.add('http://127.0.0.1:8787');
   origins.add('http://localhost:5500');
   origins.add('http://127.0.0.1:5500');
+  // GitHub Pages fallbacks (custom domain is primary via CNAME)
+  origins.add('https://stormrisemedia.github.io');
   return origins;
 }
 

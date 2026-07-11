@@ -136,9 +136,9 @@ footer p{font-size:0.78rem;color:var(--muted);}
     <li><a href="donar.html" class="nav-donate" data-es="Donar" data-en="Donate">Donar</a></li>
   </ul>
   <div class="nav-actions">
-    <!-- Hidden by default. Add the "is-live" class (class="nav-live is-live") to show this button while streaming. -->
-    <a href="en-vivo.html" class="nav-live" data-es="En Vivo" data-en="Live Now">
-      <span class="live-dot"></span>En Vivo
+    <a href="en-vivo.html" class="nav-live">
+      <span class="live-dot"></span>
+      <span data-es="En Vivo" data-en="Live Now">En Vivo</span>
     </a>
     <div class="lang-toggle" id="langToggle">
       <span class="lang-btn active" data-lang="es">ES</span>
@@ -152,8 +152,8 @@ footer p{font-size:0.78rem;color:var(--muted);}
   <h1 class="visually-hidden" data-es="Momentos" data-en="Moments">Momentos</h1>
   <p class="gallery-tagline" data-es="Cada foto es un testimonio de lo que Dios está haciendo" data-en="Every photo is a testimony of what God is doing">Cada foto es un testimonio de lo que Dios está haciendo</p>
   <div class="gallery-stats">
-    <p class="gallery-count" id="galleryCount" data-es-prefix="Mostrando" data-es-suffix="fotos" data-en-prefix="Showing" data-en-suffix="photos">
-      <span id="photoNum">141</span> <span id="countLabel">fotos</span>
+    <p class="gallery-count" id="galleryCount">
+      <span id="photoNum">141</span> <span id="countLabel" data-es="fotos" data-en="photos">fotos</span>
     </p>
     <div style="display:flex;gap:0.75rem;align-items:center;">
       <div class="col-toggle">
@@ -349,14 +349,11 @@ function setLang(l) {
   try { localStorage.setItem('rdl-lang', l); } catch (e) {}
   document.documentElement.lang = l;
   document.querySelectorAll('[data-es][data-en]').forEach(el => {
-    if (el.classList.contains('nav-live')) return;
     el.innerHTML = el.getAttribute('data-' + l);
   });
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.getAttribute('data-lang') === l);
   });
-  // update count label
-  document.getElementById('countLabel').textContent = l === 'es' ? 'fotos' : 'photos';
 }
 document.getElementById('langToggle').addEventListener('click', e => {
   const btn = e.target.closest('.lang-btn');
@@ -378,7 +375,6 @@ function initPhotos() {
     photos.push({ url: img.src, name: img.alt + ' ' + (i+1) });
     item.addEventListener('click', () => openLightbox(i));
   });
-  if (photos.length > 0) document.getElementById('emptyState')?.remove();
   updateCount();
 }
 let currentIdx = 0;
@@ -440,6 +436,6 @@ document.querySelectorAll('.col-btn').forEach(btn => {
 initPhotos();
 
 </script>
-<script src="live-status.js?v=1"></script>
+<script src="live-status.js?v=2"></script>
 </body>
 </html>

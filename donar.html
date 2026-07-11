@@ -121,9 +121,9 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
     <li><a href="donar.html" class="nav-donate active" data-es="Donar" data-en="Donate">Donar</a></li>
   </ul>
   <div class="nav-actions">
-    <!-- Hidden by default. Add the "is-live" class (class="nav-live is-live") to show this button while streaming. -->
-    <a href="en-vivo.html" class="nav-live" data-es="En Vivo" data-en="Live Now">
-      <span class="live-dot"></span>En Vivo
+    <a href="en-vivo.html" class="nav-live">
+      <span class="live-dot"></span>
+      <span data-es="En Vivo" data-en="Live Now">En Vivo</span>
     </a>
     <div class="lang-toggle" id="langToggle">
       <span class="lang-btn active" data-lang="es">ES</span>
@@ -214,7 +214,6 @@ function setLang(l) {
   try { localStorage.setItem('rdl-lang', l); } catch (e) {}
   document.documentElement.lang = l;
   document.querySelectorAll('[data-es][data-en]').forEach(el => {
-    if (el.classList.contains('nav-live')) return;
     el.innerHTML = el.getAttribute('data-' + l);
   });
   document.querySelectorAll('[data-es-placeholder]').forEach(el => {
@@ -235,6 +234,6 @@ var savedLang = 'es';
 try { savedLang = localStorage.getItem('rdl-lang') || 'es'; } catch (e) {}
 setLang(savedLang);
 </script>
-<script src="live-status.js?v=1"></script>
+<script src="live-status.js?v=2"></script>
 </body>
 </html>

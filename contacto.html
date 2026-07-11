@@ -256,23 +256,22 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   .hero-cta{flex-direction:column;align-items:center;}
   .mission-grid,.vision-mission-grid{grid-template-columns:1fr;}
 }
-
-  .contact-page .contact-wrap{max-width:520px;margin:0 auto;}
-  .contact-page .section-body{margin-bottom:2rem;}
-  .contact-channels{display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;}
-  .contact-channel{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.25rem;background:var(--black-surface);border:1px solid rgba(245,200,0,0.18);border-radius:4px;text-decoration:none;transition:background 0.2s,border-color 0.2s,transform 0.15s;}
-  .contact-channel:hover{background:var(--black-card);border-color:rgba(245,200,0,0.4);transform:translateY(-1px);}
-  .contact-channel-icon{width:42px;height:42px;border-radius:50%;background:rgba(245,200,0,0.1);border:1px solid rgba(245,200,0,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);}
-  .contact-channel-icon svg{width:20px;height:20px;fill:currentColor;}
-  .contact-channel-text{display:flex;flex-direction:column;gap:0.15rem;min-width:0;}
-  .contact-channel-label{font-family:var(--font-condensed);font-size:0.95rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--white);}
-  .contact-channel-sub{font-size:0.82rem;color:var(--muted-light);line-height:1.4;}
-  .contact-channel-arrow{margin-left:auto;font-family:var(--font-condensed);font-size:1.1rem;color:var(--gold);flex-shrink:0;}
-  .contact-details{padding-top:1.5rem;border-top:1px solid rgba(245,200,0,0.12);}
-  .contact-details p{font-size:0.9rem;color:var(--muted-light);line-height:1.6;margin-bottom:0.5rem;}
-  .contact-details a{color:var(--gold);text-decoration:none;}
-  .contact-details a:hover{text-decoration:underline;}
-  .contact-details strong{color:var(--white);font-weight:600;}
+.contact-page .contact-wrap{max-width:520px;margin:0 auto;}
+.contact-page .section-body{margin-bottom:2rem;}
+.contact-channels{display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;}
+.contact-channel{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.25rem;background:var(--black-surface);border:1px solid rgba(245,200,0,0.18);border-radius:4px;text-decoration:none;transition:background 0.2s,border-color 0.2s,transform 0.15s;}
+.contact-channel:hover{background:var(--black-card);border-color:rgba(245,200,0,0.4);transform:translateY(-1px);}
+.contact-channel-icon{width:42px;height:42px;border-radius:50%;background:rgba(245,200,0,0.1);border:1px solid rgba(245,200,0,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);}
+.contact-channel-icon svg{width:20px;height:20px;fill:currentColor;}
+.contact-channel-text{display:flex;flex-direction:column;gap:0.15rem;min-width:0;}
+.contact-channel-label{font-family:var(--font-condensed);font-size:0.95rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--white);}
+.contact-channel-sub{font-size:0.82rem;color:var(--muted-light);line-height:1.4;}
+.contact-channel-arrow{margin-left:auto;font-family:var(--font-condensed);font-size:1.1rem;color:var(--gold);flex-shrink:0;}
+.contact-details{padding-top:1.5rem;border-top:1px solid rgba(245,200,0,0.12);}
+.contact-details p{font-size:0.9rem;color:var(--muted-light);line-height:1.6;margin-bottom:0.5rem;}
+.contact-details a{color:var(--gold);text-decoration:none;}
+.contact-details a:hover{text-decoration:underline;}
+.contact-details strong{color:var(--white);font-weight:600;}
 </style>
 </head>
 <body>
@@ -292,9 +291,9 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
     <li><a href="donar.html" class="nav-donate" data-es="Donar" data-en="Donate">Donar</a></li>
   </ul>
   <div class="nav-actions">
-    <!-- Hidden by default. Add the "is-live" class (class="nav-live is-live") to show this button while streaming. -->
-    <a href="en-vivo.html" class="nav-live" data-es="En Vivo" data-en="Live Now">
-      <span class="live-dot"></span>En Vivo
+    <a href="en-vivo.html" class="nav-live">
+      <span class="live-dot"></span>
+      <span data-es="En Vivo" data-en="Live Now">En Vivo</span>
     </a>
     <div class="lang-toggle" id="langToggle">
       <span class="lang-btn active" data-lang="es">ES</span>
@@ -363,7 +362,6 @@ function setLang(l) {
   try { localStorage.setItem('rdl-lang', l); } catch (e) {}
   document.documentElement.lang = l;
   document.querySelectorAll('[data-es][data-en]').forEach(el => {
-    if (el.classList.contains('nav-live')) return;
     el.innerHTML = el.getAttribute('data-' + l);
   });
   document.querySelectorAll('[data-es-placeholder]').forEach(el => {
@@ -385,6 +383,6 @@ try { savedLang = localStorage.getItem('rdl-lang') || 'es'; } catch (e) {}
 setLang(savedLang);
 
 </script>
-<script src="live-status.js?v=1"></script>
+<script src="live-status.js?v=2"></script>
 </body>
 </html>
