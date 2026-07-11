@@ -179,7 +179,10 @@
 
   function formatNumber(n, decimals) {
     if (decimals > 0) return n.toFixed(decimals);
-    return Math.round(n).toLocaleString('en-US');
+    var rounded = Math.round(n);
+    // Keep years and small counts uncomma'd (2020 not 2,020)
+    if (Math.abs(rounded) < 10000) return String(rounded);
+    return rounded.toLocaleString('en-US');
   }
 
   function animateCounter(el) {
