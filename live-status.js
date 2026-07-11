@@ -12,8 +12,9 @@
   var checking = false;
 
   function apply(isLive) {
-    var liveBtn = document.querySelector('.nav-live');
-    if (liveBtn) liveBtn.classList.toggle('is-live', !!isLive);
+    document.querySelectorAll('.nav-live, .hero-watch-live').forEach(function (el) {
+      el.classList.toggle('is-live', !!isLive);
+    });
     if (typeof window.RdlLiveStatusHandler === 'function') {
       try {
         window.RdlLiveStatusHandler(!!isLive);
