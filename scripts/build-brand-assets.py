@@ -38,45 +38,24 @@ fit_on_canvas(hi, 512, pad_ratio=0.2).convert("RGB").save(icons / "icon-maskable
 # Site logo for nav/footer
 fit_on_canvas(hi, 512, pad_ratio=0.04).convert("RGB").save(root / "reinodeluzlogo.png", optimize=True)
 
-# Open Graph 1200x630 — large centered logo; no redundant brand title under it
+# Open Graph 1200x630 — logo only, centered
 W, H = 1200, 630
 og = Image.new("RGB", (W, H), (8, 8, 8))
 glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
 gdraw = ImageDraw.Draw(glow)
 for r, a in [(520, 22), (360, 38), (240, 55)]:
-    gdraw.ellipse([W // 2 - r, H // 2 - r - 20, W // 2 + r, H // 2 + r - 20], fill=(245, 200, 0, a))
+    gdraw.ellipse([W // 2 - r, H // 2 - r, W // 2 + r, H // 2 + r], fill=(245, 200, 0, a))
 glow = glow.filter(ImageFilter.GaussianBlur(80))
 og = Image.alpha_composite(og.convert("RGBA"), glow).convert("RGB")
-draw = ImageDraw.Draw(og)
 
 logo = hi.copy()
-logo.thumbnail((440, 440), Image.Resampling.LANCZOS)
+logo.thumbnail((480, 480), Image.Resampling.LANCZOS)
 lx = (W - logo.width) // 2
-# Leave room for a single tagline under the mark
-ly = (H - logo.height) // 2 - 36
+ly = (H - logo.height) // 2
 if logo.mode == "RGBA":
     og.paste(logo.convert("RGB"), (lx, ly), logo.split()[-1])
 else:
     og.paste(logo.convert("RGB"), (lx, ly))
-
-
-def load_font(size, bold=False):
-    candidates = [
-        r"C:\Windows\Fonts\arialbd.ttf" if bold else r"C:\Windows\Fonts\arial.ttf",
-        r"C:\Windows\Fonts\segoeuib.ttf" if bold else r"C:\Windows\Fonts\segoeui.ttf",
-    ]
-    for path in candidates:
-        if Path(path).exists():
-            return ImageFont.truetype(path, size)
-    return ImageFont.load_default()
-
-
-sub_font = load_font(28, bold=False)
-tagline = "Llevando la Luz de Cristo al Mundo"
-bbox = draw.textbbox((0, 0), tagline, font=sub_font)
-tw = bbox[2] - bbox[0]
-ty = ly + logo.height + 28
-draw.text(((W - tw) // 2, ty), tagline, font=sub_font, fill=(245, 200, 0))
 
 og.save(root / "og-image.jpg", quality=95, optimize=True, subsampling=0)
 
