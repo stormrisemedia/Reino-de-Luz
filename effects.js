@@ -162,4 +162,84 @@
     });
   }
 
+  /* ── Animated counters (skip calendar years) ── */
+  function parseNumber(text) {
+    var raw = (text || '').trim();
+    if (raw === '∞') return { type: 'symbol', value: '∞' };
+    var cleaned = raw.replace(/,/g, '');
+    var match = cleaned.match(/^(\D*)([\d.]+)(\D*)$/);
+    if (!match) return null;
+    return {
+      prefix: match[1] || '',
+      value: parseFloat(match[2]),
+      suffix: match[3] || '',
+      decimals: (match[2].split('.')[1] || '').length
+    };
+  }
+
+  function formatNumber(n, decimals) {
+    if (decimals > 0) return n.toFixed(decimals);
+    var rounded = Math.round(n);
+    if (Math.abs(rounded) < 10000) return String(rounded);
+    return rounded.toLocaleString('en-US');
+  }
+
+  function isYearValue(n) {
+    return Number.isInteger(n) && n >= 1900 && n <= 2100;
+  }
+
+  function animateCounter(el) {
+    var parsed = parseNumber(el.textContent);
+    if (!parsed) return;
+    if (parsed.type === 'symbol') {
+      el.classList.add('is-counted');
+      return;
+    }
+    // Years stay static — no count-up, no commas
+    if (isYearValue(parsed.value) && !parsed.prefix && !parsed.suffix && parsed.decimals === 0) {
+      el.textContent = String(parsed.value);
+      el.classList.add('is-counted');
+      return;
+    }
+
+    var duration = 1400;
+    var start = null;
+
+    function step(ts) {
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var current = parsed.value * eased;
+      el.textContent = parsed.prefix + formatNumber(current, parsed.decimals) + parsed.suffix;
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = parsed.prefix + formatNumber(parsed.value, parsed.decimals) + parsed.suffix;
+        el.classList.add('is-counted');
+      }
+    }
+
+    el.textContent = parsed.prefix + '0' + parsed.suffix;
+    requestAnimationFrame(step);
+  }
+
+  if (!reducedMotion && 'IntersectionObserver' in window) {
+    var counterObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    document.querySelectorAll(
+      '.stat-num, .impact-big, .impact-stat-num, .origin-years-num'
+    ).forEach(function (el) {
+      counterObserver.observe(el);
+    });
+  }
 })();
