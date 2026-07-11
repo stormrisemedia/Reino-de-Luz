@@ -61,11 +61,12 @@ nav::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;backg
 .intro-section{background:var(--black-mid);border-top:1px solid rgba(245,200,0,0.12);border-bottom:1px solid rgba(245,200,0,0.12);text-align:center;}
 .intro-section .section-body{margin:0 auto;max-width:640px;}
 .explore-section{background:var(--black);}
-.explore-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;background:rgba(245,200,0,0.1);border:1px solid rgba(245,200,0,0.1);border-radius:4px;overflow:hidden;margin-top:2.5rem;}
+.explore-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(245,200,0,0.1);border:1px solid rgba(245,200,0,0.1);border-radius:4px;overflow:hidden;margin-top:2.5rem;}
 .explore-card{background:var(--black-surface);padding:1.75rem 1.5rem;text-decoration:none;display:flex;flex-direction:column;gap:0.65rem;position:relative;transition:background 0.25s,transform 0.35s cubic-bezier(0.22,1,0.36,1),box-shadow 0.35s ease;}
 .explore-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
 .explore-card:hover{background:var(--black-card);}
 .explore-card:hover::before{transform:scaleX(1);}
+.explore-card-wide{grid-column:span 2;}
 .explore-icon{font-size:1.75rem;line-height:1;}
 .explore-title{font-family:var(--font-display);font-size:1.35rem;color:var(--white);letter-spacing:0.04em;line-height:1;}
 .explore-desc{font-size:0.85rem;color:var(--muted-light);line-height:1.55;flex:1;}
@@ -276,6 +277,8 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   .nav-links{gap:1rem;}
   .nav-links a{font-size:0.76rem;letter-spacing:0.08em;}
   nav{padding-left:1.5rem;padding-right:1.5rem;}
+  .explore-grid{grid-template-columns:repeat(2,1fr);}
+  .explore-card-wide{grid-column:span 2;}
 }
 @media(max-width:860px){
   nav{padding:0.85rem 1.25rem;flex-wrap:wrap;row-gap:0.75rem;}
@@ -290,6 +293,8 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   .hero{padding:4.5rem 1.25rem 2.5rem;}
   .hero-cta{flex-direction:column;align-items:center;}
   .mission-grid,.vision-mission-grid{grid-template-columns:1fr;}
+  .explore-grid{grid-template-columns:1fr;}
+  .explore-card-wide{grid-column:auto;}
 }
 </style>
 </head>
@@ -387,7 +392,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
         <span class="explore-desc" data-es="Escríbenos, conoce nuestros horarios y cómo conectarte." data-en="Write to us, see our schedule, and how to connect.">Escríbenos, conoce nuestros horarios y cómo conectarte.</span>
         <span class="explore-link" data-es="Contactar →" data-en="Get in touch →">Contactar →</span>
       </a>
-      <a href="donar.html" class="explore-card">
+      <a href="donar.html" class="explore-card explore-card-wide">
         <span class="explore-icon">🤝</span>
         <span class="explore-title" data-es="Donar" data-en="Donate">Donar</span>
         <span class="explore-desc" data-es="Tu generosidad sostiene programas que cambian vidas cada semana." data-en="Your generosity sustains programs that change lives every week.">Tu generosidad sostiene programas que cambian vidas cada semana.</span>
