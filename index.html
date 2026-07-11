@@ -58,8 +58,12 @@ nav::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;backg
 .nav-toggle{display:none;background:transparent;border:1px solid rgba(245,200,0,0.35);color:var(--gold);font-size:1.2rem;line-height:1;padding:0.4rem 0.65rem;border-radius:3px;cursor:pointer;}
 .connect-cta{text-align:center;}
 .connect-cta .section-body{margin:0 auto 2rem;}
-.intro-section{background:var(--black-mid);border-top:1px solid rgba(245,200,0,0.12);border-bottom:1px solid rgba(245,200,0,0.12);text-align:center;}
-.intro-section .section-body{margin:0 auto;max-width:640px;}
+.intro-section{background:var(--black-mid);border-top:1px solid rgba(245,200,0,0.12);border-bottom:1px solid rgba(245,200,0,0.12);}
+.intro-layout{display:grid;grid-template-columns:1.05fr 0.95fr;gap:3.5rem;align-items:center;}
+.intro-copy .section-body{max-width:520px;margin-bottom:1.5rem;}
+.intro-proof{display:flex;flex-direction:column;gap:1px;background:rgba(245,200,0,0.15);border:1px solid rgba(245,200,0,0.18);border-radius:4px;overflow:hidden;}
+.intro-proof .impact-hero-num{margin:0;border:none;border-radius:0;}
+.intro-proof .impact-stats-row{border:none;border-radius:0;background:rgba(245,200,0,0.1);}
 .explore-section{background:var(--black);}
 .explore-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(245,200,0,0.1);border:1px solid rgba(245,200,0,0.1);border-radius:4px;overflow:hidden;margin-top:2.5rem;}
 .explore-card{background:var(--black-surface);padding:1.75rem 1.5rem;text-decoration:none;display:flex;flex-direction:column;gap:0.65rem;position:relative;transition:background 0.25s,transform 0.35s cubic-bezier(0.22,1,0.36,1),box-shadow 0.35s ease;}
@@ -71,10 +75,6 @@ nav::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;backg
 .explore-title{font-family:var(--font-display);font-size:1.35rem;color:var(--white);letter-spacing:0.04em;line-height:1;}
 .explore-desc{font-size:0.85rem;color:var(--muted-light);line-height:1.55;flex:1;}
 .explore-link{font-family:var(--font-condensed);font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);}
-.impact-strip{background:var(--black-surface);border-top:1px solid rgba(245,200,0,0.1);border-bottom:1px solid rgba(245,200,0,0.1);text-align:center;}
-.impact-strip-inner{display:flex;flex-direction:column;align-items:center;gap:2rem;}
-.impact-strip .impact-stats-row{max-width:720px;width:100%;border-radius:4px;border-top:1px solid rgba(245,200,0,0.1);}
-.impact-strip-note{font-size:0.9rem;color:var(--muted-light);max-width:480px;line-height:1.7;}
 .lang-toggle{display:flex;align-items:center;background:var(--black-surface);border:1px solid rgba(245,200,0,0.3);border-radius:3px;overflow:hidden;cursor:pointer;flex-shrink:0;}
 .lang-btn{font-family:var(--font-condensed);font-size:0.72rem;font-weight:700;letter-spacing:0.1em;padding:0.35rem 0.75rem;color:var(--muted);transition:background 0.2s,color 0.2s;user-select:none;}
 .lang-btn.active{background:var(--gold);color:var(--black);}
@@ -208,7 +208,7 @@ section{padding:3.5rem 2rem;}
 .impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
 .impact-body{font-size:0.95rem;color:var(--muted-light);line-height:1.8;margin-bottom:0.5rem;}
 .impact-hero-num{display:flex;align-items:center;gap:1.25rem;padding:1.75rem 2rem;background:var(--black-surface);border:1px solid rgba(245,200,0,0.2);border-radius:4px;margin-bottom:1px;}
-.impact-big{font-family:var(--font-display);font-size:5rem;color:var(--gold);line-height:1;letter-spacing:-0.02em;flex-shrink:0;}
+.impact-big{font-family:var(--font-display);font-size:clamp(4rem,9vw,5.5rem);color:var(--gold);line-height:0.9;letter-spacing:-0.02em;flex-shrink:0;}
 .impact-big-label{display:flex;flex-direction:column;gap:0.25rem;}
 .impact-big-title{font-family:var(--font-display);font-size:1.5rem;color:var(--white);letter-spacing:0.02em;line-height:1;}
 .impact-big-sub{font-family:var(--font-condensed);font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
@@ -286,7 +286,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   .nav-actions{margin-left:0;}
   .nav-links{display:none;width:100%;flex-direction:column;align-items:flex-start;gap:0.85rem;padding-top:0.75rem;border-top:1px solid rgba(245,200,0,0.12);}
   .nav-links.open{display:flex;}
-  .livestream-grid,.belen-grid,.testimony-grid,.connect-grid,.origin-grid,.impact-grid{grid-template-columns:1fr;}
+  .livestream-grid,.belen-grid,.testimony-grid,.connect-grid,.origin-grid,.impact-grid,.intro-layout{grid-template-columns:1fr;}
 }
 @media(max-width:600px){
   section{padding:2.5rem 1.25rem;}
@@ -295,6 +295,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   .mission-grid,.vision-mission-grid{grid-template-columns:1fr;}
   .explore-grid{grid-template-columns:1fr;}
   .explore-card-wide{grid-column:auto;}
+  .impact-hero-num{padding:1.35rem 1.25rem;gap:1rem;}
 }
 </style>
 </head>
@@ -346,9 +347,26 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
 </section>
 
 <section class="intro-section">
-  <div class="section-inner">
-<h2 class="section-title" data-es="LUZ EN EL<br/><span class='gold'>DISTRITO DE BELÉN</span>" data-en="LIGHT IN<br/><span class='gold'>BELÉN DISTRICT</span>">LUZ EN EL<br/><span class="gold">DISTRITO DE BELÉN</span></h2>
-    <p class="section-body" data-es="Desde 2020, servimos a niños y familias en uno de los distritos más vulnerables de Iquitos — formando vidas con el evangelio, talentos y esperanza." data-en="Since 2020, we serve children and families in one of Iquitos' most vulnerable districts — shaping lives through the gospel, talents, and hope.">Desde 2020, servimos a niños y familias en uno de los distritos más vulnerables de Iquitos — formando vidas con el evangelio, talentos y esperanza.</p>
+  <div class="section-inner intro-layout">
+    <div class="intro-copy">
+      <h2 class="section-title" data-es="LUZ EN EL<br/><span class='gold'>DISTRITO DE BELÉN</span>" data-en="LIGHT IN<br/><span class='gold'>BELÉN DISTRICT</span>">LUZ EN EL<br/><span class="gold">DISTRITO DE BELÉN</span></h2>
+      <p class="section-body" data-es="Desde 2020, servimos a niños y familias en uno de los distritos más vulnerables de Iquitos — formando vidas con el evangelio, talentos y esperanza." data-en="Since 2020, we serve children and families in one of Iquitos' most vulnerable districts — shaping lives through the gospel, talents, and hope.">Desde 2020, servimos a niños y familias en uno de los distritos más vulnerables de Iquitos — formando vidas con el evangelio, talentos y esperanza.</p>
+      <a href="mision.html#impacto" class="btn-secondary" data-es="Ver misión e impacto" data-en="See mission &amp; impact">Ver misión e impacto</a>
+    </div>
+    <div class="intro-proof">
+      <div class="impact-hero-num">
+        <span class="impact-big">60</span>
+        <div class="impact-big-label">
+          <span class="impact-big-title" data-es="Niños y Adolescentes" data-en="Children &amp; Teens">Niños y Adolescentes</span>
+          <span class="impact-big-sub" data-es="acompañados cada semana" data-en="served every week">acompañados cada semana</span>
+        </div>
+      </div>
+      <div class="impact-stats-row">
+        <div class="impact-stat"><span class="impact-stat-num">6</span><span class="impact-stat-label" data-es="Años de ministerio" data-en="Years of ministry">Años de ministerio</span></div>
+        <div class="impact-stat"><span class="impact-stat-num">8</span><span class="impact-stat-label" data-es="Programas activos" data-en="Active programs">Programas activos</span></div>
+        <div class="impact-stat"><span class="impact-stat-num">∞</span><span class="impact-stat-label" data-es="Vidas cambiadas" data-en="Lives changed">Vidas cambiadas</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -399,20 +417,6 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
         <span class="explore-link" data-es="Apoyar ahora →" data-en="Donate now →">Apoyar ahora →</span>
       </a>
     </div>
-  </div>
-</section>
-
-<section class="impact-strip">
-  <div class="section-inner impact-strip-inner">
-    <div>
-<p class="impact-strip-note" data-es="Cada semana acompañamos a decenas de niños y familias en Belén." data-en="Every week we walk alongside dozens of children and families in Belén.">Cada semana acompañamos a decenas de niños y familias en Belén.</p>
-    </div>
-    <div class="impact-stats-row">
-      <div class="impact-stat"><span class="impact-stat-num">60</span><span class="impact-stat-label" data-es="Niños y adolescentes" data-en="Children &amp; teens">Niños y adolescentes</span></div>
-      <div class="impact-stat"><span class="impact-stat-num">6</span><span class="impact-stat-label" data-es="Años de ministerio" data-en="Years of ministry">Años de ministerio</span></div>
-      <div class="impact-stat"><span class="impact-stat-num">8</span><span class="impact-stat-label" data-es="Programas activos" data-en="Active programs">Programas activos</span></div>
-    </div>
-    <a href="mision.html#impacto" class="btn-secondary" data-es="Ver misión e impacto" data-en="See mission &amp; impact">Ver misión e impacto</a>
   </div>
 </section>
 

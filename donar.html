@@ -74,6 +74,16 @@ section{padding:3.5rem 2rem;}
 .section-body{font-size:0.95rem;color:var(--muted-light);max-width:560px;line-height:1.8;}
 .give-lead{font-size:1.05rem;color:var(--off-white);max-width:580px;margin-bottom:0;}
 .give-section{background:var(--black-mid);}
+.give-proof{display:flex;flex-direction:column;gap:1px;background:rgba(245,200,0,0.15);border:1px solid rgba(245,200,0,0.18);border-radius:4px;overflow:hidden;margin-bottom:2.75rem;}
+.give-proof .impact-hero-num{display:flex;align-items:center;gap:1.25rem;padding:1.75rem 2rem;background:var(--black-surface);}
+.give-proof .impact-big{font-family:var(--font-display);font-size:clamp(3.5rem,8vw,5rem);color:var(--gold);line-height:0.9;letter-spacing:-0.02em;flex-shrink:0;}
+.give-proof .impact-big-label{display:flex;flex-direction:column;gap:0.25rem;}
+.give-proof .impact-big-title{font-family:var(--font-display);font-size:1.45rem;color:var(--white);letter-spacing:0.02em;line-height:1;}
+.give-proof .impact-big-sub{font-family:var(--font-condensed);font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
+.give-proof .impact-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;}
+.give-proof .impact-stat{background:var(--black-surface);padding:1.15rem 0.85rem;display:flex;flex-direction:column;align-items:center;text-align:center;gap:0.3rem;}
+.give-proof .impact-stat-num{font-family:var(--font-display);font-size:2rem;color:var(--gold);line-height:1;}
+.give-proof .impact-stat-label{font-family:var(--font-condensed);font-size:0.65rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);line-height:1.4;}
 .give-grid{display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:start;}
 .give-scripture{background:var(--black-surface);border-left:3px solid var(--gold);border-radius:0 4px 4px 0;padding:1.1rem 1.4rem;margin:1.75rem 0;}
 .give-scripture p{font-style:italic;color:var(--muted-light);line-height:1.7;font-size:0.9rem;margin-bottom:0.4rem;}
@@ -118,6 +128,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
 }
 @media(max-width:600px){
   section{padding:2.5rem 1.25rem;}
+  .give-proof .impact-hero-num{padding:1.35rem 1.25rem;gap:1rem;}
 }
 </style>
 </head>
@@ -152,6 +163,22 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
 <section class="give-section">
   <div class="section-inner">
     <h1 class="visually-hidden" data-es="Donar" data-en="Donate">Donar</h1>
+
+    <div class="give-proof">
+      <div class="impact-hero-num">
+        <span class="impact-big">60</span>
+        <div class="impact-big-label">
+          <span class="impact-big-title" data-es="Niños y Adolescentes" data-en="Children &amp; Teens">Niños y Adolescentes</span>
+          <span class="impact-big-sub" data-es="acompañados cada semana" data-en="served every week">acompañados cada semana</span>
+        </div>
+      </div>
+      <div class="impact-stats-row">
+        <div class="impact-stat"><span class="impact-stat-num">6</span><span class="impact-stat-label" data-es="Años de ministerio" data-en="Years of ministry">Años de ministerio</span></div>
+        <div class="impact-stat"><span class="impact-stat-num">8</span><span class="impact-stat-label" data-es="Programas activos" data-en="Active programs">Programas activos</span></div>
+        <div class="impact-stat"><span class="impact-stat-num">∞</span><span class="impact-stat-label" data-es="Vidas cambiadas" data-en="Lives changed">Vidas cambiadas</span></div>
+      </div>
+    </div>
+
     <div class="give-grid">
       <div>
         <p class="section-body give-lead" data-es="Cada aporte nos permite llevar la luz de Cristo a más personas: alimentar a los niños, sostener nuestros talleres y seguir sirviendo a la comunidad. Gracias por ser parte de esta misión." data-en="Every gift helps us carry the light of Christ to more people: feeding children, sustaining our workshops, and continuing to serve the community. Thank you for being part of this mission.">Cada aporte nos permite llevar la luz de Cristo a más personas: alimentar a los niños, sostener nuestros talleres y seguir sirviendo a la comunidad. Gracias por ser parte de esta misión.</p>
