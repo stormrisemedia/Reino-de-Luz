@@ -87,7 +87,7 @@ nav::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;backg
 
 /* LIGHTBOX */
 .lightbox{position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.95);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.25s;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);}
-.lightbox.open{opacity:1;pointer-events:all;}
+.lightbox.open{opacity:1;pointer-events:auto;}
 .lightbox-stage{flex:1;display:flex;align-items:center;justify-content:center;width:100%;min-height:0;padding:3.5rem 1.5rem 1rem;}
 .lightbox-img{max-width:min(92vw,1100px);max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:2px;box-shadow:0 0 60px rgba(0,0,0,0.8);user-select:none;-webkit-user-drag:none;}
 .lightbox-close{position:absolute;top:max(0.75rem,env(safe-area-inset-top));right:max(0.75rem,env(safe-area-inset-right));z-index:2;font-family:var(--font-display);font-size:1.5rem;color:var(--white);cursor:pointer;line-height:1;transition:color 0.2s,border-color 0.2s;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.15);}
@@ -411,11 +411,13 @@ const lb = document.getElementById('lightbox');
 const lbImg = document.getElementById('lbImg');
 const lbStage = document.getElementById('lbStage');
 const lbCounter = document.getElementById('lbCounter');
+let lightboxOpenedAt = 0;
 
 function openLightbox(idx) {
   currentIdx = idx;
   lbImg.src = photos[idx].url;
   lbCounter.textContent = (idx + 1) + ' / ' + photos.length;
+  lightboxOpenedAt = Date.now();
   lb.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -436,6 +438,8 @@ document.getElementById('lbClose').addEventListener('click', e => { e.stopPropag
 document.getElementById('lbPrev').addEventListener('click', e => { e.stopPropagation(); navLightbox(-1); });
 document.getElementById('lbNext').addEventListener('click', e => { e.stopPropagation(); navLightbox(1); });
 lb.addEventListener('click', e => {
+  // Ignore the same tap/click that opened the lightbox (would hit the stage and close instantly).
+  if (Date.now() - lightboxOpenedAt < 400) return;
   if (e.target === lb || e.target === lbStage) closeLightbox();
 });
 document.addEventListener('keydown', e => {
@@ -454,6 +458,7 @@ lbStage.addEventListener('touchstart', e => {
 }, { passive: true });
 lbStage.addEventListener('touchend', e => {
   if (!lb.classList.contains('open') || !e.changedTouches.length) return;
+  if (Date.now() - lightboxOpenedAt < 400) return;
   const dx = e.changedTouches[0].clientX - touchStartX;
   const dy = e.changedTouches[0].clientY - touchStartY;
   if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
