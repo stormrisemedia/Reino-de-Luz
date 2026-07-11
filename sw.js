@@ -7,6 +7,19 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(self.clients.claim());
 });
 
+function sameOriginUrl(candidate, fallbackPath) {
+  const fallback = new URL(fallbackPath || '/en-vivo.html', self.location.origin).href;
+  if (!candidate || typeof candidate !== 'string') return fallback;
+  try {
+    const url = new URL(candidate, self.location.origin);
+    if (url.origin !== self.location.origin) return fallback;
+    if (url.protocol !== 'https:' && url.protocol !== 'http:') return fallback;
+    return url.href;
+  } catch (e) {
+    return fallback;
+  }
+}
+
 self.addEventListener('push', (event) => {
   let data = {};
   try {
@@ -15,15 +28,26 @@ self.addEventListener('push', (event) => {
     data = { title: 'Reino de Luz', body: event.data ? event.data.text() : '' };
   }
 
-  const title = data.title || '¡Estamos en vivo!';
+  const title = typeof data.title === 'string' && data.title ? data.title : '¡Estamos en vivo!';
+  const body =
+    typeof data.body === 'string' && data.body
+      ? data.body
+      : 'Asociación Reino de Luz está transmitiendo ahora.';
+  const icon = sameOriginUrl(data.icon, '/reinodeluzlogo.png');
+  const badge = sameOriginUrl(data.badge, '/reinodeluzlogo.png');
+  const clickUrl = sameOriginUrl(
+    data.data && data.data.url,
+    '/en-vivo.html'
+  );
+
   const options = {
-    body: data.body || 'Asociación Reino de Luz está transmitiendo ahora.',
-    icon: data.icon || '/reinodeluzlogo.png',
-    badge: data.badge || '/reinodeluzlogo.png',
-    tag: data.tag || 'rdl-live',
+    body: body,
+    icon: icon,
+    badge: badge,
+    tag: typeof data.tag === 'string' && data.tag ? data.tag : 'rdl-live',
     renotify: data.renotify !== false,
     requireInteraction: !!data.requireInteraction,
-    data: data.data || { url: '/en-vivo.html' },
+    data: { url: clickUrl },
   };
 
   event.waitUntil(self.registration.showNotification(title, options));
@@ -31,17 +55,14 @@ self.addEventListener('push', (event) => {
 
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
-  const target = (event.notification.data && event.notification.data.url) || '/en-vivo.html';
+  const target = sameOriginUrl(
+    event.notification.data && event.notification.data.url,
+    '/en-vivo.html'
+  );
 
   event.waitUntil(
     self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(async (clientList) => {
-      const targetPath = (() => {
-        try {
-          return new URL(target, self.location.origin).pathname;
-        } catch (e) {
-          return '/en-vivo.html';
-        }
-      })();
+      const targetPath = new URL(target).pathname;
 
       let match = null;
       for (const client of clientList) {

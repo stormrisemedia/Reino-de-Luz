@@ -156,13 +156,13 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
         <p class="sub" data-es="Elige un monto o ingresa el tuyo. Serás dirigido a PayPal para completar tu donación de forma segura." data-en="Choose an amount or enter your own. You'll be taken to PayPal to complete your gift securely.">Elige un monto o ingresa el tuyo. Serás dirigido a PayPal para completar tu donación de forma segura.</p>
 
         <div class="amount-grid">
-          <a class="amount-btn" data-amt="10" target="_blank" rel="noopener">$10</a>
-          <a class="amount-btn" data-amt="25" target="_blank" rel="noopener">$25</a>
-          <a class="amount-btn" data-amt="50" target="_blank" rel="noopener">$50</a>
-          <a class="amount-btn" data-amt="100" target="_blank" rel="noopener">$100</a>
+          <a class="amount-btn" data-amt="10" target="_blank" rel="noopener noreferrer">$10</a>
+          <a class="amount-btn" data-amt="25" target="_blank" rel="noopener noreferrer">$25</a>
+          <a class="amount-btn" data-amt="50" target="_blank" rel="noopener noreferrer">$50</a>
+          <a class="amount-btn" data-amt="100" target="_blank" rel="noopener noreferrer">$100</a>
         </div>
 
-        <a class="donate-btn" id="donateMain" target="_blank" rel="noopener" data-es="DONAR AHORA →" data-en="DONATE NOW →">DONAR AHORA →</a>
+        <a class="donate-btn" id="donateMain" target="_blank" rel="noopener noreferrer" data-es="DONAR AHORA →" data-en="DONATE NOW →">DONAR AHORA →</a>
 
         <div class="donate-secure">
           <span>🔒</span>
@@ -194,6 +194,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
 </footer>
 
 <script src="effects.js?v=10"></script>
+<script src="i18n-safe.js?v=1"></script>
 <script>
 /* PayPal.me account confirmed for this ministry */
 var PAYPAL_URL = 'https://www.paypal.com/paypalme/esperanzaenlacalle';
@@ -214,7 +215,7 @@ function setLang(l) {
   try { localStorage.setItem('rdl-lang', l); } catch (e) {}
   document.documentElement.lang = l;
   document.querySelectorAll('[data-es][data-en]').forEach(el => {
-    el.innerHTML = el.getAttribute('data-' + l);
+    rdlSafeSetHtml(el, el.getAttribute('data-' + l));
   });
   document.querySelectorAll('[data-es-placeholder]').forEach(el => {
     el.placeholder = el.getAttribute('data-' + l + '-placeholder');

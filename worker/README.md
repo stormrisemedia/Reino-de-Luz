@@ -14,6 +14,8 @@ npx wrangler deploy
 
 Public VAPID key is in `wrangler.toml` (`VAPID_PUBLIC_KEY`). Keep the private key only as a Wrangler secret.
 
+Subscribe/unsubscribe require an allowlisted browser `Origin` and only accept known Web Push service endpoints (FCM, Mozilla, Apple, WNS).
+
 ## Endpoints
 
 | Method | Path | Purpose |

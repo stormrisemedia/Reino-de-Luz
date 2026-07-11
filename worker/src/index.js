@@ -20,11 +20,7 @@ function allowedOrigins(env) {
   const site = (env.SITE_ORIGIN || 'https://reinodeluz.org').replace(/\/$/, '');
   const origins = new Set([site, site.replace('://', '://www.')]);
   if (site.includes('://www.')) origins.add(site.replace('://www.', '://'));
-  origins.add('http://localhost:8787');
-  origins.add('http://127.0.0.1:8787');
-  origins.add('http://localhost:5500');
-  origins.add('http://127.0.0.1:5500');
-  // GitHub Pages fallbacks (custom domain is primary via CNAME)
+  // GitHub Pages fallback (custom domain is primary via CNAME)
   origins.add('https://stormrisemedia.github.io');
   return origins;
 }
@@ -53,12 +49,35 @@ function json(data, status = 200, extra = {}, request, env) {
   });
 }
 
+/** Browser POSTs must send an allowlisted Origin. No-Origin clients (curl) are rejected. */
 function isBrowserOriginAllowed(request, env) {
   const origin = request.headers.get('Origin');
-  // Non-browser clients (no Origin) are still subject to endpoint validation;
-  // browser cross-origin calls must come from an allowlisted site.
-  if (!origin) return true;
+  if (!origin) return false;
   return allowedOrigins(env).has(origin);
+}
+
+/** Only accept endpoints from known Web Push service hosts. */
+function isAllowedPushEndpoint(endpoint) {
+  let url;
+  try {
+    url = new URL(endpoint);
+  } catch {
+    return false;
+  }
+  if (url.protocol !== 'https:') return false;
+
+  const host = url.hostname.toLowerCase();
+  const exact = new Set([
+    'fcm.googleapis.com',
+    'android.googleapis.com',
+    'updates.push.services.mozilla.com',
+    'web.push.apple.com',
+  ]);
+  if (exact.has(host)) return true;
+  if (host.endsWith('.push.services.mozilla.com')) return true;
+  if (host.endsWith('.notify.windows.com')) return true;
+  if (host.endsWith('.push.apple.com')) return true;
+  return false;
 }
 
 async function hashEndpoint(endpoint) {
@@ -142,10 +161,12 @@ function isValidSubscription(sub) {
   return (
     sub &&
     typeof sub.endpoint === 'string' &&
-    sub.endpoint.startsWith('https://') &&
+    isAllowedPushEndpoint(sub.endpoint) &&
     sub.keys &&
     typeof sub.keys.p256dh === 'string' &&
-    typeof sub.keys.auth === 'string'
+    typeof sub.keys.auth === 'string' &&
+    sub.keys.p256dh.length >= 16 &&
+    sub.keys.auth.length >= 8
   );
 }
 
@@ -162,7 +183,13 @@ async function handleSubscribe(request, env) {
   if (!isValidSubscription(sub)) return json({ error: 'Invalid subscription' }, 400, {}, request, env);
 
   const id = await hashEndpoint(sub.endpoint);
-  await env.PUSH_SUBS.put(SUB_PREFIX + id, JSON.stringify(sub));
+  // Store only the fields needed to send pushes.
+  const stored = {
+    endpoint: sub.endpoint,
+    expirationTime: sub.expirationTime ?? null,
+    keys: { p256dh: sub.keys.p256dh, auth: sub.keys.auth },
+  };
+  await env.PUSH_SUBS.put(SUB_PREFIX + id, JSON.stringify(stored));
   return json({ ok: true }, 200, {}, request, env);
 }
 
@@ -176,8 +203,8 @@ async function handleUnsubscribe(request, env) {
   } catch {
     return json({ error: 'Invalid JSON' }, 400, {}, request, env);
   }
-  if (!body || typeof body.endpoint !== 'string') {
-    return json({ error: 'Missing endpoint' }, 400, {}, request, env);
+  if (!body || typeof body.endpoint !== 'string' || !isAllowedPushEndpoint(body.endpoint)) {
+    return json({ error: 'Missing or invalid endpoint' }, 400, {}, request, env);
   }
   const id = await hashEndpoint(body.endpoint);
   await env.PUSH_SUBS.delete(SUB_PREFIX + id);
@@ -193,7 +220,12 @@ async function listSubscriptions(env) {
       const raw = await env.PUSH_SUBS.get(key.name);
       if (!raw) continue;
       try {
-        subs.push({ key: key.name, sub: JSON.parse(raw) });
+        const sub = JSON.parse(raw);
+        if (!isValidSubscription(sub)) {
+          await env.PUSH_SUBS.delete(key.name);
+          continue;
+        }
+        subs.push({ key: key.name, sub });
       } catch {
         await env.PUSH_SUBS.delete(key.name);
       }
@@ -245,6 +277,11 @@ async function notifySubscribers(env, live) {
           options: { ttl: 3600, urgency: 'high', topic: 'rdl-live' },
         },
       });
+      if (!isAllowedPushEndpoint(endpoint)) {
+        await env.PUSH_SUBS.delete(key);
+        removed++;
+        continue;
+      }
       const res = await fetch(endpoint, { method: 'POST', headers, body });
       if (res.status === 404 || res.status === 410) {
         await env.PUSH_SUBS.delete(key);
