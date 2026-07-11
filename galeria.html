@@ -74,12 +74,15 @@ nav::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;backg
 .gallery-grid{columns:3;column-gap:4px;line-height:0;}
 .gallery-grid.cols-2{columns:2;}
 .gallery-grid.cols-4{columns:4;}
-.gallery-item{display:inline-block;width:100%;margin-bottom:4px;position:relative;overflow:hidden;cursor:pointer;border-radius:2px;}
+.gallery-item{display:inline-block;width:100%;margin-bottom:4px;position:relative;overflow:hidden;cursor:pointer;border-radius:2px;-webkit-tap-highlight-color:transparent;}
 .gallery-item img{width:100%;display:block;transition:transform 0.4s ease,filter 0.3s;}
-.gallery-item:hover img{transform:scale(1.04);filter:brightness(0.75);}
-.gallery-item-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;}
-.gallery-item:hover .gallery-item-overlay{opacity:1;}
+.gallery-item-overlay{position:absolute;inset:0;display:none;align-items:center;justify-content:center;pointer-events:none;}
 .gallery-item-overlay span{font-family:var(--font-display);font-size:1.8rem;color:var(--white);letter-spacing:0.1em;}
+@media(hover:hover) and (pointer:fine){
+  .gallery-item:hover img{transform:scale(1.04);filter:brightness(0.75);}
+  .gallery-item-overlay{display:flex;opacity:0;transition:opacity 0.3s;}
+  .gallery-item:hover .gallery-item-overlay{opacity:1;}
+}
 
 /* Empty state */
 .gallery-empty{text-align:center;padding:4rem 2rem;color:var(--muted);}
@@ -87,16 +90,27 @@ nav::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;backg
 .gallery-empty p{font-family:var(--font-condensed);font-size:0.85rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
 
 /* LIGHTBOX */
-.lightbox{position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.95);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.25s;}
+.lightbox{position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.95);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.25s;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);}
 .lightbox.open{opacity:1;pointer-events:all;}
-.lightbox-img{max-width:90vw;max-height:88vh;object-fit:contain;border-radius:2px;box-shadow:0 0 60px rgba(0,0,0,0.8);}
-.lightbox-close{position:absolute;top:1.5rem;right:1.75rem;font-family:var(--font-display);font-size:2rem;color:var(--muted-light);cursor:pointer;line-height:1;transition:color 0.2s;}
+.lightbox-stage{flex:1;display:flex;align-items:center;justify-content:center;width:100%;min-height:0;padding:3.5rem 1rem 1rem;}
+.lightbox-img{max-width:min(92vw,1100px);max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:2px;box-shadow:0 0 60px rgba(0,0,0,0.8);user-select:none;-webkit-user-drag:none;}
+.lightbox-close{position:absolute;top:max(0.75rem,env(safe-area-inset-top));right:max(0.75rem,env(safe-area-inset-right));z-index:2;font-family:var(--font-display);font-size:1.5rem;color:var(--white);cursor:pointer;line-height:1;transition:color 0.2s;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.15);}
 .lightbox-close:hover{color:var(--gold);}
-.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);font-family:var(--font-display);font-size:2.5rem;color:var(--muted-light);cursor:pointer;transition:color 0.2s;padding:1rem;user-select:none;line-height:1;}
-.lightbox-nav:hover{color:var(--gold);}
-.lightbox-prev{left:1rem;}
-.lightbox-next{right:1rem;}
-.lightbox-counter{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-family:var(--font-condensed);font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);}
+.lightbox-controls{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:1.25rem;width:100%;padding:0.85rem 1rem calc(0.85rem + env(safe-area-inset-bottom));background:linear-gradient(to top,rgba(0,0,0,0.85),transparent);}
+.lightbox-nav{font-family:var(--font-display);font-size:2rem;color:var(--white);cursor:pointer;transition:color 0.2s;user-select:none;line-height:1;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);flex-shrink:0;}
+.lightbox-nav:hover{color:var(--gold);border-color:rgba(245,200,0,0.35);}
+.lightbox-counter{font-family:var(--font-condensed);font-size:0.78rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted-light);min-width:5.5rem;text-align:center;}
+@media(min-width:861px){
+  .lightbox{display:flex;flex-direction:column;}
+  .lightbox-stage{padding:2rem 5rem;}
+  .lightbox-img{max-height:88vh;}
+  .lightbox-controls{position:absolute;inset:0;background:none;padding:0;pointer-events:none;}
+  .lightbox-nav{pointer-events:auto;position:absolute;top:50%;transform:translateY(-50%);background:transparent;border:none;font-size:2.5rem;width:auto;height:auto;padding:1rem;}
+  .lightbox-prev{left:1rem;}
+  .lightbox-next{right:1rem;}
+  .lightbox-counter{pointer-events:none;position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);min-width:0;}
+  .lightbox-close{top:1.5rem;right:1.75rem;background:transparent;border:none;width:auto;height:auto;font-size:2rem;color:var(--muted-light);}
+}
 
 /* COLUMN TOGGLE */
 .col-toggle{display:flex;gap:4px;align-items:center;}
@@ -329,11 +343,15 @@ footer p{font-size:0.78rem;color:var(--muted);}
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
-  <span class="lightbox-close" id="lbClose">✕</span>
-  <span class="lightbox-nav lightbox-prev" id="lbPrev">‹</span>
-  <img class="lightbox-img" id="lbImg" src="" alt=""/>
-  <span class="lightbox-nav lightbox-next" id="lbNext">›</span>
-  <span class="lightbox-counter" id="lbCounter"></span>
+  <span class="lightbox-close" id="lbClose" role="button" tabindex="0" aria-label="Close">✕</span>
+  <div class="lightbox-stage" id="lbStage">
+    <img class="lightbox-img" id="lbImg" src="" alt=""/>
+  </div>
+  <div class="lightbox-controls">
+    <span class="lightbox-nav lightbox-prev" id="lbPrev" role="button" tabindex="0" aria-label="Previous">‹</span>
+    <span class="lightbox-counter" id="lbCounter"></span>
+    <span class="lightbox-nav lightbox-next" id="lbNext" role="button" tabindex="0" aria-label="Next">›</span>
+  </div>
 </div>
 
 <!-- FOOTER -->
@@ -402,6 +420,7 @@ function updateCount() {
 // ── LIGHTBOX ──────────────────────────────────────────
 const lb = document.getElementById('lightbox');
 const lbImg = document.getElementById('lbImg');
+const lbStage = document.getElementById('lbStage');
 const lbCounter = document.getElementById('lbCounter');
 
 function openLightbox(idx) {
@@ -424,16 +443,33 @@ function navLightbox(dir) {
   lbCounter.textContent = (currentIdx + 1) + ' / ' + photos.length;
 }
 
-document.getElementById('lbClose').addEventListener('click', closeLightbox);
-document.getElementById('lbPrev').addEventListener('click', () => navLightbox(-1));
-document.getElementById('lbNext').addEventListener('click', () => navLightbox(1));
-lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+document.getElementById('lbClose').addEventListener('click', e => { e.stopPropagation(); closeLightbox(); });
+document.getElementById('lbPrev').addEventListener('click', e => { e.stopPropagation(); navLightbox(-1); });
+document.getElementById('lbNext').addEventListener('click', e => { e.stopPropagation(); navLightbox(1); });
+lb.addEventListener('click', e => {
+  if (e.target === lb || e.target === lbStage) closeLightbox();
+});
 document.addEventListener('keydown', e => {
   if (!lb.classList.contains('open')) return;
   if (e.key === 'Escape') closeLightbox();
   if (e.key === 'ArrowLeft') navLightbox(-1);
   if (e.key === 'ArrowRight') navLightbox(1);
 });
+
+let touchStartX = 0;
+let touchStartY = 0;
+lbStage.addEventListener('touchstart', e => {
+  if (!e.changedTouches.length) return;
+  touchStartX = e.changedTouches[0].clientX;
+  touchStartY = e.changedTouches[0].clientY;
+}, { passive: true });
+lbStage.addEventListener('touchend', e => {
+  if (!lb.classList.contains('open') || !e.changedTouches.length) return;
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
+  navLightbox(dx < 0 ? 1 : -1);
+}, { passive: true });
 
 // ── COLUMN TOGGLE ─────────────────────────────────────
 document.querySelectorAll('.col-btn').forEach(btn => {
