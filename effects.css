@@ -349,6 +349,134 @@ body:not(.page-home) > .gallery-wrap:first-of-type {
   body:not(.page-home) > .gallery-wrap:first-of-type {
     padding-top: 4rem;
   }
+
+  .hero h1 {
+    font-size: clamp(2.75rem, 15vw, 4.25rem);
+  }
+
+  .hero-subtitle {
+    letter-spacing: 0.12em;
+    padding: 0 0.5rem;
+  }
+
+  .gallery-wrap {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .schedule-list li {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.35rem 1rem;
+  }
+
+  .schedule-day {
+    min-width: 0;
+    flex: 0 0 100%;
+  }
+
+  .embed-offline-body {
+    white-space: normal;
+  }
+
+  .contact-channel {
+    padding: 1rem;
+  }
+
+  .contact-channel-sub {
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Mobile nav: logo | live/lang | menu — links full-width below */
+@media (max-width: 860px) {
+  nav {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    column-gap: 0.5rem;
+    row-gap: 0.75rem;
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+    padding-top: max(0.75rem, env(safe-area-inset-top));
+  }
+
+  .nav-logo {
+    grid-column: 1;
+    min-width: 0;
+  }
+
+  .nav-logo-text {
+    font-size: 1.15rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .nav-actions {
+    grid-column: 2;
+    margin-left: 0;
+    gap: 0.45rem;
+  }
+
+  .nav-toggle {
+    grid-column: 3;
+    display: block;
+    margin-left: 0;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.55rem 0.7rem;
+  }
+
+  .nav-links {
+    grid-column: 1 / -1;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0.35rem 0;
+    min-height: 44px;
+    line-height: 44px;
+  }
+
+  .nav-links a.nav-donate {
+    display: inline-block;
+    line-height: 1;
+    min-height: 0;
+    padding: 0.7rem 1.15rem;
+    margin-top: 0.25rem;
+  }
+
+  .nav-live.is-live {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+  }
+
+  .lang-btn {
+    padding: 0.45rem 0.7rem;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .embed-offline-body {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 380px) {
+  .nav-logo-text {
+    display: none;
+  }
+
+  .nav-live.is-live span:not(.live-dot) {
+    display: none;
+  }
+
+  .nav-live.is-live {
+    padding: 0.5rem 0.65rem;
+  }
 }
 
 /* ── Enhanced cards & buttons ── */

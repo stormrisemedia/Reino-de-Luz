@@ -29,7 +29,7 @@
 <meta name="twitter:image" content="https://reinodeluz.org/share.jpg"/>
 <title>Reino de Luz | Kingdom of Light</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;700&family=Barlow:wght@400;500&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="effects.css?v=31"/>
+<link rel="stylesheet" href="effects.css?v=32"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -443,7 +443,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   </ul>
 </footer>
 
-<script src="effects.js?v=10"></script>
+<script src="effects.js?v=11"></script>
 <script src="i18n-safe.js?v=1"></script>
 <script>
 let lang = 'es';
@@ -464,9 +464,6 @@ function setLang(l) {
 document.getElementById('langToggle').addEventListener('click', function(e) {
   const btn = e.target.closest('.lang-btn');
   if (btn) setLang(btn.getAttribute('data-lang'));
-});
-document.getElementById('navToggle')?.addEventListener('click', function () {
-  document.getElementById('navLinks')?.classList.toggle('open');
 });
 var savedLang = 'es';
 try { savedLang = localStorage.getItem('rdl-lang') || 'es'; } catch (e) {}

@@ -42,7 +42,7 @@
     for (var i = 0; i < 28; i++) addParticle({});
   }
 
-  /* ── Nav scroll effect ── */
+  /* ── Nav scroll effect + mobile menu ── */
   var nav = document.querySelector('nav');
   if (nav) {
     var onScroll = function () {
@@ -50,6 +50,28 @@
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
+
+    var toggle = document.getElementById('navToggle');
+    var links = document.getElementById('navLinks');
+    if (toggle && links) {
+      var setMenuOpen = function (open) {
+        links.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
+      };
+      setMenuOpen(false);
+      toggle.addEventListener('click', function () {
+        setMenuOpen(!links.classList.contains('open'));
+      });
+      links.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          setMenuOpen(false);
+        });
+      });
+      window.addEventListener('resize', function () {
+        if (window.innerWidth > 860) setMenuOpen(false);
+      });
+    }
   }
 
   /* ── Scroll reveal ── */
