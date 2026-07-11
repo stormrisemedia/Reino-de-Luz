@@ -140,9 +140,23 @@ section{padding:3.5rem 2rem;}
 .origin-closing strong{color:var(--white);font-weight:600;}
 .testimony-section{background:var(--black);border-top:1px solid rgba(245,200,0,0.1);}
 .belen-sub{padding-bottom:2.5rem;border-bottom:1px solid rgba(245,200,0,0.1);margin-bottom:2.5rem;}
-.history-divider{display:flex;align-items:center;gap:1rem;margin-bottom:3rem;}
+.history-divider{display:flex;align-items:center;gap:1.25rem;margin:1rem 0 3.5rem;}
 .history-divider::before,.history-divider::after{content:'';flex:1;height:1px;background:rgba(245,200,0,0.2);}
-.history-divider span{font-family:var(--font-condensed);font-size:0.7rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);white-space:nowrap;}
+.history-divider span{font-family:var(--font-condensed);font-size:0.82rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);white-space:nowrap;}
+@media(min-width:861px){
+  .history-divider{gap:1.75rem;margin:1.5rem 0 4rem;}
+  .history-divider span{font-size:1.15rem;letter-spacing:0.28em;}
+  .testimony-grid{grid-template-columns:340px 1fr;gap:5rem;}
+  .founder-card{padding:1.35rem 1.5rem;gap:1.15rem;margin-bottom:1.75rem;}
+  .founder-initials{width:56px;height:56px;font-size:1.35rem;}
+  .founder-name{font-size:1.1rem;}
+  .founder-detail{font-size:0.85rem;line-height:1.55;}
+  .scripture-text{font-size:0.95rem;line-height:1.8;}
+  .calling-quote{font-size:1.25rem;line-height:1.35;}
+  .tl-year{font-size:0.82rem;margin-bottom:0.5rem;}
+  .tl-content p{font-size:1.05rem;line-height:1.8;}
+  .tl-item{padding-bottom:2.35rem;gap:1.5rem;}
+}
 .belen-grid{display:grid;grid-template-columns:1fr 340px;gap:4rem;align-items:start;}
 .belen-location{font-family:var(--font-condensed);font-size:0.85rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.75rem;}
 .belen-tagline{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--muted);line-height:1.1;letter-spacing:0.02em;margin-bottom:2rem;}
