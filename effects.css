@@ -300,6 +300,15 @@ section {
   padding: 3.5rem 2rem;
 }
 
+/* Keep in-page anchors clear of the fixed nav */
+html {
+  scroll-padding-top: 5.5rem;
+}
+
+[id] {
+  scroll-margin-top: 5.5rem;
+}
+
 /* Clear fixed nav on inner pages (no redundant page-hero titles) */
 body:not(.page-home):not(.page-mission) > section:first-of-type,
 body:not(.page-home) > .about-intro:first-of-type,

@@ -16,21 +16,47 @@ const CACHE_SECONDS = 120;
 const LAST_LIVE_KEY = 'meta:last-live';
 const SUB_PREFIX = 'sub:';
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-};
+function allowedOrigins(env) {
+  const site = (env.SITE_ORIGIN || 'https://reinodeluz.org').replace(/\/$/, '');
+  const origins = new Set([site, site.replace('://', '://www.')]);
+  if (site.includes('://www.')) origins.add(site.replace('://www.', '://'));
+  origins.add('http://localhost:8787');
+  origins.add('http://127.0.0.1:8787');
+  origins.add('http://localhost:5500');
+  origins.add('http://127.0.0.1:5500');
+  return origins;
+}
 
-function json(data, status = 200, extra = {}) {
+function corsHeaders(request, env) {
+  const origin = request.headers.get('Origin') || '';
+  const allowed = allowedOrigins(env);
+  const site = (env.SITE_ORIGIN || 'https://reinodeluz.org').replace(/\/$/, '');
+  const allowOrigin = allowed.has(origin) ? origin : site;
+  return {
+    'Access-Control-Allow-Origin': allowOrigin,
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    Vary: 'Origin',
+  };
+}
+
+function json(data, status = 200, extra = {}, request, env) {
   return new Response(JSON.stringify(data), {
     status,
     headers: {
       'Content-Type': 'application/json',
-      ...corsHeaders,
+      ...corsHeaders(request, env),
       ...extra,
     },
   });
+}
+
+function isBrowserOriginAllowed(request, env) {
+  const origin = request.headers.get('Origin');
+  // Non-browser clients (no Origin) are still subject to endpoint validation;
+  // browser cross-origin calls must come from an allowlisted site.
+  if (!origin) return true;
+  return allowedOrigins(env).has(origin);
 }
 
 async function hashEndpoint(endpoint) {
@@ -42,6 +68,7 @@ async function hashEndpoint(endpoint) {
 async function checkYouTubeLive() {
   try {
     const yt = await fetch('https://www.youtube.com/channel/' + CHANNEL_ID + '/live', {
+      redirect: 'follow',
       headers: {
         'User-Agent':
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36',
@@ -52,34 +79,61 @@ async function checkYouTubeLive() {
     if (!yt.ok) {
       return { ok: false, live: false };
     }
+
+    // When offline, /live often lands on the channel page (no watch URL).
+    // When live, it typically redirects to /watch?v=VIDEO_ID.
+    const finalUrl = yt.url || '';
+    const videoId = (finalUrl.match(/[?&]v=([\w-]{11})/) || [])[1];
+    if (!videoId) {
+      return { ok: true, live: false };
+    }
+
     const html = await yt.text();
-    const live = html.includes('"isLive":true') || html.includes('"isLiveNow":true');
+    // Prefer isLiveNow — bare "isLive":true also appears in related/recommended JSON.
+    const live =
+      html.includes('"isLiveNow":true') ||
+      (html.includes('"isLive":true') && html.includes('"isLiveContent":true'));
     return { ok: true, live };
   } catch {
     return { ok: false, live: false };
   }
 }
 
+function liveStatusBody(live) {
+  return new Response(JSON.stringify({ live: !!live }), {
+    headers: {
+      'Content-Type': 'application/json',
+      'Cache-Control': 'public, max-age=' + CACHE_SECONDS,
+    },
+  });
+}
+
 async function getCachedLive(request, env, ctx) {
   const cache = caches.default;
   const cacheKey = new Request('https://live-status.internal/' + CHANNEL_ID);
-  let response = await cache.match(cacheKey);
-  if (response) {
-    const data = await response.clone().json();
-    return { live: !!data.live, response };
+  const cached = await cache.match(cacheKey);
+  if (cached) {
+    const data = await cached.json();
+    const live = !!data.live;
+    return {
+      live,
+      response: json({ live }, 200, { 'Cache-Control': 'public, max-age=' + CACHE_SECONDS }, request, env),
+    };
   }
 
   const result = await checkYouTubeLive();
   // On scrape failure, serve offline without caching so the next request can retry.
   if (!result.ok) {
-    return { live: false, response: json({ live: false }, 200) };
+    return { live: false, response: json({ live: false }, 200, {}, request, env) };
   }
 
-  response = json({ live: result.live }, 200, {
-    'Cache-Control': 'public, max-age=' + CACHE_SECONDS,
-  });
-  ctx.waitUntil(cache.put(cacheKey, response.clone()));
-  return { live: result.live, response };
+  ctx.waitUntil(cache.put(cacheKey, liveStatusBody(result.live)));
+  return {
+    live: result.live,
+    response: json({ live: result.live }, 200, {
+      'Cache-Control': 'public, max-age=' + CACHE_SECONDS,
+    }, request, env),
+  };
 }
 
 function isValidSubscription(sub) {
@@ -94,32 +148,38 @@ function isValidSubscription(sub) {
 }
 
 async function handleSubscribe(request, env) {
+  if (!isBrowserOriginAllowed(request, env)) {
+    return json({ error: 'Origin not allowed' }, 403, {}, request, env);
+  }
   let sub;
   try {
     sub = await request.json();
   } catch {
-    return json({ error: 'Invalid JSON' }, 400);
+    return json({ error: 'Invalid JSON' }, 400, {}, request, env);
   }
-  if (!isValidSubscription(sub)) return json({ error: 'Invalid subscription' }, 400);
+  if (!isValidSubscription(sub)) return json({ error: 'Invalid subscription' }, 400, {}, request, env);
 
   const id = await hashEndpoint(sub.endpoint);
   await env.PUSH_SUBS.put(SUB_PREFIX + id, JSON.stringify(sub));
-  return json({ ok: true });
+  return json({ ok: true }, 200, {}, request, env);
 }
 
 async function handleUnsubscribe(request, env) {
+  if (!isBrowserOriginAllowed(request, env)) {
+    return json({ error: 'Origin not allowed' }, 403, {}, request, env);
+  }
   let body;
   try {
     body = await request.json();
   } catch {
-    return json({ error: 'Invalid JSON' }, 400);
+    return json({ error: 'Invalid JSON' }, 400, {}, request, env);
   }
   if (!body || typeof body.endpoint !== 'string') {
-    return json({ error: 'Missing endpoint' }, 400);
+    return json({ error: 'Missing endpoint' }, 400, {}, request, env);
   }
   const id = await hashEndpoint(body.endpoint);
   await env.PUSH_SUBS.delete(SUB_PREFIX + id);
-  return json({ ok: true });
+  return json({ ok: true }, 200, {}, request, env);
 }
 
 async function listSubscriptions(env) {
@@ -148,7 +208,14 @@ async function notifySubscribers(env, live) {
     return { sent: 0, removed: 0 };
   }
 
-  const privateJWK = JSON.parse(env.VAPID_PRIVATE_KEY);
+  let privateJWK;
+  try {
+    privateJWK = JSON.parse(env.VAPID_PRIVATE_KEY);
+  } catch (err) {
+    console.log('VAPID_PRIVATE_KEY is not valid JSON; skip notify', err && err.message);
+    return { sent: 0, removed: 0 };
+  }
+
   const site = (env.SITE_ORIGIN || 'https://reinodeluz.org').replace(/\/$/, '');
   const payload = {
     title: '¡Estamos en vivo!',
@@ -212,7 +279,7 @@ async function syncLiveAndMaybeNotify(env, live) {
 export default {
   async fetch(request, env, ctx) {
     if (request.method === 'OPTIONS') {
-      return new Response(null, { status: 204, headers: corsHeaders });
+      return new Response(null, { status: 204, headers: corsHeaders(request, env) });
     }
 
     const url = new URL(request.url);
@@ -227,7 +294,9 @@ export default {
       return json(
         { publicKey: env.VAPID_PUBLIC_KEY || '' },
         200,
-        { 'Cache-Control': 'public, max-age=86400' }
+        { 'Cache-Control': 'public, max-age=86400' },
+        request,
+        env
       );
     }
 
@@ -239,7 +308,7 @@ export default {
       return handleUnsubscribe(request, env);
     }
 
-    return json({ error: 'Not found' }, 404);
+    return json({ error: 'Not found' }, 404, {}, request, env);
   },
 
   async scheduled(controller, env, ctx) {
@@ -254,10 +323,7 @@ export default {
     // Refresh edge cache used by the public /live endpoint
     const cache = caches.default;
     const cacheKey = new Request('https://live-status.internal/' + CHANNEL_ID);
-    const response = json({ live }, 200, {
-      'Cache-Control': 'public, max-age=' + CACHE_SECONDS,
-    });
-    ctx.waitUntil(cache.put(cacheKey, response));
+    ctx.waitUntil(cache.put(cacheKey, liveStatusBody(live)));
     ctx.waitUntil(syncLiveAndMaybeNotify(env, live));
   },
 };

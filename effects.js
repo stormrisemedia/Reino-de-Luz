@@ -7,10 +7,9 @@
   var skipAmbientHero = document.body.classList.contains('page-home') ||
     document.body.classList.contains('page-mission');
   if (!reducedMotion && !skipAmbientHero) {
-    var isHome = false;
     var heroEl = document.querySelector('.hero');
     var ambient = document.createElement('div');
-    ambient.className = 'ambient-bg' + (isHome ? ' ambient-bg--home ambient-bg--hero' : '');
+    ambient.className = 'ambient-bg';
     ambient.setAttribute('aria-hidden', 'true');
 
     if (heroEl) {
@@ -21,63 +20,26 @@
 
     function addParticle(opts) {
       var p = document.createElement('span');
-      var spark = !!opts.spark;
       p.className = 'ambient-particle' +
         (opts.large ? ' ambient-particle--lg' : '') +
         (opts.soft ? ' ambient-particle--soft' : '') +
-        (spark ? ' ambient-particle--spark' : ' ambient-particle--float');
+        ' ambient-particle--float';
 
-      var size;
-      if (isHome) {
-        size = opts.large ? (5 + Math.random() * 6) : spark ? (3 + Math.random() * 4) : (3 + Math.random() * 5);
-      } else {
-        size = opts.large ? (6 + Math.random() * 8) : (3 + Math.random() * 5);
-      }
+      var size = opts.large ? (6 + Math.random() * 8) : (3 + Math.random() * 5);
+      var opacity = opts.opacity != null ? opts.opacity : (0.2 + Math.random() * 0.35);
 
-      var drift = isHome ? ((Math.random() * 50 - 25).toFixed(1) + 'px') : '0px';
-      var opacity = opts.opacity;
-      if (opacity == null) {
-        opacity = isHome ? (0.45 + Math.random() * 0.45) : (0.2 + Math.random() * 0.35);
-      }
-
-      var style =
+      p.style.cssText =
         'width:' + size + 'px;height:' + size + 'px;' +
         '--p-opacity:' + opacity + ';' +
-        '--p-drift:' + drift + ';';
+        '--p-drift:0px;' +
+        'left:' + (Math.random() * 100) + '%;' +
+        'animation-duration:' + (opts.duration || (10 + Math.random() * 14)) + 's;' +
+        'animation-delay:' + (Math.random() * (opts.delaySpread || 8)) + 's;';
 
-      if (spark) {
-        style += 'left:' + (5 + Math.random() * 90) + '%;top:' + (8 + Math.random() * 84) + '%;';
-        style += 'animation-duration:' + (3 + Math.random() * 4) + 's;';
-        style += 'animation-delay:' + (Math.random() * 2) + 's;';
-      } else {
-        style += 'left:' + (Math.random() * 100) + '%;';
-        style += 'animation-duration:' + (opts.duration || (10 + Math.random() * 14)) + 's;';
-        style += 'animation-delay:' + (Math.random() * (opts.delaySpread || 8)) + 's;';
-      }
-
-      p.style.cssText = style;
       ambient.appendChild(p);
     }
 
-    var count = isHome ? 45 : 28;
-    for (var i = 0; i < count; i++) addParticle({});
-
-    if (isHome) {
-      for (var j = 0; j < 14; j++) {
-        addParticle({
-          large: true,
-          opacity: 0.3 + Math.random() * 0.25,
-          duration: 12 + Math.random() * 16,
-          delaySpread: 6
-        });
-      }
-      for (var k = 0; k < 28; k++) {
-        addParticle({
-          spark: true,
-          opacity: 0.4 + Math.random() * 0.3
-        });
-      }
-    }
+    for (var i = 0; i < 28; i++) addParticle({});
   }
 
   /* ── Nav scroll effect ── */

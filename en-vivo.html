@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" href="reinodeluzlogo.png?v=20"/>
 <title>En Vivo · Asociación Reino de Luz</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;700&family=Barlow:wght@400;500&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="effects.css?v=30"/>
+<link rel="stylesheet" href="effects.css?v=31"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -352,7 +352,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
     <div class="footer-wordmark" data-es="REINO <span>DE LUZ</span>" data-en="KINGDOM <span>OF LIGHT</span>">REINO <span>DE LUZ</span></div>
   </div>
   <p data-es="Llevando la Luz de Cristo al Mundo" data-en="Carrying the Light of Christ to the World">Llevando la Luz de Cristo al Mundo</p>
-  <p style="margin-top:0.4rem;" data-es="© 2025 Asociación Reino de Luz. Todos los derechos reservados." data-en="© 2025 Asociación Reino de Luz. All rights reserved.">© 2025 Asociación Reino de Luz. Todos los derechos reservados.</p>
+  <p style="margin-top:0.4rem;" data-es="© 2026 Asociación Reino de Luz. Todos los derechos reservados." data-en="© 2026 Asociación Reino de Luz. All rights reserved.">© 2026 Asociación Reino de Luz. Todos los derechos reservados.</p>
   <ul class="footer-links">
     <li><a href="en-vivo.html" data-es="En Vivo" data-en="Live">En Vivo</a></li>
     <li><a href="mision.html" data-es="Misión" data-en="Mission">Misión</a></li>
@@ -364,7 +364,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
     <li><a href="donar.html" data-es="Donar" data-en="Donate">Donar</a></li>
   </ul>
 </footer>
-<script src="effects.js?v=9"></script>
+<script src="effects.js?v=10"></script>
 <script>
 let lang = 'es';
 function setLang(l) {
@@ -393,11 +393,8 @@ var savedLang = 'es';
 try { savedLang = localStorage.getItem('rdl-lang') || 'es'; } catch (e) {}
 setLang(savedLang);
 
-/* --- Auto-detect YouTube live via Cloudflare Worker --- */
+/* --- Live player + badge (fed by live-status.js) --- */
 (function () {
-  var LIVE_STATUS_URL = 'https://reino-de-luz-live.startekno.workers.dev';
-  var CACHE_KEY = 'rdl-live-status';
-  var CACHE_MS = 2 * 60 * 1000; // re-check at most every 2 minutes per visitor
   var EMBED_SRC = 'https://www.youtube.com/embed/live_stream?channel=UC3kfwg4h0cpsGh_7Rsgk9LQ&autoplay=0';
 
   var liveBtn = document.querySelector('.nav-live');
@@ -445,26 +442,11 @@ setLang(savedLang);
     }
   }
 
-  try {
-    var cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
-    if (cached && (Date.now() - cached.t) < CACHE_MS) {
-      setPlayerLive(cached.live);
-      return;
-    }
-  } catch (e) {}
-
-  if (!LIVE_STATUS_URL) return;
-
-  fetch(LIVE_STATUS_URL)
-    .then(function (r) { return r.json(); })
-    .then(function (data) {
-      var live = !!(data && data.live);
-      setPlayerLive(live);
-      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ t: Date.now(), live: live })); } catch (e) {}
-    })
-    .catch(function () { setPlayerLive(false); });
+  window.RdlLiveStatusHandler = setPlayerLive;
 })();
-
+</script>
+<script src="live-status.js?v=1"></script>
+<script>
 /* --- Web Push: notify when the stream goes live --- */
 (function () {
   var API = 'https://reino-de-luz-live.startekno.workers.dev';

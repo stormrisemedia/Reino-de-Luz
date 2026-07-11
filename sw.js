@@ -32,13 +32,36 @@ self.addEventListener('push', (event) => {
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
   const target = (event.notification.data && event.notification.data.url) || '/en-vivo.html';
+
   event.waitUntil(
-    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clientList) => {
-      for (const client of clientList) {
-        if ('focus' in client) {
-          client.navigate(target);
-          return client.focus();
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(async (clientList) => {
+      const targetPath = (() => {
+        try {
+          return new URL(target, self.location.origin).pathname;
+        } catch (e) {
+          return '/en-vivo.html';
         }
+      })();
+
+      let match = null;
+      for (const client of clientList) {
+        try {
+          const path = new URL(client.url).pathname;
+          if (path === targetPath || path.endsWith('en-vivo.html')) {
+            match = client;
+            break;
+          }
+        } catch (e) {}
+      }
+      if (!match && clientList.length) match = clientList[0];
+
+      if (match) {
+        if (typeof match.navigate === 'function') {
+          try {
+            await match.navigate(target);
+          } catch (e) {}
+        }
+        if ('focus' in match) return match.focus();
       }
       if (self.clients.openWindow) return self.clients.openWindow(target);
     })
