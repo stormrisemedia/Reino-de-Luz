@@ -317,7 +317,7 @@ html {
 body:not(.page-home):not(.page-mission) > section:first-of-type,
 body:not(.page-home) > .about-intro:first-of-type,
 body:not(.page-home) > .gallery-wrap:first-of-type {
-  padding-top: 4.5rem;
+  padding-top: 6.5rem;
 }
 
 .visually-hidden {
@@ -351,7 +351,7 @@ body:not(.page-home) > .gallery-wrap:first-of-type {
   body:not(.page-home):not(.page-mission) > section:first-of-type,
   body:not(.page-home) > .about-intro:first-of-type,
   body:not(.page-home) > .gallery-wrap:first-of-type {
-    padding-top: 4rem;
+    padding-top: 6.5rem;
   }
 
   .hero h1 {
