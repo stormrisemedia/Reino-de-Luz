@@ -38,18 +38,12 @@ fit_on_canvas(hi, 512, pad_ratio=0.2).convert("RGB").save(icons / "icon-maskable
 # Site logo for nav/footer
 fit_on_canvas(hi, 512, pad_ratio=0.04).convert("RGB").save(root / "reinodeluzlogo.png", optimize=True)
 
-# Open Graph 1200x630 — logo only, centered
+# Open Graph 1200x630 — logo only on flat black (no glow, no text)
 W, H = 1200, 630
-og = Image.new("RGB", (W, H), (8, 8, 8))
-glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-gdraw = ImageDraw.Draw(glow)
-for r, a in [(520, 22), (360, 38), (240, 55)]:
-    gdraw.ellipse([W // 2 - r, H // 2 - r, W // 2 + r, H // 2 + r], fill=(245, 200, 0, a))
-glow = glow.filter(ImageFilter.GaussianBlur(80))
-og = Image.alpha_composite(og.convert("RGBA"), glow).convert("RGB")
+og = Image.new("RGB", (W, H), (0, 0, 0))
 
 logo = hi.copy()
-logo.thumbnail((480, 480), Image.Resampling.LANCZOS)
+logo.thumbnail((500, 500), Image.Resampling.LANCZOS)
 lx = (W - logo.width) // 2
 ly = (H - logo.height) // 2
 if logo.mode == "RGBA":
