@@ -3,44 +3,7 @@
 
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ── Floating light particles (skip full-bleed photo heroes) ── */
-  var skipAmbientHero = document.body.classList.contains('page-home') ||
-    document.body.classList.contains('page-mission');
-  if (!reducedMotion && !skipAmbientHero) {
-    var heroEl = document.querySelector('.hero');
-    var ambient = document.createElement('div');
-    ambient.className = 'ambient-bg';
-    ambient.setAttribute('aria-hidden', 'true');
-
-    if (heroEl) {
-      heroEl.insertBefore(ambient, heroEl.firstChild);
-    } else {
-      document.body.prepend(ambient);
-    }
-
-    function addParticle(opts) {
-      var p = document.createElement('span');
-      p.className = 'ambient-particle' +
-        (opts.large ? ' ambient-particle--lg' : '') +
-        (opts.soft ? ' ambient-particle--soft' : '') +
-        ' ambient-particle--float';
-
-      var size = opts.large ? (6 + Math.random() * 8) : (3 + Math.random() * 5);
-      var opacity = opts.opacity != null ? opts.opacity : (0.2 + Math.random() * 0.35);
-
-      p.style.cssText =
-        'width:' + size + 'px;height:' + size + 'px;' +
-        '--p-opacity:' + opacity + ';' +
-        '--p-drift:0px;' +
-        'left:' + (Math.random() * 100) + '%;' +
-        'animation-duration:' + (opts.duration || (10 + Math.random() * 14)) + 's;' +
-        'animation-delay:' + (Math.random() * (opts.delaySpread || 8)) + 's;';
-
-      ambient.appendChild(p);
-    }
-
-    for (var i = 0; i < 28; i++) addParticle({});
-  }
+  /* Floating light particles disabled */
 
   /* ── Nav scroll effect + mobile menu ── */
   var nav = document.querySelector('nav');
