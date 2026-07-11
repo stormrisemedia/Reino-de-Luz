@@ -76,12 +76,8 @@ nav::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;backg
 .gallery-grid.cols-4{columns:4;}
 .gallery-item{display:inline-block;width:100%;margin-bottom:4px;position:relative;overflow:hidden;cursor:pointer;border-radius:2px;-webkit-tap-highlight-color:transparent;}
 .gallery-item img{width:100%;display:block;transition:transform 0.4s ease,filter 0.3s;}
-.gallery-item-overlay{position:absolute;inset:0;display:none;align-items:center;justify-content:center;pointer-events:none;}
-.gallery-item-overlay span{font-family:var(--font-display);font-size:1.8rem;color:var(--white);letter-spacing:0.1em;}
 @media(hover:hover) and (pointer:fine){
   .gallery-item:hover img{transform:scale(1.04);filter:brightness(0.75);}
-  .gallery-item-overlay{display:flex;opacity:0;transition:opacity 0.3s;}
-  .gallery-item:hover .gallery-item-overlay{opacity:1;}
 }
 
 /* Empty state */
@@ -92,24 +88,17 @@ nav::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;backg
 /* LIGHTBOX */
 .lightbox{position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.95);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.25s;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);}
 .lightbox.open{opacity:1;pointer-events:all;}
-.lightbox-stage{flex:1;display:flex;align-items:center;justify-content:center;width:100%;min-height:0;padding:3.5rem 1rem 1rem;}
+.lightbox-stage{flex:1;display:flex;align-items:center;justify-content:center;width:100%;min-height:0;padding:3.5rem 1.5rem 1rem;}
 .lightbox-img{max-width:min(92vw,1100px);max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:2px;box-shadow:0 0 60px rgba(0,0,0,0.8);user-select:none;-webkit-user-drag:none;}
-.lightbox-close{position:absolute;top:max(0.75rem,env(safe-area-inset-top));right:max(0.75rem,env(safe-area-inset-right));z-index:2;font-family:var(--font-display);font-size:1.5rem;color:var(--white);cursor:pointer;line-height:1;transition:color 0.2s;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.15);}
-.lightbox-close:hover{color:var(--gold);}
+.lightbox-close{position:absolute;top:max(0.75rem,env(safe-area-inset-top));right:max(0.75rem,env(safe-area-inset-right));z-index:2;font-family:var(--font-display);font-size:1.5rem;color:var(--white);cursor:pointer;line-height:1;transition:color 0.2s,border-color 0.2s;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.15);}
+.lightbox-close:hover{color:var(--gold);border-color:rgba(245,200,0,0.35);}
 .lightbox-controls{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:1.25rem;width:100%;padding:0.85rem 1rem calc(0.85rem + env(safe-area-inset-bottom));background:linear-gradient(to top,rgba(0,0,0,0.85),transparent);}
-.lightbox-nav{font-family:var(--font-display);font-size:2rem;color:var(--white);cursor:pointer;transition:color 0.2s;user-select:none;line-height:1;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);flex-shrink:0;}
+.lightbox-nav{font-family:var(--font-display);font-size:2rem;color:var(--white);cursor:pointer;transition:color 0.2s,border-color 0.2s;user-select:none;line-height:1;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);flex-shrink:0;}
 .lightbox-nav:hover{color:var(--gold);border-color:rgba(245,200,0,0.35);}
 .lightbox-counter{font-family:var(--font-condensed);font-size:0.78rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted-light);min-width:5.5rem;text-align:center;}
 @media(min-width:861px){
-  .lightbox{display:flex;flex-direction:column;}
-  .lightbox-stage{padding:2rem 5rem;}
-  .lightbox-img{max-height:88vh;}
-  .lightbox-controls{position:absolute;inset:0;background:none;padding:0;pointer-events:none;}
-  .lightbox-nav{pointer-events:auto;position:absolute;top:50%;transform:translateY(-50%);background:transparent;border:none;font-size:2.5rem;width:auto;height:auto;padding:1rem;}
-  .lightbox-prev{left:1rem;}
-  .lightbox-next{right:1rem;}
-  .lightbox-counter{pointer-events:none;position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);min-width:0;}
-  .lightbox-close{top:1.5rem;right:1.75rem;background:transparent;border:none;width:auto;height:auto;font-size:2rem;color:var(--muted-light);}
+  .lightbox-stage{padding:4rem 2rem 1.25rem;}
+  .lightbox-controls{padding:1rem 1.5rem 1.5rem;gap:1.5rem;}
 }
 
 /* COLUMN TOGGLE */
@@ -197,147 +186,147 @@ footer p{font-size:0.78rem;color:var(--muted);}
   </div>
 
   <div class="gallery-grid" id="galleryGrid">
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.52%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.52%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.52%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.52%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.52%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.53%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.53%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.53%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.53%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.53%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.54%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.54%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.54%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.54%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.54%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.54%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.55%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.55%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.55%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.55%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.56%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.56%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.56%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.56%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.56%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.57%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.57%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.57%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.57%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.57%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.57%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.58%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.58%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.58%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.59%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.59%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.59%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.59%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.59%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.59%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.00%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.00%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.00%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.01%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.01%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.01%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.01%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.01%20PM%20%286%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.01%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.02%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.02%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.02%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.03%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.03%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.03%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.03%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.03%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.04%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.04%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.04%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.04%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.04%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.04%20PM%20%286%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.04%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.05%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.05%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.05%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.05%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.05%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.06%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.06%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.06%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.06%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.06%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.06%20PM%20%286%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.06%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.07%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.07%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.07%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.07%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.07%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.07%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.08%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.08%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.08%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.08%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.08%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.09%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.09%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.09%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.09%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.09%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.09%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.10%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.10%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.10%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.10%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.10%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.10%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.11%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.11%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.11%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.11%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.11%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.11%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.12%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.12%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.12%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.12%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.12%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.12%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.13%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.13%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.13%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.13%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.13%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.13%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.14%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.14%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.14%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.14%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.14%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.14%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.15%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.15%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.15%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.15%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.15%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.15%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.16%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.16%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.16%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.16%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.16%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.16%20PM%20%286%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.16%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.17%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.17%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.17%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.17%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
-    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.17%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>+</span></div></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.52%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.52%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.52%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.52%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.52%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.53%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.53%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.53%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.53%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.53%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.54%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.54%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.54%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.54%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.54%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.54%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.55%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.55%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.55%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.55%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.56%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.56%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.56%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.56%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.56%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.57%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.57%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.57%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.57%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.57%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.57%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.58%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.58%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.58%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.59%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.59%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.59%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.59%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.59%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.42.59%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.00%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.00%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.00%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.01%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.01%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.01%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.01%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.01%20PM%20%286%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.01%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.02%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.02%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.02%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.03%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.03%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.03%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.03%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.03%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.04%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.04%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.04%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.04%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.04%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.04%20PM%20%286%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.04%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.05%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.05%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.05%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.05%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.05%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.06%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.06%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.06%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.06%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.06%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.06%20PM%20%286%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.06%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.07%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.07%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.07%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.07%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.07%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.07%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.08%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.08%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.08%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.08%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.08%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.09%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.09%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.09%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.09%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.09%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.09%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.10%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.10%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.10%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.10%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.10%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.10%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.11%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.11%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.11%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.11%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.11%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.11%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.12%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.12%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.12%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.12%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.12%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.12%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.13%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.13%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.13%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.13%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.13%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.13%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.14%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.14%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.14%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.14%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.14%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.14%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.15%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.15%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.15%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.15%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.15%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.15%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.16%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.16%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.16%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.16%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.16%20PM%20%285%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.16%20PM%20%286%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.16%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.17%20PM%20%281%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.17%20PM%20%282%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.17%20PM%20%283%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.17%20PM%20%284%29.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
+    <div class="gallery-item"><img src="fotos/Yuri%20Pics/WhatsApp%20Image%202026-05-28%20at%202.43.17%20PM.jpeg" alt="Momento Reino de Luz" loading="lazy" decoding="async"/></div>
   </div>
 </div>
 
