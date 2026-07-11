@@ -68,6 +68,9 @@ nav::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;backg
 
 /* GALLERY GRID */
 .gallery-wrap{max-width:1100px;margin:0 auto;padding:2.5rem 2rem 3.5rem;}
+.gallery-header{text-align:center;margin-bottom:1.75rem;}
+.gallery-title{font-family:var(--font-display);font-size:clamp(2.8rem,7vw,4.5rem);color:var(--white);line-height:0.95;letter-spacing:0.04em;margin-bottom:0.85rem;}
+.gallery-tagline{font-family:var(--font-condensed);font-size:0.85rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);text-align:center;margin:0;}
 .gallery-stats{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;}
 .gallery-count{font-family:var(--font-condensed);font-size:0.78rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);}
 .gallery-count span{color:var(--gold);}
@@ -177,8 +180,10 @@ footer p{font-size:0.78rem;color:var(--muted);}
 
 <!-- GALLERY -->
 <div class="gallery-wrap">
-  <h1 class="visually-hidden" data-es="Momentos" data-en="Moments">Momentos</h1>
-  <p class="gallery-tagline" data-es="Cada foto es un testimonio de lo que Dios está haciendo" data-en="Every photo is a testimony of what God is doing">Cada foto es un testimonio de lo que Dios está haciendo</p>
+  <header class="gallery-header">
+    <h1 class="gallery-title" data-es="MOMENTOS" data-en="MOMENTS">MOMENTOS</h1>
+    <p class="gallery-tagline" data-es="Cada foto es un testimonio de lo que Dios está haciendo" data-en="Every photo is a testimony of what God is doing">Cada foto es un testimonio de lo que Dios está haciendo</p>
+  </header>
   <div class="gallery-stats">
     <p class="gallery-count" id="galleryCount">
       <span id="photoNum">141</span> <span id="countLabel" data-es="fotos" data-en="photos">fotos</span>
