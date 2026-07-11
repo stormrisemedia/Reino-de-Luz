@@ -6,7 +6,7 @@
  * POST /subscribe        → store PushSubscription JSON
  * POST /unsubscribe      → remove PushSubscription by endpoint
  *
- * Cron (every 2 min): detect live→offline transitions and notify subscribers.
+ * Cron (every 2 min): detect offline→live transitions and notify subscribers.
  */
 
 import { buildPushHTTPRequest } from '@pushforge/builder';
@@ -49,10 +49,14 @@ async function checkYouTubeLive() {
         Cookie: 'CONSENT=YES+cb',
       },
     });
+    if (!yt.ok) {
+      return { ok: false, live: false };
+    }
     const html = await yt.text();
-    return html.includes('"isLive":true') || html.includes('"isLiveNow":true');
+    const live = html.includes('"isLive":true') || html.includes('"isLiveNow":true');
+    return { ok: true, live };
   } catch {
-    return false;
+    return { ok: false, live: false };
   }
 }
 
@@ -65,12 +69,17 @@ async function getCachedLive(request, env, ctx) {
     return { live: !!data.live, response };
   }
 
-  const live = await checkYouTubeLive();
-  response = json({ live }, 200, {
+  const result = await checkYouTubeLive();
+  // On scrape failure, serve offline without caching so the next request can retry.
+  if (!result.ok) {
+    return { live: false, response: json({ live: false }, 200) };
+  }
+
+  response = json({ live: result.live }, 200, {
     'Cache-Control': 'public, max-age=' + CACHE_SECONDS,
   });
   ctx.waitUntil(cache.put(cacheKey, response.clone()));
-  return { live, response };
+  return { live: result.live, response };
 }
 
 function isValidSubscription(sub) {
@@ -234,7 +243,14 @@ export default {
   },
 
   async scheduled(controller, env, ctx) {
-    const live = await checkYouTubeLive();
+    const result = await checkYouTubeLive();
+    // Don't treat scrape failures as "went offline" — that caused duplicate push alerts.
+    if (!result.ok) {
+      console.log('YouTube live check failed; skipping cache/KV update');
+      return;
+    }
+
+    const live = result.live;
     // Refresh edge cache used by the public /live endpoint
     const cache = caches.default;
     const cacheKey = new Request('https://live-status.internal/' + CHANNEL_ID);
