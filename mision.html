@@ -180,6 +180,14 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
 .footer-links{display:flex;gap:1.5rem;justify-content:center;margin-top:1.5rem;list-style:none;flex-wrap:wrap;}
 .footer-links a{font-family:var(--font-condensed);font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
 .footer-links a:hover{color:var(--gold);}
+.project-banner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;background:var(--black-card);border:1px solid rgba(245,200,0,0.2);border-radius:4px;padding:1.5rem 1.75rem;margin-top:2.75rem;position:relative;}
+.project-banner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);}
+.project-banner-label{font-family:var(--font-condensed);font-size:0.68rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;}
+.project-banner-title{font-family:var(--font-display);font-size:1.55rem;color:var(--white);letter-spacing:0.03em;line-height:1.05;margin-bottom:0.4rem;}
+.project-banner-title .gold{color:var(--gold);}
+.project-banner-body{font-size:0.88rem;color:var(--muted-light);line-height:1.55;max-width:480px;}
+.project-banner-link{font-family:var(--font-condensed);font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0.7rem 1.35rem;border-radius:3px;text-decoration:none;white-space:nowrap;transition:background 0.2s,transform 0.15s;}
+.project-banner-link:hover{background:var(--gold-light);transform:translateY(-1px);}
 
 @media(max-width:1100px){
   .nav-links{gap:1rem;}
@@ -206,6 +214,8 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   .belen-stats .stat-card{padding:1.15rem 0.85rem;}
   .belen-stats .stat-num{font-size:2rem;}
   .belen-stats .stat-label{font-size:0.62rem;letter-spacing:0.06em;}
+  .project-banner{padding:1.25rem;gap:1.1rem;}
+  .project-banner-title{font-size:1.3rem;}
 }
 </style>
 </head>
@@ -365,6 +375,14 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
         </div>
       </div>
     </div>
+    <aside class="project-banner">
+      <div>
+        <p class="project-banner-label" data-es="Proyecto especial" data-en="Special project">Proyecto especial</p>
+        <h2 class="project-banner-title" data-es="Casa de <span class='gold'>Oportunidades</span>" data-en="House of <span class='gold'>Opportunities</span>">Casa de <span class="gold">Oportunidades</span></h2>
+        <p class="project-banner-body" data-es="Estamos construyendo un espacio dedicado para los niños y adolescentes de Belén — un lugar de oportunidades para toda una generación." data-en="We're building a dedicated space for the kids and adolescents of Belén — a place of opportunities for a whole generation.">Estamos construyendo un espacio dedicado para los niños y adolescentes de Belén — un lugar de oportunidades para toda una generación.</p>
+      </div>
+      <a href="proyecto.html" class="project-banner-link" data-es="Ver proyecto →" data-en="See project →">Ver proyecto →</a>
+    </aside>
   </div>
 </section>
 
@@ -443,6 +461,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   <ul class="footer-links">
     <li><a href="en-vivo.html" data-es="En Vivo" data-en="Live">En Vivo</a></li>
     <li><a href="mision.html" data-es="Misión" data-en="Mission">Misión</a></li>
+    <li><a href="proyecto.html" data-es="Proyecto" data-en="Project">Proyecto</a></li>
     <li><a href="programas.html" data-es="Programas" data-en="Programs">Programas</a></li>
     <li><a href="galeria.html" data-es="Momentos" data-en="Moments">Momentos</a></li>
     <li><a href="about.html" data-es="Nosotros" data-en="About">Nosotros</a></li>
