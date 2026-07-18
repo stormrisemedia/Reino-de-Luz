@@ -109,6 +109,7 @@ nav::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;backg
 .btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);}
 .btn-primary.hero-watch-live{display:none;}
 .btn-primary.hero-watch-live.is-live{display:inline-block;}
+.hero-cta:has(.hero-watch-live.is-live) .hero-project-cta{display:none;}
 .btn-secondary{font-family:var(--font-condensed);font-size:0.85rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;background:transparent;color:var(--white);padding:0.8rem 2rem;border-radius:3px;border:1px solid rgba(245,200,0,0.35);text-decoration:none;transition:border-color 0.2s,color 0.2s;}
 .btn-secondary:hover{border-color:var(--gold);color:var(--gold);}
 section{padding:3.5rem 2rem;}
@@ -354,7 +355,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
     <p class="hero-verse-ref" data-es="Juan 8:12" data-en="John 8:12">Juan 8:12</p>
     <div class="hero-cta">
       <a href="en-vivo.html" class="btn-primary hero-watch-live" data-es="Ver En Vivo" data-en="Watch Live">Ver En Vivo</a>
-      <a href="proyecto.html" class="btn-primary" data-es="Casa de Oportunidades" data-en="House of Opportunities">Casa de Oportunidades</a>
+      <a href="proyecto.html" class="btn-primary hero-project-cta" data-es="Casa de Oportunidades" data-en="House of Opportunities">Casa de Oportunidades</a>
       <a href="donar.html" class="btn-secondary" data-es="Donar" data-en="Donate">Donar</a>
     </div>
   </div>
