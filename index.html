@@ -64,6 +64,16 @@ nav::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;backg
 .intro-proof{display:flex;flex-direction:column;gap:1px;background:rgba(245,200,0,0.15);border:1px solid rgba(245,200,0,0.18);border-radius:4px;overflow:hidden;}
 .intro-proof .impact-hero-num{margin:0;border:none;border-radius:0;}
 .intro-proof .impact-stats-row{border:none;border-radius:0;background:rgba(245,200,0,0.1);}
+.home-project{background:var(--gold);padding:0;border:none;}
+.home-project .section-inner{padding:0 2rem;}
+.home-project-card{display:flex;align-items:center;justify-content:space-between;gap:1.5rem 2.5rem;flex-wrap:wrap;background:var(--black);border:3px solid var(--black);border-radius:4px;margin:2.5rem 0;padding:1.75rem 2rem;text-decoration:none;transition:transform 0.25s ease,box-shadow 0.25s ease;}
+.home-project-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(10,10,10,0.35);}
+.home-project-label{font-family:var(--font-condensed);font-size:0.72rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:0.45rem;}
+.home-project-title{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,2.8rem);color:var(--white);letter-spacing:0.03em;line-height:0.95;margin-bottom:0.5rem;}
+.home-project-title .gold{color:var(--gold);}
+.home-project-body{font-size:0.95rem;color:var(--off-white);line-height:1.6;max-width:520px;margin:0;}
+.home-project-cta{font-family:var(--font-condensed);font-size:0.95rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:1rem 1.75rem;border-radius:3px;white-space:nowrap;flex-shrink:0;transition:background 0.2s;}
+.home-project-card:hover .home-project-cta{background:var(--gold-light);}
 .explore-section{background:var(--black);}
 .explore-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(245,200,0,0.1);border:1px solid rgba(245,200,0,0.1);border-radius:4px;overflow:hidden;margin-top:2.5rem;}
 .explore-card{background:var(--black-surface);padding:1.75rem 1.5rem;text-decoration:none;display:flex;flex-direction:column;gap:0.65rem;position:relative;transition:background 0.25s,transform 0.35s cubic-bezier(0.22,1,0.36,1),box-shadow 0.35s ease;}
@@ -296,6 +306,9 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   .explore-grid{grid-template-columns:1fr;}
   .explore-card-wide{grid-column:auto;}
   .impact-hero-num{padding:1.35rem 1.25rem;gap:1rem;}
+  .home-project .section-inner{padding:0 1.25rem;}
+  .home-project-card{margin:2rem 0;padding:1.5rem 1.25rem;}
+  .home-project-cta{width:100%;text-align:center;}
 }
 </style>
 </head>
@@ -341,6 +354,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
     <p class="hero-verse-ref" data-es="Juan 8:12" data-en="John 8:12">Juan 8:12</p>
     <div class="hero-cta">
       <a href="en-vivo.html" class="btn-primary hero-watch-live" data-es="Ver En Vivo" data-en="Watch Live">Ver En Vivo</a>
+      <a href="proyecto.html" class="btn-primary" data-es="Casa de Oportunidades" data-en="House of Opportunities">Casa de Oportunidades</a>
       <a href="donar.html" class="btn-secondary" data-es="Donar" data-en="Donate">Donar</a>
     </div>
   </div>
@@ -367,6 +381,19 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
         <div class="impact-stat"><span class="impact-stat-num">∞</span><span class="impact-stat-label" data-es="Vidas cambiadas" data-en="Lives changed">Vidas cambiadas</span></div>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="home-project">
+  <div class="section-inner">
+    <a href="proyecto.html" class="home-project-card">
+      <div>
+        <p class="home-project-label" data-es="Proyecto especial" data-en="Special project">Proyecto especial</p>
+        <h2 class="home-project-title" data-es="Casa de <span class='gold'>Oportunidades</span>" data-en="House of <span class='gold'>Opportunities</span>">Casa de <span class="gold">Oportunidades</span></h2>
+        <p class="home-project-body" data-es="Ayúdanos a comprar el terreno y construir un espacio dedicado para los niños de Belén." data-en="Help us buy the land and build a dedicated space for the children of Belén.">Ayúdanos a comprar el terreno y construir un espacio dedicado para los niños de Belén.</p>
+      </div>
+      <span class="home-project-cta" data-es="Ver proyecto →" data-en="See project →">Ver proyecto →</span>
+    </a>
   </div>
 </section>
 

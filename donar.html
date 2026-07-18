@@ -103,15 +103,19 @@ section{padding:3.5rem 2rem;}
 .donate-secure{display:flex;align-items:center;justify-content:center;gap:0.4rem;font-size:0.72rem;color:var(--muted);margin-top:1rem;text-align:center;}
 .donate-other{margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,0.07);font-size:0.8rem;color:var(--muted);line-height:1.6;}
 .donate-other a{color:var(--gold);text-decoration:none;}
-.campaign-strip{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;background:var(--black-surface);border:1px solid rgba(245,200,0,0.22);border-radius:4px;padding:1.75rem 2rem;margin-bottom:2.75rem;position:relative;overflow:hidden;}
-.campaign-strip::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);}
-.campaign-strip-label{font-family:var(--font-condensed);font-size:0.68rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
-.campaign-strip-title{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.1rem);color:var(--white);letter-spacing:0.03em;line-height:1;margin-bottom:0.65rem;}
+.campaign-strip{display:grid;grid-template-columns:minmax(160px,220px) 1fr auto;gap:0;align-items:stretch;background:var(--black);border:3px solid var(--gold);border-radius:4px;margin-bottom:2.75rem;overflow:hidden;position:relative;}
+.campaign-strip-media{position:relative;min-height:160px;background:var(--black-mid);}
+.campaign-strip-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+.campaign-strip-copy{padding:1.75rem 1.75rem 1.75rem 2rem;display:flex;flex-direction:column;justify-content:center;}
+.campaign-strip-label{font-family:var(--font-condensed);font-size:0.72rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:0.45rem;}
+.campaign-strip-title{font-family:var(--font-display);font-size:clamp(1.9rem,3.5vw,2.6rem);color:var(--white);letter-spacing:0.03em;line-height:0.95;margin-bottom:0.65rem;}
 .campaign-strip-title .gold{color:var(--gold);}
-.campaign-strip-body{font-size:0.9rem;color:var(--muted-light);line-height:1.65;max-width:520px;margin-bottom:0.85rem;}
-.campaign-strip-goal{font-family:var(--font-condensed);font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
-.campaign-strip-goal strong{color:var(--gold);font-weight:700;}
-.campaign-strip-cta{flex-shrink:0;}
+.campaign-strip-body{font-size:0.95rem;color:var(--off-white);line-height:1.65;max-width:480px;margin-bottom:0.75rem;}
+.campaign-strip-goal{font-family:var(--font-display);font-size:1.45rem;color:var(--gold);line-height:1.15;}
+.campaign-strip-goal strong{font-weight:400;}
+.campaign-strip-cta{display:flex;align-items:center;padding:1.5rem 1.75rem;background:var(--gold);flex-shrink:0;}
+.campaign-strip-cta .btn-primary{background:var(--black);color:var(--gold);font-size:0.95rem;padding:0.95rem 1.5rem;white-space:nowrap;}
+.campaign-strip-cta .btn-primary:hover{background:var(--black-mid);color:var(--gold-light);transform:translateY(-1px);}
 footer{background:#050505;border-top:1px solid rgba(245,200,0,0.12);padding:2.5rem 2rem;text-align:center;}
 .footer-logo-wrap{display:flex;align-items:center;justify-content:center;gap:0.85rem;margin-bottom:1rem;}
 .footer-logo-img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:1px solid rgba(245,200,0,0.35);}
@@ -134,14 +138,17 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   .nav-links.open{display:flex;}
   .give-grid{grid-template-columns:1fr;}
   .donate-card{position:static;}
-  .campaign-strip{grid-template-columns:1fr;gap:1.25rem;}
+  .campaign-strip{grid-template-columns:1fr;}
+  .campaign-strip-media{min-height:200px;}
+  .campaign-strip-cta{justify-content:stretch;padding:1.25rem;}
+  .campaign-strip-cta .btn-primary{width:100%;text-align:center;}
 }
 @media(max-width:600px){
   section{padding:2.5rem 1.25rem;}
   .give-proof .impact-hero-num{flex-direction:column;text-align:center;padding:1.75rem 1.25rem;gap:0.75rem;}
   .give-proof .impact-big{font-size:4.25rem;}
   .give-proof .impact-big-label{align-items:center;}
-  .campaign-strip{padding:1.35rem 1.25rem;}
+  .campaign-strip-copy{padding:1.35rem 1.25rem;}
 }
 </style>
 </head>
@@ -178,11 +185,14 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
     <h1 class="visually-hidden" data-es="Donar" data-en="Donate">Donar</h1>
 
     <aside class="campaign-strip">
-      <div>
+      <div class="campaign-strip-media">
+        <img src="fotos/proyecto-casa/ninos.jpg" alt="Niños de Reino de Luz" width="825" height="549" loading="lazy" decoding="async"/>
+      </div>
+      <div class="campaign-strip-copy">
         <p class="campaign-strip-label" data-es="Proyecto especial" data-en="Special project">Proyecto especial</p>
         <h2 class="campaign-strip-title" data-es="Casa de <span class='gold'>Oportunidades</span>" data-en="House of <span class='gold'>Opportunities</span>">Casa de <span class="gold">Oportunidades</span></h2>
         <p class="campaign-strip-body" data-es="Estamos recaudando fondos para comprar un terreno y construir un espacio dedicado para los niños y adolescentes de Belén." data-en="We're raising funds to buy land and build a dedicated space for the kids and adolescents of Belén.">Estamos recaudando fondos para comprar un terreno y construir un espacio dedicado para los niños y adolescentes de Belén.</p>
-        <p class="campaign-strip-goal" data-es="Meta: <strong>S/ 167,410</strong> · ~$60,000 USD" data-en="Goal: <strong>$60,000 USD</strong> · ~S/ 167,410">Meta: <strong>S/ 167,410</strong> · ~$60,000 USD</p>
+        <p class="campaign-strip-goal" data-es="Meta: <strong>S/ 167,410</strong> · ~$60,000" data-en="Goal: <strong>$60,000</strong> · ~S/ 167,410">Meta: <strong>S/ 167,410</strong> · ~$60,000</p>
       </div>
       <div class="campaign-strip-cta">
         <a href="proyecto.html" class="btn-primary" data-es="Conocer el proyecto" data-en="See the project">Conocer el proyecto</a>
