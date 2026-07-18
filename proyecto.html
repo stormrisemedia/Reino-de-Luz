@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es" translate="no">
+<head>
+<meta name="google" content="notranslate" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#0A0A0A"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="Reino de Luz"/>
+<link rel="manifest" href="manifest.webmanifest"/>
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=22"/>
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png?v=22"/>
+<link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png?v=22"/>
+<meta name="description" content="Una Casa de Oportunidades para niños y adolescentes en Belén, Iquitos. Ayúdanos a comprar el terreno y construir."/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Reino de Luz"/>
+<meta property="og:locale" content="es_PE"/>
+<meta property="og:url" content="https://reinodeluz.org/proyecto.html"/>
+<meta property="og:title" content="Casa de Oportunidades · Reino de Luz"/>
+<meta property="og:description" content="Una Casa de Oportunidades para niños y adolescentes en Belén, Iquitos. Ayúdanos a comprar el terreno y construir."/>
+<meta property="og:image" content="https://reinodeluz.org/share.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="Reino de Luz"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Casa de Oportunidades · Reino de Luz"/>
+<meta name="twitter:description" content="Una Casa de Oportunidades para niños y adolescentes en Belén, Iquitos. Ayúdanos a comprar el terreno y construir."/>
+<meta name="twitter:image" content="https://reinodeluz.org/share.jpg"/>
+<title>Casa de Oportunidades · Reino de Luz</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;700&family=Barlow:wght@400;500&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="effects.css?v=39"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --gold:#F5C800;--gold-light:#FFD93D;--gold-dark:#C49A00;
+  --black:#0A0A0A;--black-mid:#111111;--black-surface:#1A1A1A;--black-card:#202020;
+  --white:#FFFFFF;--off-white:#F0EDE8;--muted:#888880;--muted-light:#AAAAAA;
+  --font-display:'Bebas Neue','Barlow Condensed',sans-serif;
+  --font-condensed:'Oswald','Barlow Condensed',sans-serif;
+  --font-body:'Barlow',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--off-white);font-family:var(--font-body);font-size:16px;line-height:1.7;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0.85rem 2.5rem;background:rgba(10,10,10,0.92);backdrop-filter:blur(14px);border-bottom:none;}
+nav::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,transparent 0%,rgba(245,200,0,0.15) 18%,rgba(245,200,0,0.75) 42%,#fff6a8 50%,rgba(245,200,0,0.75) 58%,rgba(245,200,0,0.15) 82%,transparent 100%);box-shadow:0 0 10px rgba(245,200,0,0.35),0 0 22px rgba(245,200,0,0.12);pointer-events:none;}
+.nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none;}
+.nav-logo-img{width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(245,200,0,0.5);object-fit:cover;}
+.nav-logo-text{font-family:var(--font-display);font-size:1.4rem;letter-spacing:0.06em;color:var(--white);line-height:1;}
+.nav-logo-text span{color:var(--gold);}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{font-family:var(--font-condensed);font-size:0.82rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted-light);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-links a.active{color:var(--gold);}
+.nav-donate{color:var(--black)!important;background:var(--gold);padding:0.45rem 1rem;border-radius:3px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.15s;}
+.nav-donate:hover{background:var(--gold-light);color:var(--black)!important;text-decoration:none;transform:translateY(-1px);}
+.nav-actions{display:flex;align-items:center;gap:0.75rem;flex-shrink:0;}
+.nav-toggle{display:none;background:transparent;border:1px solid rgba(245,200,0,0.35);color:var(--gold);font-size:1.2rem;line-height:1;padding:0.4rem 0.65rem;border-radius:3px;cursor:pointer;}
+.lang-toggle{display:flex;align-items:center;background:var(--black-surface);border:1px solid rgba(245,200,0,0.3);border-radius:3px;overflow:hidden;cursor:pointer;flex-shrink:0;}
+.lang-btn{font-family:var(--font-condensed);font-size:0.72rem;font-weight:700;letter-spacing:0.1em;padding:0.35rem 0.75rem;color:var(--muted);transition:background 0.2s,color 0.2s;user-select:none;}
+.lang-btn.active{background:var(--gold);color:var(--black);}
+.nav-live{display:none;align-items:center;gap:0.5rem;font-family:var(--font-condensed);font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0.5rem 1.1rem;border-radius:3px;text-decoration:none;transition:background 0.2s;}
+.nav-live.is-live{display:flex;}
+.nav-live:hover{background:var(--gold-light);}
+.live-dot{width:7px;height:7px;background:var(--black);border-radius:50%;animation:pulse 1.5s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.7)}}
+.btn-primary{font-family:var(--font-condensed);font-size:0.85rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;background:var(--gold);color:var(--black);padding:0.8rem 2rem;border-radius:3px;text-decoration:none;transition:background 0.2s,transform 0.15s;display:inline-block;}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);}
+.btn-secondary{font-family:var(--font-condensed);font-size:0.85rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;background:transparent;color:var(--white);padding:0.8rem 2rem;border-radius:3px;border:1px solid rgba(245,200,0,0.35);text-decoration:none;transition:border-color 0.2s,color 0.2s;}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold);}
+section{padding:3.5rem 2rem;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-label{font-family:var(--font-condensed);font-size:0.7rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
+.section-title{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,3.8rem);color:var(--white);line-height:0.95;letter-spacing:0.03em;margin-bottom:1rem;}
+.section-title .gold{color:var(--gold);}
+.section-body{font-size:0.95rem;color:var(--muted-light);max-width:560px;line-height:1.8;}
+.hero-cta{margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;}
+
+.project-hero{padding-top:7rem;padding-bottom:3.5rem;background:var(--black);position:relative;overflow:hidden;}
+.project-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 100%,rgba(245,200,0,0.07) 0%,transparent 65%);pointer-events:none;}
+.project-hero .section-inner{position:relative;z-index:1;}
+.project-hero .section-body{margin-bottom:0;}
+.project-hero-brand{font-family:var(--font-display);font-size:1.15rem;letter-spacing:0.08em;color:var(--white);margin-bottom:1.25rem;}
+.project-hero-brand span{color:var(--gold);}
+
+.need-section{background:var(--black-mid);border-top:1px solid rgba(245,200,0,0.1);border-bottom:1px solid rgba(245,200,0,0.1);}
+.need-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:3.5rem;align-items:start;margin-top:2rem;}
+.need-body{font-size:0.95rem;color:var(--muted-light);line-height:1.85;margin-bottom:1.25rem;max-width:540px;}
+.need-body strong{color:var(--white);font-weight:600;}
+.need-photos{display:flex;flex-direction:column;gap:1px;background:rgba(245,200,0,0.12);border:1px solid rgba(245,200,0,0.12);border-radius:4px;overflow:hidden;}
+.need-photos figure{margin:0;background:var(--black-surface);}
+.need-photos img{width:100%;height:auto;display:block;object-fit:cover;}
+.need-photos figcaption{font-size:0.72rem;color:var(--muted);padding:0.65rem 0.9rem;font-family:var(--font-condensed);letter-spacing:0.08em;text-transform:uppercase;background:var(--black-card);}
+
+.vision-section{background:var(--black);}
+.vision-lead{font-size:0.95rem;color:var(--muted-light);line-height:1.85;max-width:640px;margin:0 0 2.5rem;}
+.vision-lead strong{color:var(--white);font-weight:600;}
+.lot-callout{display:inline-flex;align-items:baseline;gap:0.75rem;margin-bottom:2.5rem;padding:0.85rem 1.35rem;border-left:3px solid var(--gold);background:rgba(245,200,0,0.05);}
+.lot-callout-num{font-family:var(--font-display);font-size:2.4rem;color:var(--gold);line-height:1;}
+.lot-callout-label{font-family:var(--font-condensed);font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);line-height:1.4;}
+.floors-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(245,200,0,0.12);border:1px solid rgba(245,200,0,0.12);border-radius:4px;overflow:hidden;margin-bottom:2.5rem;}
+.floor-block{background:var(--black-surface);padding:2rem 1.75rem;}
+.floor-label{font-family:var(--font-condensed);font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
+.floor-title{font-family:var(--font-display);font-size:1.7rem;color:var(--white);letter-spacing:0.03em;margin-bottom:1.25rem;line-height:1;}
+.floor-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.floor-list li{font-size:0.92rem;color:var(--muted-light);padding-left:1rem;position:relative;line-height:1.45;}
+.floor-list li::before{content:'—';position:absolute;left:0;color:var(--gold-dark);font-size:0.75rem;}
+.plan-figure{margin:0;background:var(--black-surface);border:1px solid rgba(245,200,0,0.15);border-radius:4px;overflow:hidden;padding:1.5rem;text-align:center;}
+.plan-figure img{width:100%;max-width:420px;height:auto;display:inline-block;background:#fff;border-radius:2px;}
+.plan-figure figcaption{margin-top:1rem;font-size:0.78rem;color:var(--muted);font-family:var(--font-condensed);letter-spacing:0.1em;text-transform:uppercase;}
+
+.budget-section{background:var(--black-mid);border-top:1px solid rgba(245,200,0,0.1);}
+.budget-summary{background:var(--black-surface);border:1px solid rgba(245,200,0,0.15);border-radius:4px;padding:2.75rem 3rem;margin-top:2rem;}
+.budget-grid{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,0.04);border-radius:3px;overflow:hidden;margin-bottom:1rem;}
+.budget-item{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.35rem;background:var(--black-card);font-size:1.05rem;color:var(--muted-light);gap:1rem;}
+.budget-item span:last-child{font-family:var(--font-display);font-size:1.25rem;color:var(--white);white-space:nowrap;}
+.budget-total{background:rgba(245,200,0,0.08)!important;border-top:1px solid rgba(245,200,0,0.2);padding:1.25rem 1.35rem!important;}
+.budget-total span:first-child{font-family:var(--font-condensed);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--white);font-size:1rem;}
+.budget-total span:last-child{color:var(--gold)!important;font-size:1.75rem!important;}
+.budget-note{font-size:0.9rem;color:var(--muted);font-style:italic;margin-top:1rem;}
+
+.connect-section{background:var(--black);}
+.connect-cta{text-align:center;padding-top:4.5rem;padding-bottom:4.5rem;}
+.connect-cta .section-title{font-size:clamp(2.8rem,5.5vw,4.2rem);}
+.connect-cta .section-body{margin:0 auto 2.25rem;font-size:1.05rem;max-width:640px;}
+.connect-cta .hero-cta{justify-content:center;margin-top:0;}
+
+footer{background:#050505;border-top:1px solid rgba(245,200,0,0.12);padding:2.5rem 2rem;text-align:center;}
+.footer-logo-wrap{display:flex;align-items:center;justify-content:center;gap:0.85rem;margin-bottom:1rem;}
+.footer-logo-img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:1px solid rgba(245,200,0,0.35);}
+.footer-wordmark{font-family:var(--font-display);font-size:1.5rem;color:var(--white);letter-spacing:0.06em;}
+.footer-wordmark span{color:var(--gold);}
+footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
+.footer-links{display:flex;gap:1.5rem;justify-content:center;margin-top:1.5rem;list-style:none;flex-wrap:wrap;}
+.footer-links a{font-family:var(--font-condensed);font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--gold);}
+
+@media(max-width:1100px){
+  .nav-links{gap:1rem;}
+  .nav-links a{font-size:0.76rem;letter-spacing:0.08em;}
+  nav{padding-left:1.5rem;padding-right:1.5rem;}
+}
+@media(max-width:860px){
+  nav{padding:0.85rem 1.25rem;flex-wrap:wrap;row-gap:0.75rem;}
+  .nav-toggle{display:block;margin-left:auto;}
+  .nav-actions{margin-left:0;}
+  .nav-links{display:none;width:100%;flex-direction:column;align-items:flex-start;gap:0.85rem;padding-top:0.75rem;border-top:1px solid rgba(245,200,0,0.12);}
+  .nav-links.open{display:flex;}
+  .need-grid,.floors-grid{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  section{padding:2.5rem 1.25rem;}
+  .project-hero{padding-top:6rem;padding-bottom:2.5rem;}
+  .hero-cta{flex-direction:column;align-items:flex-start;}
+  .budget-summary{padding:1.5rem;}
+  .budget-item{padding:0.75rem 1rem;font-size:0.9rem;flex-wrap:wrap;}
+  .budget-item span:last-child{font-size:1.05rem;}
+  .budget-total{padding:0.9rem 1rem!important;}
+  .budget-total span:last-child{font-size:1.4rem!important;}
+  .connect-cta{padding-top:2.5rem;padding-bottom:2.5rem;}
+  .connect-cta .hero-cta{align-items:center;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="reinodeluzlogo.png?v=22" alt="Logo" class="nav-logo-img"/>
+    <span class="nav-logo-text" data-es="REINO <span>DE LUZ</span>" data-en="KINGDOM <span>OF LIGHT</span>">REINO <span>DE LUZ</span></span>
+  </a>
+  <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="en-vivo.html" data-es="En Vivo" data-en="Live">En Vivo</a></li>
+    <li><a href="mision.html" data-es="Misión" data-en="Mission">Misión</a></li>
+    <li><a href="programas.html" data-es="Programas" data-en="Programs">Programas</a></li>
+    <li><a href="galeria.html" data-es="Momentos" data-en="Moments">Momentos</a></li>
+    <li><a href="about.html" data-es="Nosotros" data-en="About">Nosotros</a></li>
+    <li><a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a></li>
+    <li><a href="donar.html" class="nav-donate" data-es="Donar" data-en="Donate">Donar</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="en-vivo.html" class="nav-live">
+      <span class="live-dot"></span>
+      <span data-es="En Vivo" data-en="Live Now">En Vivo</span>
+    </a>
+    <div class="lang-toggle" id="langToggle">
+      <span class="lang-btn active" data-lang="es">ES</span>
+      <span class="lang-btn" data-lang="en">EN</span>
+    </div>
+  </div>
+</nav>
+
+<section class="project-hero">
+  <div class="section-inner">
+    <p class="project-hero-brand" data-es="REINO <span>DE LUZ</span>" data-en="KINGDOM <span>OF LIGHT</span>">REINO <span>DE LUZ</span></p>
+    <p class="section-label" data-es="Proyecto especial" data-en="Special project">Proyecto especial</p>
+    <h1 class="section-title" data-es="CASA DE<br/><span class='gold'>OPORTUNIDADES</span>" data-en="HOUSE OF<br/><span class='gold'>OPPORTUNITIES</span>">CASA DE<br/><span class="gold">OPORTUNIDADES</span></h1>
+    <p class="section-body" data-es="Un espacio dedicado para niños y adolescentes en Belén — donde puedan crecer, aprender y encontrar esperanza." data-en="A dedicated space for kids and adolescents in Belén — where they can grow, learn, and find hope.">Un espacio dedicado para niños y adolescentes en Belén — donde puedan crecer, aprender y encontrar esperanza.</p>
+    <div class="hero-cta">
+      <a href="#presupuesto" class="btn-primary" data-es="Ver presupuesto" data-en="See budget">Ver presupuesto</a>
+      <a href="donar.html" class="btn-secondary" data-es="Donar" data-en="Donate">Donar</a>
+    </div>
+  </div>
+</section>
+
+<section class="need-section" id="necesidad">
+  <div class="section-inner">
+    <p class="section-label" data-es="La necesidad" data-en="The need">La necesidad</p>
+    <h2 class="section-title" data-es="SIN UN LUGAR<br/><span class='gold'>PROPIO</span>" data-en="WITHOUT A PLACE<br/><span class='gold'>OF OUR OWN</span>">SIN UN LUGAR<br/><span class="gold">PROPIO</span></h2>
+    <div class="need-grid">
+      <div>
+        <p class="need-body" data-es="Hola, queridos amigos. Soy <strong>Bryan Acipali Vela</strong>. Junto a mi esposa <strong>Yuri</strong>, hemos liderado el ministerio Reino de Luz durante 6 años, sirviendo a niños y adolescentes en Belén, Iquitos." data-en="Hello, dear friends. I'm <strong>Bryan Acipali Vela</strong>. Together with my wife <strong>Yuri</strong>, we have led the Reino de Luz ministry for 6 years, serving kids and adolescents in Belén, Iquitos.">Hola, queridos amigos. Soy <strong>Bryan Acipali Vela</strong>. Junto a mi esposa <strong>Yuri</strong>, hemos liderado el ministerio Reino de Luz durante 6 años, sirviendo a niños y adolescentes en Belén, Iquitos.</p>
+        <p class="need-body" data-es="Hoy trabajamos con más de <strong>50 niños y adolescentes</strong>, muchos en situaciones difíciles. No tener un espacio dedicado limita las formas en que podemos servirles." data-en="Today we work with more than <strong>50 kids and adolescents</strong>, many in difficult living situations. Not having a dedicated space limits the ways we are able to serve them.">Hoy trabajamos con más de <strong>50 niños y adolescentes</strong>, muchos en situaciones difíciles. No tener un espacio dedicado limita las formas en que podemos servirles.</p>
+        <p class="need-body" data-es="Creemos que este proyecto será un punto de inflexión en muchas de sus vidas: una casa que se convierta en un lugar de oportunidades." data-en="We believe this project will be a turning point in many of their lives: a house that becomes a place of opportunities.">Creemos que este proyecto será un punto de inflexión en muchas de sus vidas: una casa que se convierta en un lugar de oportunidades.</p>
+      </div>
+      <div class="need-photos">
+        <figure>
+          <img src="fotos/proyecto-casa/familia.jpg" alt="Bryan, Yuri y su familia en Belén" width="1080" height="1440" loading="lazy" decoding="async"/>
+          <figcaption data-es="Bryan, Yuri, Lucian y Fe Gracia · Belén" data-en="Bryan, Yuri, Lucian &amp; Fe Gracia · Belén">Bryan, Yuri, Lucian y Fe Gracia · Belén</figcaption>
+        </figure>
+        <figure>
+          <img src="fotos/proyecto-casa/ninos.jpg" alt="Niños de Reino de Luz" width="825" height="549" loading="lazy" decoding="async"/>
+          <figcaption data-es="Los niños que servimos" data-en="The children we serve">Los niños que servimos</figcaption>
+        </figure>
+        <figure>
+          <img src="fotos/proyecto-casa/espacio-actual.jpg" alt="Espacio actual en Belén" width="960" height="720" loading="lazy" decoding="async"/>
+          <figcaption data-es="El espacio actual" data-en="The current space">El espacio actual</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="vision-section" id="vision">
+  <div class="section-inner">
+    <p class="section-label" data-es="La visión" data-en="The vision">La visión</p>
+    <h2 class="section-title" data-es="LO QUE<br/><span class='gold'>QUEREMOS CONSTRUIR</span>" data-en="WHAT WE<br/><span class='gold'>WANT TO BUILD</span>">LO QUE<br/><span class="gold">QUEREMOS CONSTRUIR</span></h2>
+    <p class="vision-lead" data-es="Nuestro objetivo es adquirir un terreno de <strong>8 × 14 metros</strong> (valorado en 24,000 soles) para construir una casa de dos pisos que sea un lugar de oportunidades para los niños y adolescentes que servimos." data-en="Our goal is to acquire an <strong>8 × 14 meter</strong> lot (valued at 24,000 soles) to build a two-story house that will serve as a place of opportunities for the kids and adolescents we serve.">Nuestro objetivo es adquirir un terreno de <strong>8 × 14 metros</strong> (valorado en 24,000 soles) para construir una casa de dos pisos que sea un lugar de oportunidades para los niños y adolescentes que servimos.</p>
+    <div class="lot-callout">
+      <span class="lot-callout-num">8×14 m</span>
+      <span class="lot-callout-label" data-es="Terreno · 24,000 soles" data-en="Lot · 24,000 soles">Terreno · 24,000 soles</span>
+    </div>
+    <div class="floors-grid">
+      <div class="floor-block">
+        <p class="floor-label" data-es="Primer piso" data-en="First floor">Primer piso</p>
+        <h3 class="floor-title" data-es="Planta Baja" data-en="Ground Floor">Planta Baja</h3>
+        <ul class="floor-list">
+          <li data-es="Auditorio" data-en="Auditorium">Auditorio</li>
+          <li data-es="Cocina" data-en="Kitchen">Cocina</li>
+          <li data-es="Baños de niños y niñas" data-en="Boys' and girls' bathrooms">Baños de niños y niñas</li>
+          <li data-es="Almacén" data-en="Storage">Almacén</li>
+        </ul>
+      </div>
+      <div class="floor-block">
+        <p class="floor-label" data-es="Segundo piso" data-en="Second floor">Segundo piso</p>
+        <h3 class="floor-title" data-es="Planta Alta" data-en="Upper Floor">Planta Alta</h3>
+        <ul class="floor-list">
+          <li data-es="Sala de recreación" data-en="Recreation room">Sala de recreación</li>
+          <li data-es="Cocina" data-en="Kitchen">Cocina</li>
+          <li data-es="Dos aulas de música y canto" data-en="Two classrooms for music and singing">Dos aulas de música y canto</li>
+          <li data-es="Espacio para inglés, computación, tutoría y repostería" data-en="Space for English, computers, tutoring, and baking">Espacio para inglés, computación, tutoría y repostería</li>
+          <li data-es="Dos dormitorios" data-en="Two bedrooms">Dos dormitorios</li>
+          <li data-es="Baño" data-en="Bathroom">Baño</li>
+          <li data-es="Puesto de primeros auxilios" data-en="First aid station">Puesto de primeros auxilios</li>
+        </ul>
+      </div>
+    </div>
+    <figure class="plan-figure">
+      <img src="fotos/proyecto-casa/plano.jpg" alt="Plano de distribución" width="648" height="1404" loading="lazy" decoding="async"/>
+      <figcaption data-es="Plano de distribución" data-en="Floor plan">Plano de distribución</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="budget-section" id="presupuesto">
+  <div class="section-inner">
+    <p class="section-label" data-es="Presupuesto estimado" data-en="Estimated budget">Presupuesto estimado</p>
+    <h2 class="section-title" data-es="LO QUE<br/><span class='gold'>SE NECESITA</span>" data-en="WHAT IT<br/><span class='gold'>WILL TAKE</span>">LO QUE<br/><span class="gold">SE NECESITA</span></h2>
+    <div class="budget-summary">
+      <div class="budget-grid">
+        <div class="budget-item"><span data-es="Terreno" data-en="Land">Terreno</span><span>S/ 24,000</span></div>
+        <div class="budget-item"><span data-es="Construcción" data-en="Construction">Construcción</span><span>S/ 79,410.50</span></div>
+        <div class="budget-item"><span data-es="Mano de obra" data-en="Manual labor">Mano de obra</span><span>S/ 64,000</span></div>
+        <div class="budget-item budget-total"><span data-es="Total" data-en="Total">Total</span><span>S/ 167,410.50</span></div>
+      </div>
+      <p class="budget-note" data-es="Aproximadamente $60,000 USD. Cada aporte — grande o pequeño — nos acerca a esta visión." data-en="Approximately $60,000 USD. Every gift — large or small — brings us closer to this vision.">Aproximadamente $60,000 USD. Cada aporte — grande o pequeño — nos acerca a esta visión.</p>
+    </div>
+  </div>
+</section>
+
+<section class="connect-section connect-cta">
+  <div class="section-inner">
+    <h2 class="section-title" data-es="SÉ PARTE DE<br/><span class='gold'>ESTA VISIÓN</span>" data-en="BE PART OF<br/><span class='gold'>THIS VISION</span>">SÉ PARTE DE<br/><span class="gold">ESTA VISIÓN</span></h2>
+    <p class="section-body" data-es="Gracias por tomarte el tiempo de leer esta carta. Valoramos profundamente tu apoyo. Con gratitud, Bryan y Yuri." data-en="Thank you for taking the time to read this letter. We truly value your support. With thanks, Bryan and Yuri.">Gracias por tomarte el tiempo de leer esta carta. Valoramos profundamente tu apoyo. Con gratitud, Bryan y Yuri.</p>
+    <div class="hero-cta">
+      <a href="donar.html" class="btn-primary" data-es="Donar ahora" data-en="Donate now">Donar ahora</a>
+      <a href="programas.html" class="btn-secondary" data-es="Ver programas semanales" data-en="See weekly programs">Ver programas semanales</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo-wrap">
+    <img src="reinodeluzlogo.png?v=22" alt="Logo" class="footer-logo-img"/>
+    <div class="footer-wordmark" data-es="REINO <span>DE LUZ</span>" data-en="KINGDOM <span>OF LIGHT</span>">REINO <span>DE LUZ</span></div>
+  </div>
+  <p data-es="Llevando la Luz de Cristo al Mundo" data-en="Carrying the Light of Christ to the World">Llevando la Luz de Cristo al Mundo</p>
+  <p style="margin-top:0.4rem;" data-es="© 2026 Reino de Luz. Todos los derechos reservados." data-en="© 2026 Reino de Luz. All rights reserved.">© 2026 Reino de Luz. Todos los derechos reservados.</p>
+  <ul class="footer-links">
+    <li><a href="en-vivo.html" data-es="En Vivo" data-en="Live">En Vivo</a></li>
+    <li><a href="mision.html" data-es="Misión" data-en="Mission">Misión</a></li>
+    <li><a href="programas.html" data-es="Programas" data-en="Programs">Programas</a></li>
+    <li><a href="proyecto.html" data-es="Proyecto" data-en="Project">Proyecto</a></li>
+    <li><a href="galeria.html" data-es="Momentos" data-en="Moments">Momentos</a></li>
+    <li><a href="about.html" data-es="Nosotros" data-en="About">Nosotros</a></li>
+    <li><a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a></li>
+    <li><a href="donar.html" data-es="Donar" data-en="Donate">Donar</a></li>
+    <li><a href="https://www.youtube.com/@asociacionreinodeluz" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+  </ul>
+</footer>
+<script src="effects.js?v=16"></script>
+<script src="i18n-safe.js?v=1"></script>
+<script>
+let lang = 'es';
+function setLang(l) {
+  lang = l;
+  try { localStorage.setItem('rdl-lang', l); } catch (e) {}
+  document.documentElement.lang = l;
+  document.querySelectorAll('[data-es][data-en]').forEach(el => {
+    rdlSafeSetHtml(el, el.getAttribute('data-' + l));
+  });
+  document.querySelectorAll('[data-es-placeholder]').forEach(el => {
+    el.placeholder = el.getAttribute('data-' + l + '-placeholder');
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === l);
+  });
+}
+document.getElementById('langToggle').addEventListener('click', e => {
+  const btn = e.target.closest('.lang-btn');
+  if (btn) setLang(btn.getAttribute('data-lang'));
+});
+var savedLang = 'es';
+try { savedLang = localStorage.getItem('rdl-lang') || 'es'; } catch (e) {}
+setLang(savedLang);
+</script>
+<script src="live-status.js?v=2"></script>
+</body>
+</html>

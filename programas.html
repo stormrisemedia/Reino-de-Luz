@@ -231,6 +231,14 @@ section{padding:3.5rem 2rem;}
 .budget-total span:first-child{font-family:var(--font-condensed);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--white);font-size:1rem;}
 .budget-total span:last-child{color:var(--gold)!important;font-size:1.75rem!important;}
 .budget-note{font-size:0.9rem;color:var(--muted);font-style:italic;margin-top:1rem;}
+.project-banner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;background:var(--black-card);border:1px solid rgba(245,200,0,0.2);border-radius:4px;padding:1.5rem 1.75rem;margin-bottom:2.5rem;position:relative;}
+.project-banner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);}
+.project-banner-label{font-family:var(--font-condensed);font-size:0.68rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;}
+.project-banner-title{font-family:var(--font-display);font-size:1.55rem;color:var(--white);letter-spacing:0.03em;line-height:1.05;margin-bottom:0.4rem;}
+.project-banner-title .gold{color:var(--gold);}
+.project-banner-body{font-size:0.88rem;color:var(--muted-light);line-height:1.55;max-width:480px;}
+.project-banner-link{font-family:var(--font-condensed);font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0.7rem 1.35rem;border-radius:3px;text-decoration:none;white-space:nowrap;transition:background 0.2s,transform 0.15s;}
+.project-banner-link:hover{background:var(--gold-light);transform:translateY(-1px);}
 .connect-section{background:var(--black-mid);}
 .connect-cta{text-align:center;padding-top:4.5rem;padding-bottom:4.5rem;}
 .connect-cta .section-title{font-size:clamp(2.8rem,5.5vw,4.2rem);}
@@ -289,6 +297,8 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
   .budget-total{padding:0.9rem 1rem!important;}
   .budget-total span:last-child{font-size:1.4rem!important;}
   .budget-note{font-size:0.78rem;}
+  .project-banner{padding:1.25rem;gap:1.1rem;}
+  .project-banner-title{font-size:1.3rem;}
   .connect-cta{padding-top:2.5rem;padding-bottom:2.5rem;}
   .connect-cta .section-body{font-size:0.95rem;}
   .connect-cta .btn-primary{font-size:1rem;padding:0.85rem 2rem;}
@@ -329,6 +339,14 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
       <h1 class="section-title" data-es="LO QUE<br/><span class='gold'>OFRECEMOS</span>" data-en="WHAT WE<br/><span class='gold'>OFFER</span>">LO QUE<br/><span class="gold">OFRECEMOS</span></h1>
       <p class="section-body" data-es="Cada programa está diseñado para formar a la persona completa — espíritu, mente y cuerpo." data-en="Each program is designed to form the whole person — spirit, mind, and body.">Cada programa está diseñado para formar a la persona completa — espíritu, mente y cuerpo.</p>
     </div>
+    <aside class="project-banner">
+      <div>
+        <p class="project-banner-label" data-es="También estamos construyendo" data-en="We're also building">También estamos construyendo</p>
+        <h2 class="project-banner-title" data-es="Casa de <span class='gold'>Oportunidades</span>" data-en="House of <span class='gold'>Opportunities</span>">Casa de <span class="gold">Oportunidades</span></h2>
+        <p class="project-banner-body" data-es="Un proyecto especial para comprar terreno y construir un espacio dedicado para los niños de Belén." data-en="A special project to buy land and build a dedicated space for the children of Belén.">Un proyecto especial para comprar terreno y construir un espacio dedicado para los niños de Belén.</p>
+      </div>
+      <a href="proyecto.html" class="project-banner-link" data-es="Ver proyecto →" data-en="See project →">Ver proyecto →</a>
+    </aside>
     <div class="programs-grid">
       <div class="prog-card"><div class="prog-header"><span class="prog-day" data-es="Sábados" data-en="Saturdays">Sábados</span><span class="prog-cost">$350<span data-es="/mes" data-en="/mo">/mes</span></span></div><h3 class="prog-title" data-es="Atención a Niños" data-en="Children's Program">Atención a Niños</h3><ul class="prog-list"><li data-es="Dinámicas recreativas" data-en="Recreational activities">Dinámicas recreativas</li><li data-es="Música" data-en="Music">Música</li><li data-es="Enseñanza bíblica" data-en="Bible teaching">Enseñanza bíblica</li><li data-es="Alimentación" data-en="Meals provided">Alimentación</li></ul></div>
       <div class="prog-card"><div class="prog-header"><span class="prog-day" data-es="Martes" data-en="Tuesdays">Martes</span><span class="prog-cost">$500<span data-es="/mes" data-en="/mo">/mes</span></span></div><h3 class="prog-title" data-es="Talleres de Talentos" data-en="Talent Workshops">Talleres de Talentos</h3><ul class="prog-list"><li data-es="Piano" data-en="Piano">Piano</li><li data-es="Batería" data-en="Drums">Batería</li><li data-es="Guitarra" data-en="Guitar">Guitarra</li><li data-es="Canto" data-en="Singing">Canto</li></ul></div>
@@ -375,6 +393,7 @@ footer p{font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;}
     <li><a href="en-vivo.html" data-es="En Vivo" data-en="Live">En Vivo</a></li>
     <li><a href="mision.html" data-es="Misión" data-en="Mission">Misión</a></li>
     <li><a href="programas.html" data-es="Programas" data-en="Programs">Programas</a></li>
+    <li><a href="proyecto.html" data-es="Proyecto" data-en="Project">Proyecto</a></li>
     <li><a href="galeria.html" data-es="Momentos" data-en="Moments">Momentos</a></li>
     <li><a href="about.html" data-es="Nosotros" data-en="About">Nosotros</a></li>
     <li><a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a></li>
