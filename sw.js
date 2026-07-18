@@ -20,6 +20,19 @@ function sameOriginUrl(candidate, fallbackPath) {
   }
 }
 
+function ensureLiveWatchUrl(candidate) {
+  const href = sameOriginUrl(candidate, '/en-vivo.html?live=1');
+  try {
+    const url = new URL(href);
+    if (url.pathname.endsWith('en-vivo.html') && !url.searchParams.has('live')) {
+      url.searchParams.set('live', '1');
+    }
+    return url.href;
+  } catch (e) {
+    return href;
+  }
+}
+
 self.addEventListener('push', (event) => {
   let data = {};
   try {
@@ -35,10 +48,7 @@ self.addEventListener('push', (event) => {
       : 'Reino de Luz está transmitiendo ahora.';
   const icon = sameOriginUrl(data.icon, '/icons/icon-192.png');
   const badge = sameOriginUrl(data.badge, '/icons/icon-192.png');
-  const clickUrl = sameOriginUrl(
-    data.data && data.data.url,
-    '/en-vivo.html?live=1'
-  );
+  const clickUrl = ensureLiveWatchUrl(data.data && data.data.url);
 
   const options = {
     body: body,
@@ -55,9 +65,8 @@ self.addEventListener('push', (event) => {
 
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
-  const target = sameOriginUrl(
-    event.notification.data && event.notification.data.url,
-    '/en-vivo.html?live=1'
+  const target = ensureLiveWatchUrl(
+    event.notification.data && event.notification.data.url
   );
 
   event.waitUntil(
