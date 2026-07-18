@@ -259,7 +259,7 @@ async function notifySubscribers(env, live) {
     tag: 'rdl-live',
     renotify: true,
     requireInteraction: false,
-    data: { url: site + '/en-vivo.html' },
+    data: { url: site + '/en-vivo.html?live=1' },
   };
 
   const entries = await listSubscriptions(env);

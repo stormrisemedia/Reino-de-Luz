@@ -3,7 +3,7 @@
   "short_name": "Reino de Luz",
   "description": "Adoración, predicación y oración en vivo desde Iquitos.",
   "id": "/",
-  "start_url": "/index.html",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",

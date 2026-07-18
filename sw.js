@@ -8,7 +8,7 @@ self.addEventListener('activate', (event) => {
 });
 
 function sameOriginUrl(candidate, fallbackPath) {
-  const fallback = new URL(fallbackPath || '/en-vivo.html', self.location.origin).href;
+  const fallback = new URL(fallbackPath || '/en-vivo.html?live=1', self.location.origin).href;
   if (!candidate || typeof candidate !== 'string') return fallback;
   try {
     const url = new URL(candidate, self.location.origin);
@@ -37,7 +37,7 @@ self.addEventListener('push', (event) => {
   const badge = sameOriginUrl(data.badge, '/icons/icon-192.png');
   const clickUrl = sameOriginUrl(
     data.data && data.data.url,
-    '/en-vivo.html'
+    '/en-vivo.html?live=1'
   );
 
   const options = {
@@ -57,7 +57,7 @@ self.addEventListener('notificationclick', (event) => {
   event.notification.close();
   const target = sameOriginUrl(
     event.notification.data && event.notification.data.url,
-    '/en-vivo.html'
+    '/en-vivo.html?live=1'
   );
 
   event.waitUntil(
